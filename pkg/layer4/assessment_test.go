@@ -4,50 +4,58 @@ import (
 	"testing"
 )
 
-var assessmentsTestData = []struct {
+func getAssessmentsTestData() []struct {
 	testName           string
 	assessment         Assessment
 	numberOfSteps      int
 	numberOfStepsToRun int
 	expectedResult     Result
-}{
-	{
-		testName:   "Assessment with no steps",
-		assessment: Assessment{},
-	},
-	{
-		testName:           "Assessment with one step",
-		assessment:         passingAssessment,
-		numberOfSteps:      1,
-		numberOfStepsToRun: 1,
-		expectedResult:     Passed,
-	},
-	{
-		testName:           "Assessment with two steps",
-		assessment:         failingAssessment,
-		numberOfSteps:      2,
-		numberOfStepsToRun: 1,
-		expectedResult:     Failed,
-	},
-	{
-		testName:           "Assessment with three steps",
-		assessment:         needsReviewAssessment,
-		numberOfSteps:      3,
-		numberOfStepsToRun: 3,
-		expectedResult:     NeedsReview,
-	},
-	{
-		testName:           "Assessment with four steps",
-		assessment:         badRevertPassingAssessment,
-		numberOfSteps:      4,
-		numberOfStepsToRun: 4,
-		expectedResult:     Passed,
-	},
+} {
+	return []struct {
+		testName           string
+		assessment         Assessment
+		numberOfSteps      int
+		numberOfStepsToRun int
+		expectedResult     Result
+	}{
+		{
+			testName:   "Assessment with no steps",
+			assessment: Assessment{},
+		},
+		{
+			testName:           "Assessment with one step",
+			assessment:         passingAssessment(),
+			numberOfSteps:      1,
+			numberOfStepsToRun: 1,
+			expectedResult:     Passed,
+		},
+		{
+			testName:           "Assessment with two steps",
+			assessment:         failingAssessment(),
+			numberOfSteps:      2,
+			numberOfStepsToRun: 1,
+			expectedResult:     Failed,
+		},
+		{
+			testName:           "Assessment with three steps",
+			assessment:         needsReviewAssessment(),
+			numberOfSteps:      3,
+			numberOfStepsToRun: 3,
+			expectedResult:     NeedsReview,
+		},
+		{
+			testName:           "Assessment with four steps",
+			assessment:         badRevertPassingAssessment(),
+			numberOfSteps:      4,
+			numberOfStepsToRun: 4,
+			expectedResult:     Passed,
+		},
+	}
 }
 
 // TestNewStep ensures that NewStep queues a new step in the Assessment
 func TestAddStep(t *testing.T) {
-	for _, test := range assessmentsTestData {
+	for _, test := range getAssessmentsTestData() {
 		t.Run(test.testName, func(t *testing.T) {
 			if len(test.assessment.Steps) != test.numberOfSteps {
 				t.Errorf("Bad test data: expected to start with %d, got %d", test.numberOfSteps, len(test.assessment.Steps))
@@ -104,7 +112,7 @@ func TestRunStep(t *testing.T) {
 
 // TestRun ensures that Run executes all steps, halting if any step does not return Passed
 func TestRun(t *testing.T) {
-	for _, data := range assessmentsTestData {
+	for _, data := range getAssessmentsTestData() {
 		t.Run(data.testName, func(t *testing.T) {
 			a := data.assessment // copy the assessment to prevent duplicate executions in the next test
 			result := a.Run(nil, true)
@@ -115,6 +123,11 @@ func TestRun(t *testing.T) {
 				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, a.Steps_Executed)
 			}
 		})
+	}
+}
+
+func TestRunB(t *testing.T) {
+	for _, data := range getAssessmentsTestData() {
 		t.Run(data.testName+"-no-changes", func(t *testing.T) {
 			data.assessment.Run(nil, false)
 			if data.assessment.Steps_Executed != data.numberOfStepsToRun {
@@ -170,32 +183,32 @@ func TestRevertChanges(t *testing.T) {
 		},
 		{
 			testName:   "Change already applied and reverted",
-			assessment: Assessment{Changes: map[string]*Change{"test": goodRevertedChange}},
+			assessment: Assessment{Changes: map[string]*Change{"test": goodRevertedChangePtr()}},
 			corrupted:  false,
 		},
 		{
 			testName:   "Change without apply function",
-			assessment: Assessment{Changes: map[string]*Change{"test": noApplyChange}},
+			assessment: Assessment{Changes: map[string]*Change{"test": noApplyChangePtr()}},
 			corrupted:  true,
 		},
 		{
 			testName:   "Change with error from apply function",
-			assessment: Assessment{Changes: map[string]*Change{"test": badApplyChange}},
+			assessment: Assessment{Changes: map[string]*Change{"test": badApplyChangePtr()}},
 			corrupted:  true,
 		},
 		{
 			testName:   "Change with error from revert function",
-			assessment: Assessment{Changes: map[string]*Change{"test": badRevertChange}},
+			assessment: Assessment{Changes: map[string]*Change{"test": badRevertChangePtr()}},
 			corrupted:  true,
 		},
 		{
 			testName:   "Change previously applied and needs reverted",
-			assessment: Assessment{Changes: map[string]*Change{"test": goodNotRevertedChange}},
+			assessment: Assessment{Changes: map[string]*Change{"test": goodNotRevertedChangePtr()}},
 			corrupted:  false,
 		},
 		{
 			testName:   "Two changes already applied, with one already reverted",
-			assessment: passingAssessment,
+			assessment: passingAssessment(),
 			corrupted:  false,
 		},
 	}

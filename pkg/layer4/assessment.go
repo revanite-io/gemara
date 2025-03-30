@@ -75,6 +75,10 @@ func (a *Assessment) runStep(targetData interface{}, step AssessmentStep) Result
 // `targetData` is the data that the assessment will be run against
 // `changesAllowed` is a boolean that determines whether changes will be applied
 func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
+	if a.Result != NotRun {
+		return a.Result
+	}
+
 	startTime := time.Now()
 	err := a.precheck()
 	if err != nil {
@@ -82,8 +86,8 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 		return a.Result
 	}
 	for _, change := range a.Changes {
-		if !changesAllowed {
-			change.Disallow()
+		if changesAllowed {
+			change.Allow()
 		}
 	}
 	for _, step := range a.Steps {
@@ -97,19 +101,12 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 
 // NewChange creates a new Change object and adds it to the Assessment
 func (a *Assessment) NewChange(changeName, targetName, description string, targetObject interface{}, applyFunc ApplyFunc, revertFunc RevertFunc) *Change {
+	change := NewChange(targetName, description, targetObject, applyFunc, revertFunc)
 	if a.Changes == nil {
 		a.Changes = make(map[string]*Change)
 	}
-	a.Changes[changeName] = &Change{
-		Target_Name:   targetName,
-		Target_Object: targetObject,
-		Description:   description,
-		applyFunc:     applyFunc,
-		revertFunc:    revertFunc,
-		Allowed:       true,
-	}
-
-	return a.Changes[changeName]
+	a.Changes[changeName] = &change
+	return &change
 }
 
 func (a *Assessment) RevertChanges() (corrupted bool) {

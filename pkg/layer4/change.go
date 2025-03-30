@@ -21,8 +21,8 @@ type Change struct {
 	Allowed       bool        // Allowed may be disabled to prevent the change from being applied
 }
 
-func (c *Change) Disallow() {
-	c.Allowed = false
+func (c *Change) Allow() {
+	c.Allowed = true
 }
 
 // Apply executes the Apply function for the change
@@ -83,4 +83,15 @@ func (c *Change) precheck() error {
 		return fmt.Errorf("change has a previous error and can no longer be applied: %s", c.Error.Error())
 	}
 	return nil
+}
+
+// NewChange creates a new Change object and adds it to the Assessment
+func NewChange(targetName string, description string, targetObject interface{}, applyFunc ApplyFunc, revertFunc RevertFunc) Change {
+	return Change{
+		Target_Name:   targetName,
+		Target_Object: targetObject,
+		Description:   description,
+		applyFunc:     applyFunc,
+		revertFunc:    revertFunc,
+	}
 }
