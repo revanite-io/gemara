@@ -1,0 +1,57 @@
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-go@v5.3.0
+        with:
+          go-version: "^1.23.4"
+
+      - name: Setup GO environment
+        run: |
+          go mod download
+          go get -u golang.org/x/lint/golint
+          go get -t ./...
+
+      - name: Vet
+        run: |
+          go vet ./...
+
+      - name: Unit tests
+        run: |
+          go test ./... -coverprofile coverage.out -covermode count
+          go tool cover -func coverage.out
+
+      - name: Quality Gate - Test coverage shall be above threshold
+        env:
+          TESTCOVERAGE_THRESHOLD: 50
+        run: |
+          echo "Quality Gate: checking test coverage is above threshold ..."
+          echo "Threshold             : $TESTCOVERAGE_THRESHOLD %"
+          totalCoverage=`go tool cover -func=coverage.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
+          echo "Current test coverage : $totalCoverage %"
+          if (( $(echo "$totalCoverage $TESTCOVERAGE_THRESHOLD" | awk '{print ($1 > $2)}') )); then
+              echo "OK"
+          else
+              echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
+              echo "Failed"
+              exit 1
+          fi
+
+      - name: Ensure build is functional
+        run: |
+          cd pkg
+          cd layer2 && go build ./...
+          cd ../layer4 && go build ./...
