@@ -49,10 +49,6 @@ func pendingChange() Change {
 		revertFunc:  goodRevertFunc,
 	}
 }
-func appliedRevertedChangePtr() *Change {
-	c := appliedRevertedChange()
-	return &c
-}
 func appliedRevertedChange() Change {
 	return Change{
 		Target_Name: "appliedRevertedChange",
@@ -62,10 +58,6 @@ func appliedRevertedChange() Change {
 		Applied:     true,
 		Reverted:    true,
 	}
-}
-func appliedNotRevertedChangePtr() *Change {
-	c := appliedNotRevertedChange()
-	return &c
 }
 func appliedNotRevertedChange() Change {
 	return Change{
@@ -137,20 +129,12 @@ func noApplyChange() Change {
 		revertFunc:  goodRevertFunc,
 	}
 }
-func noRevertChangePtr() *Change {
-	c := noRevertChange()
-	return &c
-}
 func noRevertChange() Change {
 	return Change{
 		Target_Name: "noRevertChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 	}
-}
-func disallowedChangePtr() *Change {
-	c := disallowedChange()
-	return &c
 }
 func disallowedChange() Change {
 	return Change{
@@ -229,11 +213,6 @@ func unknownAssessment() Assessment {
 		},
 		Applicability: testingApplicability,
 	}
-}
-
-func badRevertPassingAssessmentPtr() *Assessment {
-	a := badRevertPassingAssessment()
-	return &a
 }
 
 func badRevertPassingAssessment() Assessment {
