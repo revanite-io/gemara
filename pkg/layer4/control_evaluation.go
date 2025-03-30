@@ -9,13 +9,13 @@ import (
 
 // ControlEvaluation is a struct that contains all assessment results, organized by name
 type ControlEvaluation struct {
-	Name              string        // TestSuiteName is the human-readable name or description of the control evaluation
+	Name              string        // Name is the name of the control being evaluated
 	Control_Id        string        // Control_Id is the unique identifier for the control being evaluated
-	Result            Result        // Result is true if all testSets in the testSuite passed
+	Result            Result        // Result is the overall result of the control evaluation
 	Message           string        // Message is the human-readable result of the final assessment to run in this evaluation
-	Corrupted_State   bool          // BadState is true if any testSet failed to revert at the end of the testSuite
+	Corrupted_State   bool          // Corrupted_State is true if the control evaluation was interrupted and changes were not reverted
 	Remediation_Guide string        // Remediation_Guide is the URL to the documentation for this evaluation
-	Assessments       []*Assessment // Control_Evaluations is a map of testSet names to their results
+	Assessments       []*Assessment // Assessments is a map of pointers to Assessment objects to establish idempotency
 }
 
 func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (assessment *Assessment) {

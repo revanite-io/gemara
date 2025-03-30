@@ -22,7 +22,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Passed,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{&passingAssessment},
+			Assessments: []*Assessment{passingAssessmentPtr()},
 		},
 	},
 	{
@@ -30,7 +30,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Failed,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{&failingAssessment},
+			Assessments: []*Assessment{failingAssessmentPtr()},
 		},
 	},
 	{
@@ -38,7 +38,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    NeedsReview,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{&needsReviewAssessment},
+			Assessments: []*Assessment{needsReviewAssessmentPtr()},
 		},
 	},
 	{
@@ -46,7 +46,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Unknown,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{&unknownAssessment},
+			Assessments: []*Assessment{unknownAssessmentPtr()},
 		},
 	},
 	{
@@ -55,8 +55,8 @@ var controlEvaluationTestData = []struct {
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
 			Assessments: []*Assessment{
-				&needsReviewAssessment,
-				&unknownAssessment,
+				needsReviewAssessmentPtr(),
+				unknownAssessmentPtr(),
 			},
 		},
 	},
@@ -66,8 +66,8 @@ var controlEvaluationTestData = []struct {
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
 			Assessments: []*Assessment{
-				&unknownAssessment,
-				&needsReviewAssessment,
+				unknownAssessmentPtr(),
+				needsReviewAssessmentPtr(),
 			},
 		},
 	},
@@ -77,8 +77,8 @@ var controlEvaluationTestData = []struct {
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
 			Assessments: []*Assessment{
-				&failingAssessment,
-				&needsReviewAssessment,
+				failingAssessmentPtr(),
+				needsReviewAssessmentPtr(),
 			},
 		},
 	},
@@ -89,8 +89,8 @@ var controlEvaluationTestData = []struct {
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
 			Assessments: []*Assessment{
-				&failingAssessment,
-				&passingAssessment,
+				failingAssessmentPtr(),
+				passingAssessmentPtr(),
 			},
 		},
 	},
