@@ -16,7 +16,9 @@ func loadYamlFromURL(sourcePath string, data interface{}) error {
 	if err != nil {
 		return fmt.Errorf("failed to fetch URL: %v", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		_ = resp.Body.Close()
+	}()
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("failed to fetch URL; response status: %v", resp.Status)
@@ -43,7 +45,9 @@ func loadYaml(sourcePath string, data interface{}) error {
 		return fmt.Errorf("error opening file: %w", err)
 	}
 
-	defer file.Close()
+	defer func() {
+		_ = file.Close()
+	}()
 	decoder := yaml.NewDecoder(file)
 	decoder.KnownFields(true)
 
