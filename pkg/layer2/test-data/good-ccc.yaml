@@ -38,7 +38,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH02 # Data is Intercepted in Transit
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-02 # Data-in-transit is protected
@@ -85,7 +85,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH03 # Deployment Region Network is Untrusted
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CCM
             identifiers:
               - DSI-06
@@ -131,7 +131,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH06 # Data is Lost or Corrupted
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-5 # Protections against data leaks are implemented
@@ -174,7 +174,7 @@ control-families:
               - CCC.TH07 # Logs are Tampered with or Deleted
               - CCC.TH09 # Logs or Monitoring Data are Read by Unauthorized Users
               - CCC.TH04 # Data is Replicated to Untrusted or External Locations
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CCM
             identifiers:
               - LOG-02 # Audit log protection
@@ -225,7 +225,7 @@ control-families:
           - reference-id: CCC
             identifiers:
               - CCC.TH04 # Data is Replicated to Untrusted or External Locations
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CSF
             identifiers:
               - PR.DS-5 # Protections against data leaks are implemented

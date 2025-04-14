@@ -67,7 +67,7 @@ control-families:
           Reduce the risk of account compromise or insider threats by requiring
           multi-factor authentication for collaborators modifying the project
           repository settings or accessing sensitive data.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - CC-G-1
@@ -116,7 +116,7 @@ control-families:
         objective: |
           Reduce the risk of unauthorized access to the project's repository by
           limiting the permissions granted to new collaborators.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -160,7 +160,7 @@ control-families:
         objective: |
           Reduce the risk of accidental changes or deletion of the primary branch
           of the project's repository by preventing unintentional modification.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -217,7 +217,7 @@ control-families:
           Reduce the risk of unauthorized access to the project's build and release
           processes by limiting the permissions granted to steps within the CI/CD
           pipelines.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2d
@@ -289,7 +289,7 @@ control-families:
           Reduce the risk of code injection or other security vulnerabilities in the
           project's build and release pipelines by preventing untrusted input from
           accessing privileged resources.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -339,7 +339,7 @@ control-families:
           Ensure that each software asset produced by the project is uniquely
           identified, enabling users to track changes and updates to the project
           over time.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-5
@@ -392,7 +392,7 @@ control-families:
         objective: |
           Protect the confidentiality and integrity of project source code during
           development, reducing the risk of eavesdropping or data tampering.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-11
@@ -450,7 +450,7 @@ control-families:
           Provide transparency and accountability for changes made to the project's
           software releases, enabling users to understand the modifications and
           improvements included in each release.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-8
@@ -513,7 +513,7 @@ control-families:
           Ensure that the project's build and release pipelines use standardized tools
           and processes to manage dependencies, reducing the risk of compatibility
           issues or security vulnerabilities in the software.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - Q-B-2
@@ -562,7 +562,7 @@ control-families:
         objective: |
           All released software assets MUST be signed or accounted for in a
           signed manifest including each asset's cryptographic hashes.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: SSDF
             identifiers:
               - PO5.2
@@ -607,7 +607,7 @@ control-families:
           Ensure that users have a clear and comprehensive understanding of the
           project's current features in order to prevent damage from misuse or
           misconfiguration.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-1
@@ -654,7 +654,7 @@ control-families:
           Enable users and contributors to report defects or issues with the
           released software assets, facilitating communication and collaboration on
           defect fixes and improvements.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-3
@@ -709,7 +709,7 @@ control-families:
           Enable users to verify the authenticity and integrity of the project's
           released software assets, reducing the risk of using tampered or
           unauthorized versions of the software.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-8
@@ -765,7 +765,7 @@ control-families:
           Provide users with clear expectations regarding the project's support
           lifecycle. This allows downstream consumers to take relevant actions to
           ensure the continued functionality and security of their systems.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-3
@@ -799,7 +799,7 @@ control-families:
           Communicating when the project maintainers will no longer fix defects or
           security vulnerabilities is crucial for downstream consumers to find
           alternative solutions or alternative means of support for the project.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2c
@@ -834,7 +834,7 @@ control-families:
           dependencies, libraries, frameworks, etc. to help downstream consumers
           understand how the project operates in regards to third-party components
           that are required necessary for the software to function.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - A-S-1
@@ -879,7 +879,7 @@ control-families:
           potential contributors, and downstream consumers have an accurate
           understanding of who is working on the project and what areas of authority
           they may have.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-3
@@ -921,7 +921,7 @@ control-families:
           Encourages open communication and collaboration within the project
           community, enabling users to provide feedback and discuss proposed changes
           or usage challenges.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-3
@@ -958,7 +958,7 @@ control-families:
           Provide guidance to new contributors on how to participate in the project,
           outlining the steps required to submit changes or enhancements to the
           project's codebase.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-4
@@ -1012,7 +1012,7 @@ control-families:
           Ensure that code contributors are vetted and reviewed before being granted
           elevated permissions to sensitive resources within the project, reducing
           the risk of unauthorized access or misuse.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-5
@@ -1078,7 +1078,7 @@ control-families:
           Ensure that code contributors are aware of and acknowledge their legal
           responsibility for the contributions they make to the project, reducing
           the risk of intellectual property disputes against the project.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-1
@@ -1117,7 +1117,7 @@ control-families:
           Ensure that the project's source code is distributed under a recognized
           and legally enforceable open source software license, providing clarity on
           how the code can be used and shared by others.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-6
@@ -1173,7 +1173,7 @@ control-families:
           Ensure that the project's source code and released software assets are
           distributed with the appropriate license terms, making it clear to users
           and contributors how each can be used and shared.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-8
@@ -1235,7 +1235,7 @@ control-families:
         objective: |
           Enable users to access and review the project's source code and history,
           promoting transparency and collaboration within the project community.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - CC-B-1
@@ -1306,7 +1306,7 @@ control-families:
           Provide transparency and accountability for the project's dependencies
           while enabling users and contributors to understand the software's direct
           dependencies.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - Q-S-8
@@ -1373,7 +1373,7 @@ control-families:
           failing status checks, even if arbitrary, because it increases the risk of
           overlooking security vulnerabilities or defects identified by automated
           checks.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2f
@@ -1418,7 +1418,7 @@ control-families:
           Ensure that additional code repositories or subprojects produced by the
           project are held to a standard that is clear and appropriate for that
           codebase.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2b
@@ -1474,7 +1474,7 @@ control-families:
           Reduce the risk of including generated executable artifacts in the
           project's version control system, ensuring that only source code and
           necessary files are stored in the repository.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2b
@@ -1509,7 +1509,7 @@ control-families:
         objective: |
           Ensure that the project uses at least one automated test suite for the
           source code repository which clearly documents when and how tests are run.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - Q-B-4
@@ -1581,7 +1581,7 @@ control-families:
           Ensure that the project's version control system requires at least one
           non-author approval of changes before merging into the release or primary
           branch.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-G-3
@@ -1616,7 +1616,7 @@ control-families:
           the interactions and components of the system to help contributors and
           security reviewers understand the internal logic of the released software
           assets.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-1
@@ -1665,7 +1665,7 @@ control-families:
           Provide users and developers with an understanding of how to interact with
           the project's software and integrate it with other systems, enabling them
           to use the software effectively.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-B-10
@@ -1712,7 +1712,7 @@ control-families:
           Provide project maintainers an understanding of how the software can be
           misused or broken allows them to plan mitigations to close off the potential
           of those threats from occurring.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -1792,7 +1792,7 @@ control-families:
           Establish a process for reporting and addressing vulnerabilities in the
           project, ensuring that security issues are handled promptly and 
           transparently.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-6
@@ -1852,7 +1852,7 @@ control-families:
           vulnerabilities in a project. People with vulnerabilities to report should
           have a clear understanding of the process so that they can quickly submit
           the report to the project.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -1898,7 +1898,7 @@ control-families:
           Security vulnerabilities should not be shared with the public until such
           time the project has been provided time to analyze and prepare 
           remediations to protect users of the project.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - R-B-7
@@ -1930,7 +1930,7 @@ control-families:
         objective: |
           Consumers of the project must be informed about known vulnerabilities
           found within the project.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: CRA
             identifiers:
               - 1.2a
@@ -1988,7 +1988,7 @@ control-families:
           is merged as well as before it releases, reducing the risk of compromised
           delivery mechanisms or released software assets that are vulnerable or
           malicious.
-        rule-mappings:
+        guideline-mappings:
           - reference-id: BPB
             identifiers:
               - B-S-8
@@ -2092,7 +2092,7 @@ control-families:
           Identify and address defects and security weaknesses in the project's
           codebase early in the development process, reducing the risk of shipping
           insecure software.
-        rule-mappings: 
+        guideline-mappings: 
           - reference-id: BPB
             identifiers:
               - B-S-8

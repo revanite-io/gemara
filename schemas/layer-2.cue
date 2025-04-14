@@ -42,7 +42,7 @@ catalog: {
     objective: string
     "assessment-requirements": [...#AssessmentRequirement]
 
-    "rule-mappings"?: [...#Mapping]
+    "guideline-mappings"?: [...#Mapping]
     "threat-mappings"?: [...#Mapping]
 }
 
