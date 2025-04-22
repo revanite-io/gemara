@@ -11,7 +11,7 @@ import (
 
 // loadYamlFromURL is a sub-function of loadYaml for HTTP only
 // sourcePath is the URL. data is a pointer to the recieving object.
-func loadYamlFromURL(sourcePath string, data interface{}) error {
+func loadYamlFromURL(sourcePath string, data *Catalog) error {
 	resp, err := http.Get(sourcePath)
 	if err != nil {
 		return fmt.Errorf("failed to fetch URL: %v", err)
@@ -35,7 +35,7 @@ func loadYamlFromURL(sourcePath string, data interface{}) error {
 // loadYaml opens a provided path to unmarshal its data as YAML.
 // sourcePath is a URL or local path to a file.
 // data is a pointer to the recieving object.
-func loadYaml(sourcePath string, data interface{}) error {
+func loadYaml(sourcePath string, data *Catalog) error {
 	if strings.HasPrefix(sourcePath, "http") {
 		return loadYamlFromURL(sourcePath, data)
 	}
@@ -61,7 +61,7 @@ func loadYaml(sourcePath string, data interface{}) error {
 // loadYaml opens a provided path to unmarshal its data as JSON.
 // sourcePath is a URL or local path to a file.
 // data is a pointer to the recieving object.
-func loadJson(sourcePath string, data interface{}) error {
+func loadJson(sourcePath string, data *Catalog) error {
 	return fmt.Errorf("loadJson not implemented [%s, %s]", sourcePath, data)
 }
 
