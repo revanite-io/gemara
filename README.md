@@ -59,7 +59,7 @@ The [cue](https://cuelang.org) CLI can be used to [validate YAML data](https://c
 
 ### Layer 3: Policy
 
-Activities in the Policy layer provide risk-informed governance rules that while based on best practices and industry standards are tailored to an organization.
+Activities in the Policy layer provide risk-informed governance rules that — while based on best practices and industry standards — are tailored to an organization.
 
 Layer 3 controls are typically developed by an organization to compile into organizational policies. Policies cannot be properly developed without consideration for organization-specific risk appetite and risk-acceptance.
 
