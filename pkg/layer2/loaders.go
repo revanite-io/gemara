@@ -2,6 +2,7 @@ package layer2
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"strings"
@@ -24,8 +25,7 @@ func loadYamlFromURL(sourcePath string, data *Catalog) error {
 		return fmt.Errorf("failed to fetch URL; response status: %v", resp.Status)
 	}
 
-	decoder := yaml.NewDecoder(resp.Body)
-	err = decoder.Decode(&data)
+	err = decode(resp.Body, data)
 	if err != nil {
 		return fmt.Errorf("failed to decode YAML from URL: %v", err)
 	}
@@ -48,10 +48,8 @@ func loadYaml(sourcePath string, data *Catalog) error {
 	defer func() {
 		_ = file.Close()
 	}()
-	decoder := yaml.NewDecoder(file)
-	decoder.KnownFields(true)
 
-	err = decoder.Decode(data)
+	err = decode(file, data)
 	if err != nil {
 		return fmt.Errorf("error decoding YAML: %w", err)
 	}
@@ -86,7 +84,7 @@ func (c *Catalog) LoadFiles(sourcePaths []string) error {
 // file at the provided path. JSON support is pending development.
 // If run multiple times for the same data type, this method will override previous data.
 func (c *Catalog) LoadFile(sourcePath string) error {
-	if strings.Contains(sourcePath, ".yaml") {
+	if strings.Contains(sourcePath, ".yaml") || strings.Contains(sourcePath, ".yml") {
 		err := loadYaml(sourcePath, c)
 		if err != nil {
 			return err
@@ -98,6 +96,16 @@ func (c *Catalog) LoadFile(sourcePath string) error {
 		}
 	} else {
 		return fmt.Errorf("unsupported file type")
+	}
+	return nil
+}
+
+func decode(reader io.Reader, data *Catalog) error {
+	decoder := yaml.NewDecoder(reader)
+	decoder.KnownFields(true)
+	err := decoder.Decode(data)
+	if err != nil {
+		return fmt.Errorf("error decoding YAML: %w", err)
 	}
 	return nil
 }
