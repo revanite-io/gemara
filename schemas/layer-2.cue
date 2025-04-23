@@ -1,3 +1,4 @@
+package layer2
 // Top level schema //
 
 catalog: {

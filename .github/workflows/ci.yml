@@ -15,6 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4.2.2
+      - name: Setup Cue
+        uses: cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1 # v1.0.1
+      - name: Validate the layer 2 schema
+        run: make lintcue
       - uses: actions/setup-go@v5.4.0
         with:
           go-version: "^1.23.4"
@@ -31,8 +35,7 @@ jobs:
 
       - name: Unit tests
         run: |
-          go test ./... -coverprofile coverage.out -covermode count
-          go tool cover -func coverage.out
+          make test-cov
 
       - name: Quality Gate - Test coverage shall be above threshold
         env:
@@ -52,6 +55,4 @@ jobs:
 
       - name: Ensure build is functional
         run: |
-          cd pkg
-          cd layer2 && go build ./...
-          cd ../layer4 && go build ./...
+          make build

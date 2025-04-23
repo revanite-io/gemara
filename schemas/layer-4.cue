@@ -1,4 +1,8 @@
+package layer4
 // Top level schema //
+
+#EvaluationPlan: {
+}
 
 "evaluation-plans": [...#EvaluationPlan]
 
@@ -19,7 +23,7 @@
     name: string
     description: string
     message: string
-    "function-address" string
+    "function-address": string
     change?: #Change
     value?: _
 }
