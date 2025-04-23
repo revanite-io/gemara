@@ -81,7 +81,7 @@ The SCI go module provides Layer 2 support for writing assessments that can writ
 
 ### Layer 5: Enforcement
 
-Activities in the Enforcement layer provide prevention or remediation based on assessment findings gathered by Layer 4 evaluations. Enforcement actions should also be further guided by Layer 3 policies.
+Activities in the Enforcement layer provide prevention or remediation. These enforcement actions should be guided by Layer 3 policies and based on assessment findings from Layer 4 evaluations.
 
 This layer ensures that the organization is complying with policy when evidence of noncompliance is found, such as by blocking the deployment of a resource that does not meet the organization's policies.
 
