@@ -1,3 +1,5 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/sci.svg)](https://pkg.go.dev/github.com/revanite-io/sci)
+
 # SCI: Simplified Compliance Infrastructure
 
 The _Simplified Compliance Infrastructure_ provides a model to describe the categories of compliance activities, how they interact, and the schemas to enable automated interoperability between them.
@@ -43,21 +45,23 @@ Assets in this category may be refined into more specific Layer 2 controls, or c
 
 The recommended process for developing Layer 2 controls is to first assess the technology's capabilities, then identify threats to those capabilities, and finally develop controls to mitigate those threats.
 
-Examples include CIS Benchmarks, FINOS Common Cloud Controls, and the OSPS Baseline.
+Examples include [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks-overview), [FINOS Common Cloud Controls](https://github.com/finos/common-cloud-controls/blob/main/README.md), and the [Open Source Project Security (OSPS) Baseline](https://baseline.openssf.org/).
 
 #### Layer 2 Schema
 
-The SCI [Layer 2 Schema](./schemas/layer-2.cue) provides methods for expressing Layer 2 controls in a machine-readable format.
+The SCI [Layer 2 Schema](./schemas/layer-2.cue) describes the machine-readable format of Layer 2 controls.
 
 The schema allows controls to be mapped to threats or Layer 1 controls by their unique identifiers. Threats may also be expressed in the schema, with mappings to the technology-specific capabilities which may be vulnerable to the threat.
 
-The SCI go module provides Layer 2 support for ingesting documents that follow this schema.
+The SCI go module provides Layer 2 support for ingesting YAML and JSON documents that follow this schema.
+
+The [cue](https://cuelang.org) CLI can be used to [validate YAML data](https://cuelang.org/docs/concept/how-cue-works-with-yaml/#validating-yaml-files-against-a-schema) containing a Layer 2 control catalog.
 
 ### Layer 3: Policy
 
-Activities in the Policy layer provide risk-informed governance rules tailored to an organization. They are typically informed by risks or based on best practices and industry standards.
+Activities in the Policy layer provide risk-informed governance rules that while based on best practices and industry standards are tailored to an organization.
 
-Layer 3 controls are typically developed by an organization for its own purposes, to compile into organizational policies. Policies cannot be properly developed without consideration for organization-specific risk appetite and risk-acceptance.
+Layer 3 controls are typically developed by an organization to compile into organizational policies. Policies cannot be properly developed without consideration for organization-specific risk appetite and risk-acceptance.
 
 These policy documents may be referenced by other policy documents, or used as a starting point for Layer 4 assessments.
 
@@ -65,21 +69,19 @@ These policy documents may be referenced by other policy documents, or used as a
 
 Activities in the Evaluation layer provide inspection of code, configurations, and deployments. Those elements are part of the _software development lifecycle_ which is not represented in this model.
 
-Evaluation activities may be built based on outputs from layers 2 or 3. While automated assessments are often developed by vendors or industry groups, proper evaluation should also be able to ingest organizational policies to custom-tailor the assessment to the needs of the compliance program.
+Evaluation activities may be built based on outputs from layers 2 or 3. While automated assessments are often developed by vendors or industry groups, robust evaluation should be informed by organizational policies in order to custom-tailor the assessment to the needs of the compliance program.
 
 #### Layer 4 Schema
 
-The SCI [Layer 4 Schema](./schemas/layer-4.cue) provides methods for expressing Layer 4 evaluation results in a machine readable format.
+The SCI [Layer 4 Schema](./schemas/layer-4.cue) describes the machine-readable format of Layer 4 evaluation results.
 
 The schema allows evaluations to be mapped to Layer 2 controls by their unique identifiers.
 
-The SCI go module provides Layer 2 support for writing assessments that can write results in this schema.
+The SCI go module provides Layer 2 support for writing assessments that can write results in this schema. The work to add go module Layer 4 support for reading and writing assessments data is planned in [issue 30](https://github.com/revanite-io/sci/issues/30), but not completed.
 
 ### Layer 5: Enforcement
 
-Activities in the Enforcement layer provide prevention or remediation based on assessment findings.
-
-Enforcement actions should be dictated by Layer 3 policies, and act on information gathered by Layer 4 evaluations.
+Activities in the Enforcement layer provide prevention or remediation based on assessment findings gathered by Layer 4 evaluations. Enforcement actions should also be further guided by Layer 3 policies.
 
 This layer ensures that the organization is complying with policy when evidence of noncompliance is found, such as by blocking the deployment of a resource that does not meet the organization's policies.
 
@@ -89,8 +91,16 @@ Activities in the Audit layer provide a review of organizational policy and conf
 
 Audits consider information from all of the lower layers. These activities are typically performed by internal or external auditors to ensure that the organization has designed and enforced effective policies based on the organization's requirements.
 
-## Tooling
+## Usage
+
+Install the go module with `go get github.com/revanite-io/sci` and consult our [go docs](https://pkg.go.dev/github.com/revanite-io/sci)
+
+Use the schemas directly with [cue](https://cuelang.org/) for validating SCI data payloads against the schemas and more.
+
+## Projects and tooling using SCI
 
 The SCI Model is intended to be used in conjunction with tooling that can help automate the compliance process.
 
-This section will be updated as SCI-compatible tooling becomes available for production use cases.
+Examples of such tools include:
+ * [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
+ * [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer2 go package.
