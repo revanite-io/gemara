@@ -122,4 +122,4 @@ The SCI Model is intended to be used in conjunction with tooling that can help a
 Examples of such tools include:
 
 * [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
-* [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer2 go package.
+* [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer 2 go package.
