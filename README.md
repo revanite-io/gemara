@@ -1,6 +1,20 @@
-[![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/sci.svg)](https://pkg.go.dev/github.com/revanite-io/sci)
+# SCI: Simplified Compliance Infrastructure  [![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/sci.svg)](https://pkg.go.dev/github.com/revanite-io/sci)
 
-# SCI: Simplified Compliance Infrastructure
+- [Overview](#overview)
+- [The Model](#the-model)
+  - [Layer 1: Guidance](#layer-1-guidance)
+  - [Layer 2: Controls](#layer-2-controls)
+    - [Layer 2 Schema](#layer-2-schema)
+  - [Layer 3: Policy](#layer-3-policy)
+  - [Layer 4: Evaluation](#layer-4-evaluation)
+    - [Layer 4 Schema](#layer-4-schema)
+  - [Layer 5: Enforcement](#layer-5-enforcement)
+  - [Layer 6: Audit](#layer-6-audit)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Projects and tooling using SCI](#projects-and-tooling-using-sci)
+
+## Overview
 
 The _Simplified Compliance Infrastructure_ provides a model to describe the categories of compliance activities, how they interact, and the schemas to enable automated interoperability between them.
 
@@ -97,10 +111,15 @@ Install the go module with `go get github.com/revanite-io/sci` and consult our [
 
 Use the schemas directly with [cue](https://cuelang.org/) for validating SCI data payloads against the schemas and more.
 
+## Contributing
+
+We're so glad you asked - see [CONTRIBUTING.md](/CONTRIBUTING.md) and if you have any questions or feedback head over to the OpenSSF Slack in [#wg-orbit](https://openssf.slack.com/archives/C08NJTFAL74)
+
 ## Projects and tooling using SCI
 
 The SCI Model is intended to be used in conjunction with tooling that can help automate the compliance process.
 
 Examples of such tools include:
- * [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
- * [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer2 go package.
+
+* [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
+* [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer2 go package.
