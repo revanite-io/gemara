@@ -38,7 +38,7 @@ repository:
       email: trumant@gmail.com
     - name: Alex Speasmaker
       affiliation: USAA
-      email: TODO
+      email: alex.speasmaker@gmail.com
   license:
     url: https://github.com/revanite-io/sci?tab=Apache-2.0-1-ov-file#readme
     expression: Apache-2.0
