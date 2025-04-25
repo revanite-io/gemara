@@ -1,0 +1,49 @@
+header:
+  schema-version: 2.0.0
+  last-updated: '2025-04-25'
+  last-reviewed: '2025-04-25'
+  url: https://github.com/revanite-io/sci
+
+project:
+  name: "SCI: Simplified Compliance Infrastructure"
+  administrators:
+    - name: Eddie Knight
+      affiliation: Sonatype
+      email: knight@linux.com
+      primary: true
+    - name: Jason Meridth
+      affiliation: GitHub
+      email: jmeridth@gmail.com
+  repositories:
+    - name: sci
+      url: https://github.com/revanite-io/sci
+  vulnerability-reporting:
+    reports-accepted: false
+    bug-bounty-available: false
+
+repository:
+  url: https://github.com/revanite-io/sci
+  status: active
+  accepts-change-request: true
+  accepts-automated-change-request: true
+  core-team:
+    - name: Eddie Knight
+      affiliation: Sonatype
+      email: knight@linux.com
+    - name: Jason Meridth
+      affiliation: GitHub
+      email: jmeridth@gmail.com
+    - name: Travis Truman
+      affiliation: Independent
+      email: trumant@gmail.com
+    - name: Alex Speasmaker
+      affiliation: USAA
+      email: TODO
+  license:
+    url: https://github.com/revanite-io/sci?tab=Apache-2.0-1-ov-file#readme
+    expression: Apache-2.0
+  security:
+    assessments:
+      self:
+        comment: |
+          Self assessment has not yet been completed.
