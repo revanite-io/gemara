@@ -10,8 +10,8 @@ import "time"
 #Policy: {
     // Metadata useful for evaluation and automation
     metadata?: {
-        // version if the version of the policy itself
-        version: string
+        // version is the version of the policy itself
+        version: string @go(Version)
         // owner is the organizational unit responsible for the policy. This could be a department, team, or person.
         owner: string @go(Owner)
         // last_modified is the date and time when the policy was last modified
@@ -50,15 +50,16 @@ import "time"
 
     // List of IDs of Layer 2 Catalog.Metadata.ApplicabilityCategories
     applicability: [...string] @Go(ApplicabilityCategories)
-
-    modify?: [#ControlModification] @go(Modify)
+    // one or more modifications to the controls in this catalog
+    modifications?: [#ControlModification, ...#ControlModification] @go(Modifications)
 
     // Reason for including this catalog in the policy
     objective?: string @go(Objective)
 }
 
 #ControlModification: {
-    id: string
+    // the ID of the control being modified
+    id: string @go(ID)
 
     // The modified applicability level of this control, using IDs defined in the catalog
     // An empty list means the control should be omitted entirely
@@ -66,10 +67,4 @@ import "time"
 
     // Justification for modifying this control
     rationale?: string @go(Rationale)
-}
-
-#Reference: {
-    title: string @go(Title)
-    url?: string @go(URL)
-    description?: string @go(Description)
 }
