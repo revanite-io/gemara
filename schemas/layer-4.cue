@@ -22,7 +22,6 @@ import "time"
     control_evaluations: [#ControlEvaluation, ...#ControlEvaluation] @go(ControlEvaluations)
 }
 
-    control_evaluations: [...#ControlEvaluation]
 }
 
 // Types
