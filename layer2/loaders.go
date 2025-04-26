@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"gopkg.in/yaml.v3"
+	"github.com/goccy/go-yaml"
 )
 
 // loadYamlFromURL is a sub-function of loadYaml for HTTP only
@@ -101,8 +101,7 @@ func (c *Catalog) LoadFile(sourcePath string) error {
 }
 
 func decode(reader io.Reader, data *Catalog) error {
-	decoder := yaml.NewDecoder(reader)
-	decoder.KnownFields(true)
+	decoder := yaml.NewDecoder(reader, yaml.DisallowUnknownField())
 	err := decoder.Decode(data)
 	if err != nil {
 		return fmt.Errorf("error decoding YAML: %w", err)
