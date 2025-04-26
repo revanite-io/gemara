@@ -51,7 +51,7 @@ func loadYaml(sourcePath string, data *Catalog) error {
 
 	err = decode(file, data)
 	if err != nil {
-		return fmt.Errorf("error decoding YAML: %w", err)
+		return fmt.Errorf("error decoding YAML: %w (%s)", err, sourcePath)
 	}
 	return nil
 }

@@ -111,6 +111,11 @@ Install the go module with `go get github.com/revanite-io/sci` and consult our [
 
 Use the schemas directly with [cue](https://cuelang.org/) for validating SCI data payloads against the schemas and more.
 
+Reference these example Layer 2 YAML control catalogs, to better understand how the schema can be applied.
+
+- [FINOS Common Cloud Controls](pkg/layer2/test-data/good-ccc.yaml)
+- [Open Source Project Security Baseline](pkg/layer2/test-data/good-osps.yml)
+
 ## Contributing
 
 We're so glad you asked - see [CONTRIBUTING.md](/CONTRIBUTING.md) and if you have any questions or feedback head over to the OpenSSF Slack in [#wg-orbit](https://openssf.slack.com/archives/C08NJTFAL74)
@@ -121,5 +126,5 @@ The SCI Model is intended to be used in conjunction with tooling that can help a
 
 Examples of such tools include:
 
-* [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
-* [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer 2 go package.
+- [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
+- [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer 2 go package.
