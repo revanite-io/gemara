@@ -67,5 +67,7 @@ lintcue:
 	@echo "  >  Linting CUE files ..."
 	@echo "  >  Linting layer-2.cue ..."
 	@cue eval ./schemas/layer-2.cue --all-errors --verbose
+	@echo "  >  Linting layer-3.cue ..."
+	@cue eval ./schemas/layer-3.cue --all-errors --verbose
 	@echo "  >  Linting layer-4.cue ..."
 	@cue eval ./schemas/layer-4.cue --all-errors --verbose
