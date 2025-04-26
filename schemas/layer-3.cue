@@ -31,7 +31,7 @@ package layer3
     classification: "mandatory" | "recommended"
 
     // Reference to one or more Layer 2 control catalogs
-    control_catalogs: [...#CatalogReference]
+    control_catalogs: [#CatalogReference, ...#CatalogReference]
 
 }
 
