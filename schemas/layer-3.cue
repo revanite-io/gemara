@@ -8,7 +8,8 @@ package layer3
     // Metadata useful for evaluation and automation
     metadata?: {
         version: string
-        author: string
+        // owner is the organizational unit responsible for the policy. This could be a department, team, or person.
+        owner: string @go(Owner)
         last_modified: string
         sci_version: string
         remarks: string
