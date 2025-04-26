@@ -4,13 +4,23 @@ import "time"
 
 // Top level schema //
 
-"evaluation-suite": {
-    name: string // descriptive identifier for the execution that produced this output
-    catalog_id: string // id for the layer2 control catalog that this suite is evaluating against
-    start_time: time.Time // timestamp for when this evaluation started
-    end_time: time.Time // timestamp for when this evaluation completed
-    result: #Result // final outcome of the evaluation
-    corrupted_state: bool // whether the evaluated service has been changed without successful reversion
+// Evaluation is a collection of assessments of the framework controls and their requirements.
+#Evaluation: {
+    // name is a descriptive identifier for the evaluation
+    name: string
+    // ID of the Layer 2 Catalog being evaluated in this evaluation
+    catalog_id: string @go(CatalogID)
+    // final outcome of the evaluation
+    result: #Result
+    // timestamp of when the evaluation execution began. If the field is not provided, the evaluation has not been executed yet.
+    start_time?: time.Time @go(StartTime)
+    // timestamp of when the evaluation execution ended. If the field is not provided, the evaluation has not been executed yet.
+    end_time?: time.Time @go(EndTime)
+    // will be true when the evaluation execution changed the evaluated service and could not successfully revert
+    corrupted_state: bool @go(CorruptedState) 
+    // one or more evaluations of the framework controls
+    control_evaluations: [#ControlEvaluation, ...#ControlEvaluation] @go(ControlEvaluations)
+}
 
     control_evaluations: [...#ControlEvaluation]
 }
