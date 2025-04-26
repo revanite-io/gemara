@@ -28,7 +28,7 @@ package layer3
     parent_policy_id?: string
 
     // Policy classification level (e.g., mandatory, recommended)
-    classification: oneOf("mandatory", "recommended")
+    classification: "mandatory" | "recommended"
 
     // Reference to one or more Layer 2 control catalogs
     control_catalogs: [...#CatalogReference]
