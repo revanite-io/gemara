@@ -9,16 +9,17 @@ type RevertFunc func(interface{}) error
 
 // Change is a struct that contains the data and functions associated with a single change to a target resource.
 type Change struct {
-	Target_Name string     // Required. TargetName is the name or ID of the resource or configuration that is to be changed
-	Description string     // Required. Description is a human-readable description of the change
-	applyFunc   ApplyFunc  // Required. applyFunc is the function that will be executed to make the change
-	revertFunc  RevertFunc // Required. revertFunc is the function that will be executed to undo the change
+	TargetName  string `yaml:"target_name"` // Required. TargetName is the name or ID of the resource or configuration that is to be changed
+	Description string `yaml:"description"` // Required. Description is a human-readable description of the change
 
-	Target_Object interface{} // TargetObject is supplemental data describing the object that was changed
-	Applied       bool        // Applied is true if the change was successfully applied at least once
-	Reverted      bool        // Reverted is true if the change was successfully reverted and not applied again
-	Error         error       // Error is used if any error occurred during the change
-	Allowed       bool        // Allowed may be disabled to prevent the change from being applied
+	applyFunc  ApplyFunc  // Required. Private. applyFunc is the function that will be executed to make the change
+	revertFunc RevertFunc // Required. Private. revertFunc is the function that will be executed to undo the change
+
+	TargetObject interface{} `yaml:"target_object"` // TargetObject is supplemental data describing the object that was changed
+	Applied      bool        `yaml:"applied"`       // Applied is true if the change was successfully applied at least once
+	Reverted     bool        `yaml:"reverted"`      // Reverted is true if the change was successfully reverted and not applied again
+	Error        error       `yaml:"error"`         // Error is used if any error occurred during the change
+	Allowed      bool        `yaml:"allowed"`       // Allowed may be disabled to prevent the change from being applied
 }
 
 func (c *Change) Allow() {
@@ -39,8 +40,8 @@ func (c *Change) Apply(targetName string, targetObject interface{}, changeInput 
 	if c.Applied && !c.Reverted {
 		return true, nil
 	}
-	c.Target_Name = targetName
-	c.Target_Object = targetObject
+	c.TargetName = targetName
+	c.TargetObject = targetObject
 	changeOutput, err = c.applyFunc(changeInput)
 	if err != nil {
 		return false, changeOutput
@@ -75,9 +76,9 @@ func (c *Change) precheck() error {
 		return fmt.Errorf("applyFunc and revertFunc must be defined for a change, but got applyFunc: %v, revertFunc: %v",
 			c.applyFunc != nil, c.revertFunc != nil)
 	}
-	if c.Target_Name == "" || c.Description == "" {
+	if c.TargetName == "" || c.Description == "" {
 		return fmt.Errorf("change must have a TargetName and Description defined, but got TargetName: %v, Description: %v",
-			c.Target_Name, c.Description)
+			c.TargetName, c.Description)
 	}
 	if c.Error != nil {
 		return fmt.Errorf("change has a previous error and can no longer be applied: %s", c.Error.Error())
@@ -88,10 +89,10 @@ func (c *Change) precheck() error {
 // NewChange creates a new Change object and adds it to the Assessment
 func NewChange(targetName string, description string, targetObject interface{}, applyFunc ApplyFunc, revertFunc RevertFunc) Change {
 	return Change{
-		Target_Name:   targetName,
-		Target_Object: targetObject,
-		Description:   description,
-		applyFunc:     applyFunc,
-		revertFunc:    revertFunc,
+		TargetName:   targetName,
+		TargetObject: targetObject,
+		Description:  description,
+		applyFunc:    applyFunc,
+		revertFunc:   revertFunc,
 	}
 }

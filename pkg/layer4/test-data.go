@@ -43,7 +43,7 @@ func pendingChangePtr() *Change {
 }
 func pendingChange() Change {
 	return Change{
-		Target_Name: "pendingChange",
+		TargetName:  "pendingChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -51,7 +51,7 @@ func pendingChange() Change {
 }
 func appliedRevertedChange() Change {
 	return Change{
-		Target_Name: "appliedRevertedChange",
+		TargetName:  "appliedRevertedChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -61,7 +61,7 @@ func appliedRevertedChange() Change {
 }
 func appliedNotRevertedChange() Change {
 	return Change{
-		Target_Name: "appliedNotRevertedChange",
+		TargetName:  "appliedNotRevertedChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -74,7 +74,7 @@ func badApplyChangePtr() *Change {
 }
 func badApplyChange() Change {
 	return Change{
-		Target_Name: "badApplyChange",
+		TargetName:  "badApplyChange",
 		Description: "description placeholder",
 		applyFunc:   badApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -86,7 +86,7 @@ func badRevertChangePtr() *Change {
 }
 func badRevertChange() Change {
 	return Change{
-		Target_Name: "badRevertChange",
+		TargetName:  "badRevertChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  badRevertFunc,
@@ -98,7 +98,7 @@ func goodRevertedChangePtr() *Change {
 }
 func goodRevertedChange() Change {
 	return Change{
-		Target_Name: "goodRevertedChange",
+		TargetName:  "goodRevertedChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -111,7 +111,7 @@ func goodNotRevertedChangePtr() *Change {
 }
 func goodNotRevertedChange() Change {
 	return Change{
-		Target_Name: "goodNotRevertedChange",
+		TargetName:  "goodNotRevertedChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 		revertFunc:  goodRevertFunc,
@@ -124,21 +124,21 @@ func noApplyChangePtr() *Change {
 }
 func noApplyChange() Change {
 	return Change{
-		Target_Name: "noApplyChange",
+		TargetName:  "noApplyChange",
 		Description: "description placeholder",
 		revertFunc:  goodRevertFunc,
 	}
 }
 func noRevertChange() Change {
 	return Change{
-		Target_Name: "noRevertChange",
+		TargetName:  "noRevertChange",
 		Description: "description placeholder",
 		applyFunc:   goodApplyFunc,
 	}
 }
 func disallowedChange() Change {
 	return Change{
-		Target_Name: "disallowedChange",
+		TargetName:  "disallowedChange",
 		Description: "description placeholder",
 		Allowed:     false,
 		applyFunc:   goodApplyFunc,
@@ -153,8 +153,8 @@ func failingAssessmentPtr() *Assessment {
 
 func failingAssessment() Assessment {
 	return Assessment{
-		Requirement_Id: "failingAssessment()",
-		Description:    "failing assessment",
+		RequirementId: "failingAssessment()",
+		Description:   "failing assessment",
 		Steps: []AssessmentStep{
 			failingAssessmentStep,
 			passingAssessmentStep,
@@ -169,8 +169,8 @@ func passingAssessmentPtr() *Assessment {
 
 func passingAssessment() Assessment {
 	return Assessment{
-		Requirement_Id: "passingAssessment()",
-		Description:    "passing assessment",
+		RequirementId: "passingAssessment()",
+		Description:   "passing assessment",
 		Steps: []AssessmentStep{
 			passingAssessmentStep,
 		},
@@ -187,8 +187,8 @@ func needsReviewAssessmentPtr() *Assessment {
 
 func needsReviewAssessment() Assessment {
 	return Assessment{
-		Requirement_Id: "needsReviewAssessment()",
-		Description:    "needs review assessment",
+		RequirementId: "needsReviewAssessment()",
+		Description:   "needs review assessment",
 		Steps: []AssessmentStep{
 			passingAssessmentStep,
 			needsReviewAssessmentStep,
@@ -204,8 +204,8 @@ func unknownAssessmentPtr() *Assessment {
 
 func unknownAssessment() Assessment {
 	return Assessment{
-		Requirement_Id: "unknownAssessment()",
-		Description:    "unknown assessment",
+		RequirementId: "unknownAssessment()",
+		Description:   "unknown assessment",
 		Steps: []AssessmentStep{
 			passingAssessmentStep,
 			unknownAssessmentStep,
@@ -217,8 +217,8 @@ func unknownAssessment() Assessment {
 
 func badRevertPassingAssessment() Assessment {
 	return Assessment{
-		Requirement_Id: "badRevertPassingAssessment()",
-		Description:    "bad revert passing assessment",
+		RequirementId: "badRevertPassingAssessment()",
+		Description:   "bad revert passing assessment",
 		Changes: map[string]*Change{
 			"badRevertChange": badRevertChangePtr(),
 		},

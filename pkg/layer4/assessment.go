@@ -9,22 +9,22 @@ import (
 	"time"
 )
 
-// TestResult is a struct that contains the results of a single step within a testSet
+// Assessment is a struct that represents an evaluation of a single requirement
 type Assessment struct {
-	Requirement_Id string             // Requirement_ID is the unique identifier for the requirement being tested
-	Applicability  []string           // Applicability is a slice of identifier strings to determine when this test is applicable
-	Description    string             // Description is a human-readable description of the test
-	Result         Result             // Passed is true if the test passed
-	Message        string             // Message is the human-readable result of the test
-	Steps          []AssessmentStep   // Steps is a slice of steps that were executed during the test
-	Steps_Executed int                // Steps_Executed is the number of steps that were executed during the test
-	Run_Duration   string             // Run_Duration is the time it took to run the test
-	Value          interface{}        // Value is the object that was returned during the test
-	Changes        map[string]*Change // Changes is a slice of changes that were made during the test
+	RequirementId string             `yaml:"requirement_id"` // RequirementId is the unique identifier for the requirement being tested
+	Applicability []string           `yaml:"applicability"`  // Applicability is a slice of identifier strings to determine when this test is applicable
+	Description   string             `yaml:"description"`    // Description is a human-readable description of the test
+	Result        Result             `yaml:"result"`         // Passed is true if the test passed
+	Message       string             `yaml:"message"`        // Message is the human-readable result of the test
+	Steps         []AssessmentStep   `yaml:"steps"`          // Steps is a slice of steps that were executed during the test
+	StepsExecuted int                `yaml:"steps_executed"` // StepsExecuted is the number of steps that were executed during the test
+	RunDuration   string             `yaml:"run_duration"`   // RunDuration is the time it took to run the test
+	Value         interface{}        `yaml:"value"`          // Value is the object that was returned during the test
+	Changes       map[string]*Change `yaml:"changes"`        // Changes is a slice of changes that were made during the test
 }
 
-// AssessmentStep is a function type that inspects the provided targetData and returns a Result with a message.
-// The message may be an error string or other descriptive text.
+// AssessmentStep is a function type that uses the provided payload and changes to returns a Result with a message.
+// The message may be any data such as an error string or other descriptive text.
 type AssessmentStep func(payload interface{}, c map[string]*Change) (Result, string)
 
 func (as AssessmentStep) String() string {
@@ -48,11 +48,11 @@ func (as AssessmentStep) MarshalYAML() (interface{}, error) {
 // The function demands a requirementId, description, applicability, and steps.
 func NewAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (*Assessment, error) {
 	a := &Assessment{
-		Requirement_Id: requirementId,
-		Description:    description,
-		Applicability:  applicability,
-		Result:         NotRun,
-		Steps:          steps,
+		RequirementId: requirementId,
+		Description:   description,
+		Applicability: applicability,
+		Result:        NotRun,
+		Steps:         steps,
 	}
 	err := a.precheck()
 	return a, err
@@ -64,7 +64,7 @@ func (a *Assessment) AddStep(step AssessmentStep) {
 }
 
 func (a *Assessment) runStep(targetData interface{}, step AssessmentStep) Result {
-	a.Steps_Executed++
+	a.StepsExecuted++
 	result, message := step(targetData, a.Changes)
 	a.Result = UpdateAggregateResult(a.Result, result)
 	a.Message = message
@@ -95,7 +95,7 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 			return Failed
 		}
 	}
-	a.Run_Duration = time.Since(startTime).String()
+	a.RunDuration = time.Since(startTime).String()
 	return a.Result
 }
 
@@ -124,10 +124,10 @@ func (a *Assessment) RevertChanges() (corrupted bool) {
 }
 
 func (a *Assessment) precheck() error {
-	if a.Requirement_Id == "" || a.Description == "" || a.Applicability == nil || a.Steps == nil || len(a.Applicability) == 0 || len(a.Steps) == 0 {
+	if a.RequirementId == "" || a.Description == "" || a.Applicability == nil || a.Steps == nil || len(a.Applicability) == 0 || len(a.Steps) == 0 {
 		message := fmt.Sprintf(
 			"expected all Assessment fields to have a value, but got: requirementId=len(%v), description=len=(%v), applicability=len(%v), steps=len(%v)",
-			len(a.Requirement_Id), len(a.Description), len(a.Applicability), len(a.Steps),
+			len(a.RequirementId), len(a.Description), len(a.Applicability), len(a.Steps),
 		)
 		a.Result = Unknown
 		a.Message = message
