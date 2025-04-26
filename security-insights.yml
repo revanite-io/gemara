@@ -14,6 +14,10 @@ project:
     - name: Jason Meridth
       affiliation: GitHub
       email: jmeridth@gmail.com
+  documentation:
+    detailed-guide: https://pkg.go.dev/github.com/revanite-io/sci
+    quickstart-guide: https://github.com/revanite-io/sci/blob/main/README.md#usage
+    code-of-conduct: https://github.com/revanite-io/sci?tab=coc-ov-file#readme
   repositories:
     - name: sci
       url: https://github.com/revanite-io/sci
@@ -39,6 +43,8 @@ repository:
     - name: Alex Speasmaker
       affiliation: USAA
       email: alex.speasmaker@gmail.com
+  documentation:
+    contributing-guide: https://github.com/revanite-io/sci/blob/main/CONTRIBUTING.md
   license:
     url: https://github.com/revanite-io/sci?tab=Apache-2.0-1-ov-file#readme
     expression: Apache-2.0
