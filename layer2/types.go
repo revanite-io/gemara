@@ -28,7 +28,7 @@ type Category struct {
 }
 
 type ControlFamily struct {
-	Title       string    `yaml:"name"`
+	Title       string    `yaml:"title"`
 	Description string    `yaml:"description"`
 	Controls    []Control `yaml:"controls"`
 }

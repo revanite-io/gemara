@@ -49,7 +49,7 @@ metadata:
       url: https://github.com/slsa-framework/slsa
 
 control-families:
-  - name: Access Control
+  - title: Access Control
     description: |
       Access Control focuses on the mechanisms and
       policies that control access to the project's version
@@ -271,7 +271,7 @@ control-families:
               systems, this may be possible at the organizational or repository
               level. If not, set permissions at the top level of the pipeline.
 
-  - name: Build and Release
+  - title: Build and Release
     description: |
       Build and Release focuses on the processes and
       tools used to compile, package, and distribute the
@@ -590,7 +590,7 @@ control-families:
               signatures, SLSA provenance, or SLSA VSAs. Include the cryptographic
               hashes of each asset in a signed manifest or metadata file.
 
-  - name: Documentation
+  - title: Documentation
     description: |
       Documentation focuses on the information
       provided to users, contributors, and maintainers
@@ -862,7 +862,7 @@ control-families:
               technical & design documentation on a publicly viewable resource such
               as the source code repository, project website, or other channel.
 
-  - name: Governance
+  - title: Governance
     description: |
       Governance focuses on the policies and
       procedures that guide the project's decision-making
@@ -1058,7 +1058,7 @@ control-families:
               establishing a justifiable lineage of identity such as confirming the
               contributor's association with a known trusted organization.
 
-  - name: Legal
+  - title: Legal
     description: |
       Legal focuses on the policies and
       procedures that govern the project's licensing
@@ -1217,7 +1217,7 @@ control-families:
               If the project has multiple repositories, ensure that each repository
               includes the license file.
 
-  - name: Quality
+  - title: Quality
     description: |
       Quality focuses on the processes and
       practices used to ensure the quality and
@@ -1600,7 +1600,7 @@ control-families:
               reviewed and approved by at least one other contributor before it can
               be merged.
 
-  - name: Security Assessment
+  - title: Security Assessment
     description: |
       Security Assessment encourages practices that
       help ensure that the project is well positioned
@@ -1775,7 +1775,7 @@ control-families:
               any gaps/vulnerabilities that could arise.
               Ensure this is updated for new features or breaking changes.
 
-  - name: Vulnerability Management
+  - title: Vulnerability Management
     description: |
       Vulnerability Management focuses on the
       processes and practices used to identify and

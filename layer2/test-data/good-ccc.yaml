@@ -23,7 +23,7 @@ metadata:
       description: |
         Information is restricted to the organization.
 control-families:
-  - name: Data Protection
+  - title: Data Protection
     description: |
       Data protection controls ensure that data is protected from unauthorized
       access, disclosure, and tampering. This includes encryption of data at
