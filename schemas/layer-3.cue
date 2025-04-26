@@ -1,5 +1,5 @@
 // layer-3-policy.cue
-
+package layer3
 // TODO
 // Create schema for a policy document
 // Policy docs should reference common and unique risk definitions, so we need schema for that as well
