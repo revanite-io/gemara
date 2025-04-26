@@ -10,13 +10,13 @@ release: tidy test release-nix release-win release-mac
 
 define build
 echo "  >  Building binary ..."; \
-cd pkg/$(1); \
+cd $(1); \
 go build -o ../../$(1) -ldflags="$(BUILD_FLAGS)";
 endef
 
 define test
 echo "  >  Validating code ..."
-cd pkg/$(1); \
+cd $(1); \
 go vet ./...
 go test ./...
 endef
