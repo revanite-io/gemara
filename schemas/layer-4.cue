@@ -7,11 +7,11 @@ import "time"
 // Evaluation is a collection of assessments of the framework controls and their requirements.
 #Evaluation: {
     // name is a descriptive identifier for the evaluation
-    name: string
+    name: string @go(Name)
     // ID of the Layer 2 Catalog being evaluated in this evaluation
     catalog_id: string @go(CatalogID)
     // final outcome of the evaluation
-    result: #Result
+    result: #Result @go(Result)
     // timestamp of when the evaluation execution began. If the field is not provided, the evaluation has not been executed yet.
     start_time?: time.Time @go(StartTime)
     // timestamp of when the evaluation execution ended. If the field is not provided, the evaluation has not been executed yet.
