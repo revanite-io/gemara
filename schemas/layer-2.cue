@@ -1,7 +1,6 @@
-package layer2
-// Top level schema //
+package schemas
 
-catalog: {
+#Layer2: {
     metadata?: #Metadata
 
     "control-families"?: [...#ControlFamily]

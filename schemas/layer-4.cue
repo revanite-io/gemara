@@ -1,10 +1,8 @@
-package layer4
-// Top level schema //
+package schemas
 
-#EvaluationPlan: {
+#Layer4: {
+    evaluations: [#ControlEvaluation, ...#ControlEvaluation]
 }
-
-"evaluation-plans": [...#EvaluationPlan]
 
 // Types
 
