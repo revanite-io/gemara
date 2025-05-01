@@ -21,9 +21,6 @@ PRs MUST meet the following criteria:
 
 Use `make lintcue` to validate the syntax of your changes. If you forget to do this before opening a PR and your changes are invalid, the [CI workflow](.github/workflows/ci.yml) will fail and alert you. Use `make cuegen` to regenerate `go` types based on your changes.
 
-### Useful make tasks when making go changes
-
-Use `make covcheck` to run all tests and ensure test coverage meets our target (85%).
 
 ### Generated Code
 
