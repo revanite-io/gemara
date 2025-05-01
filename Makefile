@@ -69,3 +69,21 @@ lintcue:
 	@cue eval ./schemas/layer-2.cue --all-errors --verbose
 	@echo "  >  Linting layer-4.cue ..."
 	@cue eval ./schemas/layer-4.cue --all-errors --verbose
+
+cuegen:
+	@echo "  >  Generating types from cue schema ..."
+	@echo "  >  Generating types for layer2 ..."
+	@cue exp gengotypes ./schemas/layer-2.cue
+	@mv cue_types_gen.go layer2/generated_types.go
+
+dirtycheck:
+	@echo "  >  Checking for uncommitted changes ..."
+	@if [ -n "$$(git status --porcelain)" ]; then \
+		echo "  >  Uncommitted changes to generated files found!"; \
+		echo "  >  Run make cuegen and commit the results."; \
+		exit 1; \
+	else \
+		echo "  >  No uncommitted changes to generated files found."; \
+	fi
+
+PHONY: lintcue cuegen dirtycheck

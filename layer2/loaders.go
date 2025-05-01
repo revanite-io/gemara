@@ -12,7 +12,7 @@ import (
 
 // loadYamlFromURL is a sub-function of loadYaml for HTTP only
 // sourcePath is the URL. data is a pointer to the recieving object.
-func loadYamlFromURL(sourcePath string, data *Catalog) error {
+func loadYamlFromURL(sourcePath string, data *Layer2) error {
 	resp, err := http.Get(sourcePath)
 	if err != nil {
 		return fmt.Errorf("failed to fetch URL: %v", err)
@@ -35,7 +35,7 @@ func loadYamlFromURL(sourcePath string, data *Catalog) error {
 // loadYaml opens a provided path to unmarshal its data as YAML.
 // sourcePath is a URL or local path to a file.
 // data is a pointer to the recieving object.
-func loadYaml(sourcePath string, data *Catalog) error {
+func loadYaml(sourcePath string, data *Layer2) error {
 	if strings.HasPrefix(sourcePath, "http") {
 		return loadYamlFromURL(sourcePath, data)
 	}
@@ -59,16 +59,16 @@ func loadYaml(sourcePath string, data *Catalog) error {
 // loadYaml opens a provided path to unmarshal its data as JSON.
 // sourcePath is a URL or local path to a file.
 // data is a pointer to the recieving object.
-func loadJson(sourcePath string, data *Catalog) error {
-	return fmt.Errorf("loadJson not implemented [%s, %s]", sourcePath, data)
+func loadJson(sourcePath string, data *Layer2) error {
+	return fmt.Errorf("loadJson not implemented [%s, %v]", sourcePath, data)
 }
 
 // LoadControlFamiliesFile loads data from any number of YAML
 // files at the provided paths. JSON support is pending development.
 // If run multiple times, this method will append new data to previous data.
-func (c *Catalog) LoadFiles(sourcePaths []string) error {
+func (c *Layer2) LoadFiles(sourcePaths []string) error {
 	for _, sourcePath := range sourcePaths {
-		catalog := &Catalog{}
+		catalog := &Layer2{}
 		err := c.LoadFile(sourcePath)
 		if err != nil {
 			return err
@@ -83,7 +83,7 @@ func (c *Catalog) LoadFiles(sourcePaths []string) error {
 // LoadControlFamiliesFile loads data from a single YAML
 // file at the provided path. JSON support is pending development.
 // If run multiple times for the same data type, this method will override previous data.
-func (c *Catalog) LoadFile(sourcePath string) error {
+func (c *Layer2) LoadFile(sourcePath string) error {
 	if strings.Contains(sourcePath, ".yaml") || strings.Contains(sourcePath, ".yml") {
 		err := loadYaml(sourcePath, c)
 		if err != nil {
@@ -100,7 +100,7 @@ func (c *Catalog) LoadFile(sourcePath string) error {
 	return nil
 }
 
-func decode(reader io.Reader, data *Catalog) error {
+func decode(reader io.Reader, data *Layer2) error {
 	decoder := yaml.NewDecoder(reader, yaml.DisallowUnknownField())
 	err := decoder.Decode(data)
 	if err != nil {

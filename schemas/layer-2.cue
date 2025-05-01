@@ -1,15 +1,16 @@
 package schemas
+@go(layer2)
 
 #Layer2: {
     metadata?: #Metadata
 
-    "control-families"?: [...#ControlFamily]
-    threats?: [...#Threat]
-    capabilities?: [...#Capability]
+    "control-families"?: [...#ControlFamily] @go(ControlFamilies)
+    threats?: [...#Threat] @go(Threats)
+    capabilities?: [...#Capability] @go(Capabilities)
 
-    "shared-controls"?: [...#Mapping]
-    "shared-threats"?: [...#Mapping]
-    "shared-capabilities"?: [...#Mapping]
+    "shared-controls"?: [...#Mapping] @go(SharedControls)
+    "shared-threats"?: [...#Mapping] @go(SharedThreats)
+    "shared-capabilities"?: [...#Mapping] @go(SharedCapabilities)
 }
 
 // Resuable types //
@@ -19,9 +20,9 @@ package schemas
     title: string
     description: string
     version?: string
-    "last-modified"?: string
-    "applicability-categories"?: [...#Category]
-    "mapping-references"?: [...#MappingReference]
+    "last-modified"?: string @go(LastModified)
+    "applicability-categories"?: [...#Category] @go(ApplicabilityCategories)
+    "mapping-references"?: [...#MappingReference] @go(MappingReferences)
 }
 
 #Category: {
@@ -40,10 +41,10 @@ package schemas
     id: string
     title: string
     objective: string
-    "assessment-requirements": [...#AssessmentRequirement]
+    "assessment-requirements": [...#AssessmentRequirement] @go(AssessmentRequirements)
 
-    "guideline-mappings"?: [...#Mapping]
-    "threat-mappings"?: [...#Mapping]
+    "guideline-mappings"?: [...#Mapping] @go(GuidelineMappings)
+    "threat-mappings"?: [...#Mapping] @go(ThreatMappings)
 }
 
 #Threat: {
@@ -52,7 +53,7 @@ package schemas
     description: string
     capabilities: [...#Mapping]
 
-    "external-mappings"?: [...#Mapping]
+    "external-mappings"?: [...#Mapping] @go(ExternalMappings)
 }
 
 #Capability: {
@@ -70,7 +71,7 @@ package schemas
 }
 
 #Mapping: {
-    "reference-id": string
+    "reference-id": string @go(ReferenceId)
     identifiers: [...string]
 }
 

@@ -53,7 +53,7 @@ control-families:
             identifiers:
               - SC-8
               - SC-13
-        requirements:
+        assessment-requirements:
           - id: CCC.C01.TR01
             text: |
               When a port is exposed for non-SSH network traffic, all traffic MUST
@@ -99,7 +99,7 @@ control-families:
           - reference-id: CSF
             identifiers:
               - PR.DS-1 # Data-at-rest is protected
-        requirements:
+        assessment-requirements:
           - id: CCC.C06.TR01
             text: |
               When a deployment request is made, the service MUST validate
@@ -142,7 +142,7 @@ control-families:
             identifiers:
               - CP-2 # Contingency plan
               - CP-10 # Information system recovery and reconstitution
-        requirements:
+        assessment-requirements:
           - id: CCC.C08.TR01
             text: |
               When data is stored, the service MUST ensure that data is
@@ -183,7 +183,7 @@ control-families:
           - reference-id: NIST-800-53
             identifiers:
               - AU-9 # Protection of audit information
-        requirements:
+        assessment-requirements:
           - id: CCC.C09.TR01
             text: |
               When access logs are stored, the service MUST ensure that
@@ -236,7 +236,7 @@ control-families:
           - reference-id: NIST-800-53
             identifiers:
               - AC-4 # Information flow enforcement
-        requirements:
+        assessment-requirements:
           - id: CCC.C10.TR01
             text: |
               When data is replicated, the service MUST ensure that

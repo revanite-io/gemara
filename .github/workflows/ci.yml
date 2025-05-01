@@ -17,8 +17,14 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - name: Setup Cue
         uses: cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1 # v1.0.1
+        with:
+          version: "v0.13.0-alpha.4"
       - name: Validate the layer 2 schema
         run: make lintcue
+      - name: Generate go types from cue schema
+        run: make cuegen
+      - name: Check for missing generated artifacts
+        run: make dirtycheck
       - uses: actions/setup-go@v5.4.0
         with:
           go-version: "^1.23.4"

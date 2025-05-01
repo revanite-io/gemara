@@ -48,7 +48,7 @@ var tests = []struct {
 func Test_loadYaml(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			data := &Catalog{}
+			data := &Layer2{}
 			if err := loadYaml(tt.sourcePath, data); (err == nil) == tt.wantErr {
 				t.Errorf("loadYaml() error = %v, wantErr %v", err, tt.wantErr)
 			}
@@ -59,7 +59,7 @@ func Test_loadYaml(t *testing.T) {
 func Test_LoadFile(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			c := &Catalog{}
+			c := &Layer2{}
 			err := c.LoadFile(tt.sourcePath)
 			if (err == nil) == tt.wantErr {
 				t.Errorf("Catalog.LoadControlFamily() error = %v, wantErr %v", err, tt.wantErr)
@@ -77,13 +77,13 @@ func Test_LoadFile(t *testing.T) {
 func Test_LoadFiles(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			c := &Catalog{}
+			c := &Layer2{}
 			err := c.LoadFiles([]string{tt.sourcePath})
 			if (err == nil) == tt.wantErr {
-				t.Errorf("Catalog.LoadControlFamilyFiles() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("Layer2.LoadControlFamilyFiles() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if !tt.wantErr && len(c.ControlFamilies) == 0 {
-				t.Errorf("Catalog.LoadControlFamilyFiles() did not load any control families")
+				t.Errorf("Layer2.LoadControlFamilyFiles() did not load any control families")
 			}
 		})
 	}
@@ -117,7 +117,7 @@ func Test_loadYamlFromURL(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			data := &Catalog{}
+			data := &Layer2{}
 			err := loadYamlFromURL(tt.sourcePath, data)
 			if err != nil && tt.wantErr {
 				assert.Containsf(t, err.Error(), tt.errorExpected, "expected error containing %q, got %s", tt.errorExpected, err)
@@ -148,7 +148,7 @@ func Test_loadJson(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			data := &Catalog{}
+			data := &Layer2{}
 			err := loadJson(tt.sourcePath, data)
 			if (err == nil) == tt.wantErr {
 				t.Errorf("loadJson() error = %v, wantErr %v", err, tt.wantErr)
@@ -172,7 +172,7 @@ func Test_LoadFile_UnsupportedFileType(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			c := &Catalog{}
+			c := &Layer2{}
 			err := c.LoadFile(tt.sourcePath)
 			if (err == nil) == tt.wantErr {
 				t.Errorf("Catalog.LoadFile() error = %v, wantErr %v", err, tt.wantErr)

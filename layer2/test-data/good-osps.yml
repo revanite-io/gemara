@@ -93,7 +93,7 @@ control-families:
               - 333-858
               - 152-725
               - 201-246
-        requirements:
+        assessment-requirements:
           - id: OSPS-AC-01.01
             text: |
               When a user attempts to access a sensitive resource in the project's
@@ -137,7 +137,7 @@ control-families:
               - 802-056
               - 368-633
               - 152-725
-        requirements:
+        assessment-requirements:
           - id: OSPS-AC-02.01
             text: |
               When a new collaborator is added, the version control system MUST
@@ -181,7 +181,7 @@ control-families:
           - reference-id: ScCrd
             identifiers:
               - Branch-Protection 
-        requirements:
+        assessment-requirements:
           - id: OSPS-AC-03.01
             text: |
               When a direct commit is attempted on the project's primary branch,
@@ -244,7 +244,7 @@ control-families:
             identifiers:
               - Producer - Choose an appropriate build platform
               - Build platform - Isolation strength - Isolated
-        requirements:
+        assessment-requirements:
           - id: OSPS-AC-04.01
             text: |
               When a CI/CD task is executed with no permissions specified, the
@@ -310,7 +310,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Choose an appropriate build platform
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-01.01
             text: |
               When a CI/CD pipeline accepts an input parameter, that parameter MUST
@@ -362,7 +362,7 @@ control-families:
             identifiers:
               - Follow a consistent build process
               - Provenance generation- Exists, Authentic
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-02.01
             text: |
               When an official release is created, that release MUST be assigned a
@@ -418,7 +418,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Choose an appropriate build platform
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-03.01
             text: |
               When the project lists a URI as an official project channel, that URI
@@ -488,7 +488,7 @@ control-families:
               - Choose an appropriate build platform
               - Follow a consistent build process
               - Build platform - Isolation strength - isolated
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-04.01
             text: |
               When an official release is created, that release MUST contain
@@ -541,7 +541,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Isolation strength - isolated
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-05.01
             text: |
               When a build and release pipeline ingests dependencies, it MUST
@@ -575,7 +575,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Distribute provenance - Exists
-        requirements:
+        assessment-requirements:
           - id: OSPS-BR-06.01
             text: |
               When an official release is created, that release MUST be signed or
@@ -632,7 +632,7 @@ control-families:
           - reference-id: OCRE
             identifiers:
               - 036-275
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-01.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -683,7 +683,7 @@ control-families:
           - reference-id: OC
             identifiers:
               - 4.2.1
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-02.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -726,7 +726,7 @@ control-families:
           - reference-id: OCRE
             identifiers:
               - 171-222
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-03.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -778,7 +778,7 @@ control-families:
             identifiers:
               - 4.1
               - 4.3.1
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-04.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -812,7 +812,7 @@ control-families:
             identifiers:
               - 673-475
               - 053-751
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-05.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -848,7 +848,7 @@ control-families:
           - reference-id: CRA
             identifiers:
               - Pinned-Dependencies
-        requirements:
+        assessment-requirements:
           - id: OSPS-DO-06.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -887,7 +887,7 @@ control-families:
           - reference-id: OCRE
             identifiers:
               - 013-021
-        requirements:
+        assessment-requirements:
           - id: OSPS-GV-01.01
             text: |
               While active, the project documentation MUST include a list of
@@ -936,7 +936,7 @@ control-families:
             identifiers:
               - PS3
               - PW1.2
-        requirements:
+        assessment-requirements:
           - id: OSPS-GV-02.01
             text: |
               While active, the project MUST have one or more mechanisms for public
@@ -976,7 +976,7 @@ control-families:
           - reference-id: OC
             identifiers:
               - 4.1.2
-        requirements:
+        assessment-requirements:
           - id: OSPS-GV-03.01
             text: |
               While active, the project documentation MUST include an explanation
@@ -1042,7 +1042,7 @@ control-families:
           - reference-id: OC
             identifiers:
               - 4.1.2     
-        requirements:
+        assessment-requirements:
           - id: OSPS-GV-04.01
             text: |
               While active, the project documentation MUST have a policy that code
@@ -1092,7 +1092,7 @@ control-families:
               - PS1
               - PW1.2
               - PW2.1
-        requirements:
+        assessment-requirements:
           - id: OSPS-LE-01.01
             text: |
               While active, the version control system MUST require all code
@@ -1131,7 +1131,7 @@ control-families:
           - reference-id: CSF
             identifiers:
               - GV.OC-03
-        requirements:
+        assessment-requirements:
           - id: OSPS-LE-02.01
             text: |
               While active, the license for the source code MUST meet the OSI Open
@@ -1183,7 +1183,7 @@ control-families:
           - reference-id: SSDF
             identifiers:
               - PO3.2
-        requirements:
+        assessment-requirements:
           - id: OSPS-LE-03.01
             text: |
               While active, the license for the source code MUST be maintained in
@@ -1270,7 +1270,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Build platform - isolation strength - Isolated
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-01.01
             text: |
               While active, the project's source code repository MUST be publicly
@@ -1338,7 +1338,7 @@ control-families:
               - 673-475
               - 863-521
               - 613-286
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-02.01
             text: |
               When the package management system supports it, the source code
@@ -1394,7 +1394,7 @@ control-families:
             identifiers:
               - 263-184
               - 253-452
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-03.01
             text: |
               When a commit is made to the primary branch, any automated status
@@ -1437,7 +1437,7 @@ control-families:
           - reference-id: SLSA
             identifiers:
               - Build platform - isolation strength - Isolated
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-04.01
             text: |
               While active, the project documentation MUST contain a list of any
@@ -1486,7 +1486,7 @@ control-families:
             identifiers:
               - 486-813
               - 124-564
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-05.01
             text: |
               While active, the version control system MUST NOT contain generated
@@ -1533,7 +1533,7 @@ control-families:
             identifiers:
               - 207-435
               - 088-377
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-06.01
             text: |
               Prior to a commit being accepted, the project's CI/CD pipelines MUST
@@ -1585,7 +1585,7 @@ control-families:
           - reference-id: BPB
             identifiers:
               - B-G-3
-        requirements:
+        assessment-requirements:
           - id: OSPS-QA-07.01
             text: |
               When a commit is made to the primary branch, the project's version
@@ -1641,7 +1641,7 @@ control-families:
               - 068-102
               - 036-275
               - 162-655
-        requirements:
+        assessment-requirements:
           - id: OSPS-SA-01.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -1690,7 +1690,7 @@ control-families:
               - 068-102
               - 072-713
               - 820-878
-        requirements:
+        assessment-requirements:
           - id: OSPS-SA-02.01
             text: |
               When the project has made a release, the project documentation MUST
@@ -1741,7 +1741,7 @@ control-families:
               - 068-102
               - 154-031
               - 888-770
-        requirements:
+        assessment-requirements:
           - id: OSPS-SA-03.01
             text: |
               When the project has made a release, the project MUST perform a
@@ -1828,7 +1828,7 @@ control-families:
           - reference-id: ScCrd
             identifiers:
               - Security-policy          
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-01.01
             text: |
               While active, the project documentation MUST
@@ -1879,7 +1879,7 @@ control-families:
           - reference-id: ScCrd
             identifiers:
               - Security-policy                  
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-02.01
             text: |
               While active, the project documentation MUST contain
@@ -1909,7 +1909,7 @@ control-families:
           - reference-id: OCRE
             identifiers:
               - 308-514
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-03.01
             text: |
               While active, the project documentation MUST
@@ -1949,7 +1949,7 @@ control-families:
           - reference-id: OC
             identifiers:
               - 4.1.5
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-04.01
             text: |
               While active, the project documentation MUST
@@ -2046,7 +2046,7 @@ control-families:
             identifiers:
               - Security-policy  
               - Vulnerabilities
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-05.01
             text: |
               While active, the project documentation MUST include a policy that
@@ -2150,7 +2150,7 @@ control-families:
             identifiers:
               - Security-policy  
               - Vulnerabilities
-        requirements:
+        assessment-requirements:
           - id: OSPS-VM-06.01
             text: |
               While active, the project documentation MUST include a policy that
