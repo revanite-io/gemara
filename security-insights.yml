@@ -53,3 +53,43 @@ repository:
       self:
         comment: |
           Self assessment has not yet been completed.
+    tools:
+      - name: Dependabot
+        type: SCA
+        version: "2"
+        rulesets:
+          - built-in
+        results:
+          adhoc:
+            name: Scheduled SCA Scan Results
+            predicate-uri: https://docs.github.com/en/graphql/reference/objects#repositoryvulnerabilityalert
+            location: https://github.com/revanite-io/sci/security/dependabot
+            comment: |
+              The results of the scheduled SCA scan are available in the Dependabot tab of the Security Insights page.
+        integration:
+          adhoc: true
+          ci: false
+          release: false
+      - name: CodeQL
+        type: SAST
+        version: "2.y.z"
+        rulesets:
+          - go
+          - actions
+        results:
+          adhoc:
+            name: Scheduled SAST Results
+            predicate-uri: https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json
+            location: https://github.com/revanite-io/sci/security/code-scanning
+            comment: |
+              The results of the scheduled SAST scan are available in the Code Scanning tab of the Security Insights page and as an artifact on the scheduled job.
+          ci:
+            name: CI SAST Results
+            predicate-uri: https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json
+            location: https://github.com/revanite-io/sci/security/code-scanning
+            comment: |
+              The results of the CI SAST scan are available in the Code Scanning tab of the Security Insights page.
+        integration:
+          adhoc: true
+          ci: true
+          release: false
