@@ -21,6 +21,8 @@ jobs:
           version: "v0.13.0-alpha.4"
       - name: Validate the layer 2 schema
         run: make lintcue
+      - name: Validate the security-insights file
+        run: make lintinsights
       - name: Generate go types from cue schema
         run: make cuegen
       - name: Check for missing generated artifacts

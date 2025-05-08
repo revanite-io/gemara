@@ -14,6 +14,7 @@ project:
     - name: Jason Meridth
       affiliation: GitHub
       email: jmeridth@gmail.com
+      primary: false
   documentation:
     detailed-guide: https://pkg.go.dev/github.com/revanite-io/sci
     quickstart-guide: https://github.com/revanite-io/sci/blob/main/README.md#usage
@@ -21,6 +22,9 @@ project:
   repositories:
     - name: sci
       url: https://github.com/revanite-io/sci
+      comment: |
+        The main repository for the Simplified Compliance Infrastructure (SCI) project.
+        It contains the core codebase and documentation for the project.
   vulnerability-reporting:
     reports-accepted: false
     bug-bounty-available: false
@@ -34,15 +38,19 @@ repository:
     - name: Eddie Knight
       affiliation: Sonatype
       email: knight@linux.com
+      primary: true
     - name: Jason Meridth
       affiliation: GitHub
       email: jmeridth@gmail.com
+      primary: false
     - name: Travis Truman
       affiliation: Independent
       email: trumant@gmail.com
+      primary: false
     - name: Alex Speasmaker
       affiliation: USAA
       email: alex.speasmaker@gmail.com
+      primary: false
   documentation:
     contributing-guide: https://github.com/revanite-io/sci/blob/main/CONTRIBUTING.md
   license:

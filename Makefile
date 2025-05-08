@@ -86,4 +86,11 @@ dirtycheck:
 		echo "  >  No uncommitted changes to generated files found."; \
 	fi
 
+lintinsights:
+	@echo "  >  Linting security-insights.yml ..."
+	@curl -O --silent https://raw.githubusercontent.com/ossf/security-insights-spec/refs/tags/v2.1.0/schema.cue
+	@cue vet security-insights.yml schema.cue
+	@rm schema.cue
+	@echo "  >  Linting security-insights.yml complete."
+
 PHONY: lintcue cuegen dirtycheck
