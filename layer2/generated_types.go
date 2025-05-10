@@ -2,7 +2,7 @@
 
 package layer2
 
-type Layer2 struct {
+type Catalog struct {
 	Metadata *Metadata `json:"metadata,omitempty"`
 
 	ControlFamilies []ControlFamily `json:"control-families,omitempty"`

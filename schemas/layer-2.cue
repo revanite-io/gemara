@@ -1,7 +1,7 @@
 package schemas
 @go(layer2)
 
-#Layer2: {
+#Catalog: {
     metadata?: #Metadata
 
     "control-families"?: [...#ControlFamily] @go(ControlFamilies)
