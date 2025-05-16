@@ -1,0 +1,36 @@
+name: 'Lint Security Insights File'
+description: 'Use cue to validate a given security insights file against the SI schema.'
+
+inputs:
+  si_path:
+    description: 'Relative security-insights.yml path'
+    required: false
+    default: 'security-insights.yml'
+  schema_version:
+    description: 'Version of the SI schema to use'
+    required: false
+    default: 'v2.1.0'
+  cue_setup:
+    description: 'Run setup-cue (defaults to true)'
+    required: false
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+    - if: inputs.cue_setup == 'true'
+      uses: cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1 # v1.0.1
+      with:
+        version: "v0.13.0-alpha.4"
+
+    - name: Lint security-insights.yml
+      run: |
+        echo "::group::Linting security-insights.yml ..."
+        curl -O --silent "https://raw.githubusercontent.com/ossf/security-insights-spec/refs/tags/${VERSION}/schema.cue"
+        cue vet -d '#SecurityInsights' "${SI_PATH}" schema.cue
+        rm schema.cue
+        echo "::endgroup::"
+      env:
+        VERSION: ${{ inputs.schema_version }}
+        SI_PATH: ${{ inputs.si_path }}
+      shell: bash

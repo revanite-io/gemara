@@ -22,7 +22,9 @@ jobs:
       - name: Validate the layer 2 schema
         run: make lintcue
       - name: Validate the security-insights file
-        run: make lintinsights
+        uses: ./actions/lint-insights
+        with:
+          cue_setup: 'false'
       - name: Generate go types from cue schema
         run: make cuegen
       - name: Check for missing generated artifacts
