@@ -26,9 +26,8 @@ runs:
     - name: Lint security-insights.yml
       run: |
         echo "::group::Linting security-insights.yml ..."
-        curl -O --silent "https://raw.githubusercontent.com/ossf/security-insights-spec/refs/tags/${VERSION}/schema.cue"
-        cue vet -d '#SecurityInsights' "${SI_PATH}" schema.cue
-        rm schema.cue
+        ROOT="${GITHUB_ACTION_PATH}/../.."
+        make lintinsights -f "${ROOT}/Makefile"
         echo "::endgroup::"
       env:
         VERSION: ${{ inputs.schema_version }}
