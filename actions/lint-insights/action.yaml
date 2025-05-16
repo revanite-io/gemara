@@ -13,7 +13,7 @@ inputs:
   cue_setup:
     description: 'Run setup-cue (defaults to true)'
     required: false
-    default: true
+    default: "true"
 
 runs:
   using: "composite"

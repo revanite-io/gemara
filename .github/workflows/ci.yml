@@ -24,7 +24,7 @@ jobs:
       - name: Validate the security-insights file
         uses: ./actions/lint-insights
         with:
-          cue_setup: 'false'
+          cue_setup: "false"
       - name: Generate go types from cue schema
         run: make cuegen
       - name: Check for missing generated artifacts
