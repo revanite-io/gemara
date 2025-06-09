@@ -75,6 +75,21 @@ cuegen:
 	@echo "  >  Generating types for layer2 ..."
 	@cue exp gengotypes ./schemas/layer-2.cue
 	@mv cue_types_gen.go layer2/generated_types.go
+	@echo "  >  Adding YAML tags to generated_types.go ..."
+	@go build -o utils/types_tagger utils/types_tagger.go
+	@utils/types_tagger layer2/generated_types.go
+	@rm utils/types_tagger
+
+
+cuegen-win:
+	@echo "  >  Generating types from cue schema ..."
+	@echo "  >  Generating types for layer2 ..."
+	@cue exp gengotypes .\schemas\layer-2.cue
+	@move /Y cue_types_gen.go layer2\generated_types.go
+	@echo "  >  Adding YAML tags to generated_types.go ..."
+	@go build -o utils/types_tagger.exe utils/types_tagger.go
+	@utils\types_tagger.exe layer2\generated_types.go
+	@del utils\types_tagger.exe
 
 dirtycheck:
 	@echo "  >  Checking for uncommitted changes ..."

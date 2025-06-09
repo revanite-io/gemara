@@ -1,4 +1,5 @@
 package schemas
+
 @go(layer2)
 
 #Catalog: {
@@ -14,15 +15,14 @@ package schemas
 }
 
 // Resuable types //
-
 #Metadata: {
     id: string
     title: string
     description: string
     version?: string
-    "last-modified"?: string @go(LastModified)
-    "applicability-categories"?: [...#Category] @go(ApplicabilityCategories)
-    "mapping-references"?: [...#MappingReference] @go(MappingReferences)
+    "last-modified"?: string @go(LastModified) @yaml("last-modified,omitempty") 
+    "applicability-categories"?: [...#Category] @go(ApplicabilityCategories) @yaml("applicability-categories,omitempty")
+    "mapping-references"?: [...#MappingReference] @go(MappingReferences) @yaml("mapping-references,omitempty")
 }
 
 #Category: {
@@ -42,7 +42,6 @@ package schemas
     title: string
     objective: string
     "assessment-requirements": [...#AssessmentRequirement] @go(AssessmentRequirements)
-
     "guideline-mappings"?: [...#Mapping] @go(GuidelineMappings)
     "threat-mappings"?: [...#Mapping] @go(ThreatMappings)
 }
