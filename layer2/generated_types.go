@@ -25,13 +25,13 @@ type Metadata struct {
 
 	Description string `json:"description"`
 
-	Version string `json:"version,omitempty"`
+	Version string `json:"version,omitempty" yaml:"version,omitempty"`
 
-	LastModified string `json:"last-modified,omitempty"`
+	LastModified string `json:"last-modified,omitempty" yaml:"last-modified,omitempty"`
 
-	ApplicabilityCategories []Category `json:"applicability-categories,omitempty"`
+	ApplicabilityCategories []Category `json:"applicability-categories,omitempty" yaml:"applicability-categories,omitempty"`
 
-	MappingReferences []MappingReference `json:"mapping-references,omitempty"`
+	MappingReferences []MappingReference `json:"mapping-references,omitempty" yaml:"mapping-references,omitempty"`
 }
 
 type Category struct {
