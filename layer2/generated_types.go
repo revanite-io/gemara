@@ -3,111 +3,112 @@
 package layer2
 
 type Catalog struct {
-	Metadata *Metadata `json:"metadata,omitempty"`
+	Metadata	Metadata	`json:"metadata,omitempty" yaml:"metadata,omitempty"`
 
-	ControlFamilies []ControlFamily `json:"control-families,omitempty"`
+	ControlFamilies	[]ControlFamily	`json:"control-families,omitempty" yaml:"control-families,omitempty"`
 
-	Threats []Threat `json:"threats,omitempty"`
+	Threats	[]Threat	`json:"threats,omitempty" yaml:"threats,omitempty"`
 
-	Capabilities []Capability `json:"capabilities,omitempty"`
+	Capabilities	[]Capability	`json:"capabilities,omitempty" yaml:"capabilities,omitempty"`
 
-	SharedControls []Mapping `json:"shared-controls,omitempty"`
+	SharedControls	[]Mapping	`json:"shared-controls,omitempty" yaml:"shared-controls,omitempty"`
 
-	SharedThreats []Mapping `json:"shared-threats,omitempty"`
+	SharedThreats	[]Mapping	`json:"shared-threats,omitempty" yaml:"shared-threats,omitempty"`
 
-	SharedCapabilities []Mapping `json:"shared-capabilities,omitempty"`
+	SharedCapabilities	[]Mapping	`json:"shared-capabilities,omitempty" yaml:"shared-capabilities,omitempty"`
 }
 
+// Resuable types //
 type Metadata struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 
-	Version string `json:"version,omitempty"`
+	Version	string	`json:"version,omitempty" yaml:"version,omitempty"`
 
-	LastModified string `json:"last-modified,omitempty"`
+	LastModified	string	`json:"last-modified,omitempty" yaml:"last-modified,omitempty"`
 
-	ApplicabilityCategories []Category `json:"applicability-categories,omitempty"`
+	ApplicabilityCategories	[]Category	`json:"applicability-categories,omitempty" yaml:"applicability-categories,omitempty"`
 
-	MappingReferences []MappingReference `json:"mapping-references,omitempty"`
+	MappingReferences	[]MappingReference	`json:"mapping-references,omitempty" yaml:"mapping-references,omitempty"`
 }
 
 type Category struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
-}
-
-type ControlFamily struct {
-	Title string `json:"title"`
-
-	Description string `json:"description"`
-
-	Controls []Control `json:"controls"`
-}
-
-type Control struct {
-	Id string `json:"id"`
-
-	Title string `json:"title"`
-
-	Objective string `json:"objective"`
-
-	AssessmentRequirements []AssessmentRequirement `json:"assessment-requirements"`
-
-	GuidelineMappings []Mapping `json:"guideline-mappings,omitempty"`
-
-	ThreatMappings []Mapping `json:"threat-mappings,omitempty"`
-}
-
-type Threat struct {
-	Id string `json:"id"`
-
-	Title string `json:"title"`
-
-	Description string `json:"description"`
-
-	Capabilities []Mapping `json:"capabilities"`
-
-	ExternalMappings []Mapping `json:"external-mappings,omitempty"`
-}
-
-type Capability struct {
-	Id string `json:"id"`
-
-	Title string `json:"title"`
-
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 }
 
 type MappingReference struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Version string `json:"version"`
+	Version	string	`json:"version" yaml:"version"`
 
-	Description string `json:"description,omitempty"`
+	Description	string	`json:"description,omitempty" yaml:"description,omitempty"`
 
-	Url string `json:"url,omitempty"`
+	Url	string	`json:"url,omitempty" yaml:"url,omitempty"`
 }
 
-type Mapping struct {
-	ReferenceId string `json:"reference-id"`
+type ControlFamily struct {
+	Title	string	`json:"title" yaml:"title"`
 
-	Identifiers []string `json:"identifiers"`
+	Description	string	`json:"description" yaml:"description"`
+
+	Controls	[]Control	`json:"controls" yaml:"controls"`
+}
+
+type Control struct {
+	Id	string	`json:"id" yaml:"id"`
+
+	Title	string	`json:"title" yaml:"title"`
+
+	Objective	string	`json:"objective" yaml:"objective"`
+
+	AssessmentRequirements	[]AssessmentRequirement	`json:"assessment-requirements" yaml:"assessment-requirements"`
+
+	GuidelineMappings	[]Mapping	`json:"guideline-mappings,omitempty" yaml:"guideline-mappings,omitempty"`
+
+	ThreatMappings	[]Mapping	`json:"threat-mappings,omitempty" yaml:"threat-mappings,omitempty"`
 }
 
 type AssessmentRequirement struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Text string `json:"text"`
+	Text	string	`json:"text" yaml:"text"`
 
-	Applicability []string `json:"applicability"`
+	Applicability	[]string	`json:"applicability" yaml:"applicability"`
 
-	Recommendation string `json:"recommendation,omitempty"`
+	Recommendation	string	`json:"recommendation,omitempty" yaml:"recommendation,omitempty"`
+}
+
+type Mapping struct {
+	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
+
+	Identifiers	[]string	`json:"identifiers" yaml:"identifiers"`
+}
+
+type Threat struct {
+	Id	string	`json:"id" yaml:"id"`
+
+	Title	string	`json:"title" yaml:"title"`
+
+	Description	string	`json:"description" yaml:"description"`
+
+	Capabilities	[]Mapping	`json:"capabilities" yaml:"capabilities"`
+
+	ExternalMappings	[]Mapping	`json:"external-mappings,omitempty" yaml:"external-mappings,omitempty"`
+}
+
+type Capability struct {
+	Id	string	`json:"id" yaml:"id"`
+
+	Title	string	`json:"title" yaml:"title"`
+
+	Description	string	`json:"description" yaml:"description"`
 }

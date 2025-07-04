@@ -22,7 +22,7 @@ In order to better facilitate cross-functional communication, the Gemara Model s
 
 We will begin by establishing the overall model, and then the following sections will contain detailed breakdowns of each categorical layer, with examples.
 
-This document assumes that the reader is trained in governance, risk, compliance, or cybersecurity— and therefore understands or can find definitions of concepts or terms that are infrequently used herein.
+This document assumes that the reader is trained in governance, risk, compliance, or cybersecurity and therefore understands or can find definitions of concepts or terms that are infrequently used herein.
 
 For the purpose of this document, "organization" may refer to a business or an organizational unit within it.
 
@@ -110,6 +110,8 @@ Audits consider information from all of the lower layers. These activities are t
 Install the go module with `go get github.com/revanite-io/gemara` and consult our [go docs](https://pkg.go.dev/github.com/revanite-io/gemara)
 
 Use the schemas directly with [cue](https://cuelang.org/) for validating Gemara data payloads against the schemas and more.
+
+## Projects and tooling using Gemara
 
 Some Gemara use cases include:
 
