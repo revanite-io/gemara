@@ -94,7 +94,7 @@ package schemas
 
 	// This is akin to related controls, but using more explicit terminology
 	"see-also"?: [...string] @go(SeeAlso) @yaml("see-also,omitempty")
-	// Corresponds to the resoure ids in metadata to map to external unstructured resource
+	// Corresponds to the resource ids in metadata to map to external unstructured resources
 	"external-references"?: [...string] @go(ExternalReferences) @yaml("external-references,omitempty")
 }
 
