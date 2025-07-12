@@ -37,7 +37,7 @@ package schemas
 
 #Applicability: {
 	// Inclusion by geographical or legal areas
-	juristictions?: [...string]
+	jurisdictions?: [...string]
 	// Inclusion by types of technology or technological environments
 	"technology-domains"?: [...string] @go(TechnologyDomains) @yaml("technology-domains,omitempty")
 	// Inclusion by industry sectors or verticals
