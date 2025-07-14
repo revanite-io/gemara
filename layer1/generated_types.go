@@ -76,7 +76,7 @@ type DocumentType string
 
 type Applicability struct {
 	// Inclusion by geographical or legal areas
-	Juristictions []string `json:"juristictions,omitempty"`
+	Jurisdictions []string `json:"jurisdictions,omitempty"`
 
 	// Inclusion by types of technology or technological environments
 	TechnologyDomains []string `json:"technology-domains,omitempty"`
@@ -124,7 +124,7 @@ type Guideline struct {
 	// This is akin to related controls, but using more explicit terminology
 	SeeAlso []string `json:"see-also,omitempty"`
 
-	// Corresponds to the resoure ids in metadata to map to external unstructured resource
+	// Corresponds to the resource ids in metadata to map to external unstructured resources
 	ExternalReferences []string `json:"external-references,omitempty"`
 }
 
