@@ -105,7 +105,7 @@ cuegen-win:
 	@utils\types_tagger.exe layer2\generated_types.go
 
 	@echo "  >  Generating types from cue schema ..."
-	@echo "  >  Generating types for layer2 ..."
+	@echo "  >  Generating types for layer1 ..."
 	@cue exp gengotypes .\schemas\layer-1.cue
 	@move /Y cue_types_gen.go layer1\generated_types.go
 	@echo "  >  Adding YAML tags to generated_types.go ..."
