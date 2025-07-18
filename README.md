@@ -49,6 +49,12 @@ These guidance documents are high-level, abstract controls that may be reference
 
 Examples include the NIST Cybersecurity Framework, ISO 27001, PCI DSS, HIPPA, GDPR, and CRA.
 
+#### Layer 1 Schema
+
+The SCI [Layer 1 Schema](./schemas/layer-1.cue) describes the machine-readable format of Layer 1 guidelines.
+
+The schema allows multipart guidelines to be expressed with associated recommendations. It also supports Layer 1 guideline mapping to Layer 1 guidelines from other guidance documents by their unique identifiers.
+
 ### Layer 2: Controls
 
 Activities in the Control layer produce technology-specific, threat-informed security controls. Controls are the specific guardrails that organizations put in place to protect their information systems. They are typically informed by the best practices and industry standards which are produced in Layer 1.
