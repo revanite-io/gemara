@@ -3,6 +3,7 @@
 - [Overview](#overview)
 - [The Model](#the-model)
   - [Layer 1: Guidance](#layer-1-guidance)
+    - [Layer 1 Schema](#layer-1-schema)
   - [Layer 2: Controls](#layer-2-controls)
     - [Layer 2 Schema](#layer-2-schema)
   - [Layer 3: Policy](#layer-3-policy)
@@ -41,31 +42,27 @@ Each layer in the model builds upon the lower layer, though in higher-level use 
 
 ### Layer 1: Guidance
 
-The Guidance layer is the lowest level of the SCI Model. Activities in this layer provide high-level rules pertaining to cybersecurity measures. Guidance is typically developed by industry groups, government agencies, or international standards bodies. They are intended to be used as a starting point for organizations to develop their own cybersecurity programs.
+The Guidance layer is the lowest level of the SCI Model. Activities in this layer provide high-level rules pertaining to cybersecurity measures. Guidance is typically developed by industry groups, government agencies, or international standards bodies. Examples include the NIST Cybersecurity Framework, ISO 27001, PCI DSS, HIPPA, GDPR, and CRA. They are intended to be used as a starting point for organizations to develop their own cybersecurity programs.
 
 Guidance frameworks or standards occasionally express their rules using the term "controls" — these should be understood as Layer 1 Controls in the event that the term appears to conflict with Layer 2.
 
 These guidance documents are high-level, abstract controls that may be referenced in the development of other Layer 1 or Layer 2 assets.
 
-Examples include the NIST Cybersecurity Framework, ISO 27001, PCI DSS, HIPPA, GDPR, and CRA.
-
 #### Layer 1 Schema
 
 The SCI [Layer 1 Schema](./schemas/layer-1.cue) describes the machine-readable format of Layer 1 guidelines.
 
-The schema allows multipart guidelines to be expressed with associated recommendations. It also supports Layer 1 guideline mapping to Layer 1 guidelines from other guidance documents by their unique identifiers.
+Both simple and more complex, multipart guidelines can be expressed with associated recommendations. Guideline mappings or "crosswalk references" can be expressed, allowing correlation between multiple Layer 1 guidance documents.
 
 ### Layer 2: Controls
 
 Activities in the Control layer produce technology-specific, threat-informed security controls. Controls are the specific guardrails that organizations put in place to protect their information systems. They are typically informed by the best practices and industry standards which are produced in Layer 1.
 
-Layer 2 controls are typically developed by an organization for its own purposes, or for general use by industry groups, government agencies, or international standards bodies.
+Layer 2 controls are typically developed by an organization for its own purposes, or for general use by industry groups, government agencies, or international standards bodies. Examples include [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks-overview), [FINOS Common Cloud Controls](https://github.com/finos/common-cloud-controls/blob/main/README.md), and the [Open Source Project Security (OSPS) Baseline](https://baseline.openssf.org/).
 
 Assets in this category may be refined into more specific Layer 2 controls, or combined with organizational risk considerations to form Layer 3 policies.
 
 The recommended process for developing Layer 2 controls is to first assess the technology's capabilities, then identify threats to those capabilities, and finally develop controls to mitigate those threats.
-
-Examples include [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks-overview), [FINOS Common Cloud Controls](https://github.com/finos/common-cloud-controls/blob/main/README.md), and the [Open Source Project Security (OSPS) Baseline](https://baseline.openssf.org/).
 
 #### Layer 2 Schema
 
