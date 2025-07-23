@@ -3,169 +3,169 @@
 package layer1
 
 type GuidanceDocument struct {
-	Metadata Metadata `json:"metadata,omitempty"`
+	Metadata	Metadata	`json:"metadata,omitempty" yaml:"metadata,omitempty"`
 
 	// Introductory text for the document to be used during rendering
-	FrontMatter string `json:"front-matter,omitempty"`
+	FrontMatter	string	`json:"front-matter,omitempty" yaml:"front-matter,omitempty"`
 
-	Categories []Category `json:"categories,omitempty"`
+	Categories	[]Category	`json:"categories,omitempty" yaml:"categories,omitempty"`
 
 	// For inheriting from other guidance documents to create tailored documents/baselines
-	SharedGuidelines []Mapping `json:"shared-guidelines,omitempty"`
+	SharedGuidelines	[]Mapping	`json:"shared-guidelines,omitempty" yaml:"shared-guidelines,omitempty"`
 
-	SharedPrinciples []Mapping `json:"shared-principles,omitempty"`
+	SharedPrinciples	[]Mapping	`json:"shared-principles,omitempty" yaml:"shared-principles,omitempty"`
 }
 
 type Metadata struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 
-	Author string `json:"author"`
+	Author	string	`json:"author" yaml:"author"`
 
-	Version string `json:"version,omitempty"`
+	Version	string	`json:"version,omitempty" yaml:"version,omitempty"`
 
-	LastModified string `json:"last-modified,omitempty"`
+	LastModified	string	`json:"last-modified,omitempty" yaml:"last-modified,omitempty"`
 
-	PublicationDate string `json:"publication-date,omitempty"`
+	PublicationDate	string	`json:"publication-date,omitempty" yaml:"publication-date,omitempty"`
 
-	MappingReferences []MappingReference `json:"mapping-references,omitempty"`
+	MappingReferences	[]MappingReference	`json:"mapping-references,omitempty" yaml:"mapping-references,omitempty"`
 
 	// References to external resources not represented in a structured format.
-	Resources []ResourceReference `json:"resources,omitempty"`
+	Resources	[]ResourceReference	`json:"resources,omitempty" yaml:"resources,omitempty"`
 
-	DocumentType DocumentType `json:"document-type,omitempty"`
+	DocumentType	DocumentType	`json:"document-type,omitempty" yaml:"document-type,omitempty"`
 
-	Applicabilty *Applicability `json:"applicability,omitempty"`
+	Applicabilty	*Applicability	`json:"applicability,omitempty" yaml:"applicability,omitempty"`
 
-	Exemptions []string `json:"exemptions,omitempty"`
+	Exemptions	[]string	`json:"exemptions,omitempty" yaml:"exemptions,omitempty"`
 }
 
 // Mapping references is the same from Layer2, but intended for Layer 1 to Layer 1 mappings
 // instead of Layer 2 to Layer 1 mappings.
 type MappingReference struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Version string `json:"version"`
+	Version	string	`json:"version" yaml:"version"`
 
-	Description string `json:"description,omitempty"`
+	Description	string	`json:"description,omitempty" yaml:"description,omitempty"`
 
-	Url string `json:"url,omitempty"`
+	Url	string	`json:"url,omitempty" yaml:"url,omitempty"`
 }
 
 // ResourceReferences defines a references to an external document (possibly unstructured)
 type ResourceReference struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 
-	Url string `json:"url,omitempty"`
+	Url	string	`json:"url,omitempty" yaml:"url,omitempty"`
 
-	IssuingBody string `json:"issuing-body,omitempty"`
+	IssuingBody	string	`json:"issuing-body,omitempty" yaml:"issuing-body,omitempty"`
 
-	PublicationDate string `json:"publication-date,omitempty"`
+	PublicationDate	string	`json:"publication-date,omitempty" yaml:"publication-date,omitempty"`
 }
 
 type DocumentType string
 
 type Applicability struct {
 	// Inclusion by geographical or legal areas
-	Jurisdictions []string `json:"jurisdictions,omitempty"`
+	Jurisdictions	[]string	`json:"jurisdictions,omitempty" yaml:"jurisdictions,omitempty"`
 
 	// Inclusion by types of technology or technological environments
-	TechnologyDomains []string `json:"technology-domains,omitempty"`
+	TechnologyDomains	[]string	`json:"technology-domains,omitempty" yaml:"technology-domains,omitempty"`
 
 	// Inclusion by industry sectors or verticals
-	IndustrySectors []string `json:"industry-sectors,omitempty"`
+	IndustrySectors	[]string	`json:"industry-sectors,omitempty" yaml:"industry-sectors,omitempty"`
 }
 
 // Category represents a logical group of guidelines (i.e. control family)
 type Category struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 
-	Guidelines []Guideline `json:"guidelines,omitempty"`
+	Guidelines	[]Guideline	`json:"guidelines,omitempty" yaml:"guidelines,omitempty"`
 }
 
 type Guideline struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Objective string `json:"objective,omitempty"`
+	Objective	string	`json:"objective,omitempty" yaml:"objective,omitempty"`
 
 	// Maps to fields commonly seen in controls with implementation guidance
-	Recommendations []string `json:"recommendations,omitempty"`
+	Recommendations	[]string	`json:"recommendations,omitempty" yaml:"recommendations,omitempty"`
 
 	// For control enhancements (ex. AC-2(1) in 800-53)
 	// The base-guideline-id is needed to achieve full context for the enhancement
-	BaseGuidelineID string `json:"base-guideline-id,omitempty"`
+	BaseGuidelineID	string	`json:"base-guideline-id,omitempty" yaml:"base-guideline-id,omitempty"`
 
-	Rationale *Rationale `json:"rationale,omitempty"`
+	Rationale	*Rationale	`json:"rationale,omitempty" yaml:"rationale,omitempty"`
 
 	// Represents individual guideline parts/statements
-	GuidelineParts []Part `json:"guideline-parts,omitempty"`
+	GuidelineParts	[]Part	`json:"guideline-parts,omitempty" yaml:"guideline-parts,omitempty"`
 
 	// Crosswalking this guideline to other guidelines in other documents
-	GuidelineMappings []Mapping `json:"guideline-mappings,omitempty"`
+	GuidelineMappings	[]Mapping	`json:"guideline-mappings,omitempty" yaml:"guideline-mappings,omitempty"`
 
 	// A list for associated key principle ids
-	PrincipleMappings []Mapping `json:"principle-mappings,omitempty"`
+	PrincipleMappings	[]Mapping	`json:"principle-mappings,omitempty" yaml:"principle-mappings,omitempty"`
 
 	// This is akin to related controls, but using more explicit terminology
-	SeeAlso []string `json:"see-also,omitempty"`
+	SeeAlso	[]string	`json:"see-also,omitempty" yaml:"see-also,omitempty"`
 
 	// Corresponds to the resource ids in metadata to map to external unstructured resources
-	ExternalReferences []string `json:"external-references,omitempty"`
+	ExternalReferences	[]string	`json:"external-references,omitempty" yaml:"external-references,omitempty"`
 }
 
 // Rationale provides contextual information to help with development and understanding of
 // guideline intent.
 type Rationale struct {
 	// Negative results expected from the guideline's lack of implementation
-	Risks []Risk `json:"risks"`
+	Risks	[]Risk	`json:"risks" yaml:"risks"`
 
 	// Positive results expected from the guideline's implementation
-	Outcomes []Outcome `json:"outcomes"`
+	Outcomes	[]Outcome	`json:"outcomes" yaml:"outcomes"`
 }
 
 type Risk struct {
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 }
 
 type Outcome struct {
-	Title string `json:"title"`
+	Title	string	`json:"title" yaml:"title"`
 
-	Description string `json:"description"`
+	Description	string	`json:"description" yaml:"description"`
 }
 
 // Parts include sub-statements of a guideline that can be assessed individually
 type Part struct {
-	Id string `json:"id"`
+	Id	string	`json:"id" yaml:"id"`
 
-	Title string `json:"title,omitempty"`
+	Title	string	`json:"title,omitempty" yaml:"title,omitempty"`
 
-	Prose string `json:"prose"`
+	Prose	string	`json:"prose" yaml:"prose"`
 
-	Recommendations []string `json:"recommendations,omitempty"`
+	Recommendations	[]string	`json:"recommendations,omitempty" yaml:"recommendations,omitempty"`
 }
 
 type Mapping struct {
-	ReferenceId string `json:"reference-id"`
+	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
 
-	Identifiers []string `json:"identifiers"`
+	Identifiers	[]string	`json:"identifiers" yaml:"identifiers"`
 
 	// Adding context about this particular mapping and why it was mapped.
-	Remarks string `json:"remarks,omitempty"`
+	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
 }
