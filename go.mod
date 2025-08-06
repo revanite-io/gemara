@@ -1,4 +1,4 @@
-module github.com/revanite-io/sci
+module github.com/revanite-io/gemara
 
 go 1.23.0
 

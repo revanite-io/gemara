@@ -1,4 +1,4 @@
-# Contributing to SCI
+# Contributing to Gemara
 
 The project welcomes your contributions whether they be:
 

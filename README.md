@@ -1,4 +1,4 @@
-# SCI: Simplified Compliance Infrastructure  [![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/sci.svg)](https://pkg.go.dev/github.com/revanite-io/sci)
+# Gemara: GRC Engineering Model for Automated Risk Assessment  [![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/gemara.svg)](https://pkg.go.dev/github.com/revanite-io/gemara)
 
 - [Overview](#overview)
 - [The Model](#the-model)
@@ -13,17 +13,17 @@
   - [Layer 6: Audit](#layer-6-audit)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Projects and tooling using SCI](#projects-and-tooling-using-sci)
+- [Projects and tooling using Gemara](#projects-and-tooling-using-gemara)
 
 ## Overview
 
-The _Simplified Compliance Infrastructure_ provides a model to describe the categories of compliance activities, how they interact, and the schemas to enable automated interoperability between them.
+Gemara (The _GRC Engineering Model for Automated Risk Assessment_) provides a logical model to describe the categories of compliance activities, how they interact, and the schemas to enable automated interoperability between them.
 
-In order to better facilitate cross-functional communication, the SCI Model seeks to outline the categorical layers of activities related to automated governance.
+In order to better facilitate cross-functional communication, the Gemara Model seeks to outline the categorical layers of activities related to automated governance.
 
 We will begin by establishing the overall model, and then the following sections will contain detailed breakdowns of each categorical layer, with examples.
 
-This document assumes that the reader is trained in governance, risk, compliance, or cybersecurity— and therefore understands or can find definitions of concepts or terms that are infrequently used herein.
+This document assumes that the reader is trained in governance, risk, compliance, or cybersecurity and therefore understands or can find definitions of concepts or terms that are infrequently used herein.
 
 For the purpose of this document, "organization" may refer to a business or an organizational unit within it.
 
@@ -42,7 +42,7 @@ Each layer in the model builds upon the lower layer, though in higher-level use 
 
 ### Layer 1: Guidance
 
-The Guidance layer is the lowest level of the SCI Model. Activities in this layer provide high-level rules pertaining to cybersecurity measures. Guidance is typically developed by industry groups, government agencies, or international standards bodies. Examples include the NIST Cybersecurity Framework, ISO 27001, PCI DSS, HIPPA, GDPR, and CRA. They are intended to be used as a starting point for organizations to develop their own cybersecurity programs.
+The Guidance layer is the lowest level of the Gemara Model. Activities in this layer provide high-level rules pertaining to cybersecurity measures. Guidance is typically developed by industry groups, government agencies, or international standards bodies. Examples include the NIST Cybersecurity Framework, ISO 27001, PCI DSS, HIPPA, GDPR, and CRA. They are intended to be used as a starting point for organizations to develop their own cybersecurity programs.
 
 Guidance frameworks or standards occasionally express their rules using the term "controls" — these should be understood as Layer 1 Controls in the event that the term appears to conflict with Layer 2.
 
@@ -50,7 +50,7 @@ These guidance documents are high-level, abstract controls that may be reference
 
 #### Layer 1 Schema
 
-The SCI [Layer 1 Schema](./schemas/layer-1.cue) describes the machine-readable format of Layer 1 guidelines.
+The Gemara [Layer 1 Schema](./schemas/layer-1.cue) describes the machine-readable format of Layer 1 guidelines.
 
 Both simple and more complex, multipart guidelines can be expressed with associated recommendations. Guideline mappings or "crosswalk references" can be expressed, allowing correlation between multiple Layer 1 guidance documents.
 
@@ -66,11 +66,11 @@ The recommended process for developing Layer 2 controls is to first assess the t
 
 #### Layer 2 Schema
 
-The SCI [Layer 2 Schema](./schemas/layer-2.cue) describes the machine-readable format of Layer 2 controls.
+The Gemara [Layer 2 Schema](./schemas/layer-2.cue) describes the machine-readable format of Layer 2 controls.
 
 The schema allows controls to be mapped to threats or Layer 1 controls by their unique identifiers. Threats may also be expressed in the schema, with mappings to the technology-specific capabilities which may be vulnerable to the threat.
 
-The SCI go module provides Layer 2 support for ingesting YAML and JSON documents that follow this schema.
+The Gemara go module provides Layer 2 support for ingesting YAML and JSON documents that follow this schema.
 
 The [cue](https://cuelang.org) CLI can be used to [validate YAML data](https://cuelang.org/docs/concept/how-cue-works-with-yaml/#validating-yaml-files-against-a-schema) containing a Layer 2 control catalog.
 
@@ -90,11 +90,11 @@ Evaluation activities may be built based on outputs from layers 2 or 3. While au
 
 #### Layer 4 Schema
 
-The SCI [Layer 4 Schema](./schemas/layer-4.cue) describes the machine-readable format of Layer 4 evaluation results.
+The Gemara [Layer 4 Schema](./schemas/layer-4.cue) describes the machine-readable format of Layer 4 evaluation results.
 
 The schema allows evaluations to be mapped to Layer 2 controls by their unique identifiers.
 
-The SCI go module provides Layer 2 support for writing assessments that can write results in this schema. The work to add go module Layer 4 support for reading and writing assessments data is planned in [issue 30](https://github.com/revanite-io/sci/issues/30), but not completed.
+The Gemara go module provides Layer 2 support for writing assessments that can write results in this schema. The work to add go module Layer 4 support for reading and writing assessments data is planned in [issue 30](https://github.com/revanite-io/gemara/issues/30), but not completed.
 
 ### Layer 5: Enforcement
 
@@ -110,24 +110,19 @@ Audits consider information from all of the lower layers. These activities are t
 
 ## Usage
 
-Install the go module with `go get github.com/revanite-io/sci` and consult our [go docs](https://pkg.go.dev/github.com/revanite-io/sci)
+Install the go module with `go get github.com/revanite-io/gemara` and consult our [go docs](https://pkg.go.dev/github.com/revanite-io/gemara)
 
-Use the schemas directly with [cue](https://cuelang.org/) for validating SCI data payloads against the schemas and more.
+Use the schemas directly with [cue](https://cuelang.org/) for validating Gemara data payloads against the schemas and more.
 
-Reference these example Layer 2 YAML control catalogs, to better understand how the schema can be applied.
+## Projects and tooling using Gemara
 
-- [FINOS Common Cloud Controls](pkg/layer2/test-data/good-ccc.yaml)
-- [Open Source Project Security Baseline](pkg/layer2/test-data/good-osps.yml)
+Some Gemara use cases include:
+
+- [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) (Layer 2)
+- [Open Source Project Security Baseline](https://baseline.openssf.org/) (Layer 2)
+- [Privateer](https://github.com/privateerproj/privateer) (Layer 4)
+  - ex. [OSPS Baseline Privateer Plugin](https://github.com/revanite-io/pvtr-github-repo)
 
 ## Contributing
 
 We're so glad you asked - see [CONTRIBUTING.md](/CONTRIBUTING.md) and if you have any questions or feedback head over to the OpenSSF Slack in [#wg-orbit](https://openssf.slack.com/archives/C08NJTFAL74)
-
-## Projects and tooling using SCI
-
-The SCI Model is intended to be used in conjunction with tooling that can help automate the compliance process.
-
-Examples of such tools include:
-
-- [revanite-io/pvtr-github-repo](https://github.com/revanite-io/pvtr-github-repo) - this tool automates layer 4 evaluation of the [Open Source Project Security Baseline](https://baseline.openssf.org/) control catalog
-- [FINOS Common Cloud Controls](https://www.finos.org/common-cloud-controls-project) - the control catalog is modeled using the layer 2 schema and consumed using the layer 2 go package.
