@@ -14,7 +14,7 @@ type ControlEvaluation struct {
 	Result            Result        // Result is the overall result of the control evaluation
 	Message           string        // Message is the human-readable result of the final assessment to run in this evaluation
 	Corrupted_State   bool          // Corrupted_State is true if the control evaluation was interrupted and changes were not reverted
-	Remediation_Guide string        // Remediation_Guide is the text or URL to advise the user on remediating failures
+	Remediation_Guide string        // Remediation_Guide is the URL to the documentation for this evaluation
 	Assessments       []*Assessment // Assessments is a map of pointers to Assessment objects to establish idempotency
 }
 
