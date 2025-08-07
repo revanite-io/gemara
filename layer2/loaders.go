@@ -10,8 +10,7 @@ import (
 	"github.com/goccy/go-yaml"
 )
 
-// loadYamlFromURL is a sub-function of loadYaml for HTTP only
-// sourcePath is the URL. data is a pointer to the recieving object.
+// loadYamlFromURL is a sub-function of loadYaml for HTTP only. It takes a URL as a sourcePath and a pointer to a Catalog object.
 func loadYamlFromURL(sourcePath string, data *Catalog) error {
 	resp, err := http.Get(sourcePath)
 	if err != nil {
@@ -32,9 +31,7 @@ func loadYamlFromURL(sourcePath string, data *Catalog) error {
 	return nil
 }
 
-// loadYaml opens a provided path to unmarshal its data as YAML.
-// sourcePath is a URL or local path to a file.
-// data is a pointer to the recieving object.
+// loadYaml opens a provided path to unmarshal its data as YAML. It takes a URL or local path to a file as a sourcePath and a pointer to a Catalog object.
 func loadYaml(sourcePath string, data *Catalog) error {
 	if strings.HasPrefix(sourcePath, "http") {
 		return loadYamlFromURL(sourcePath, data)
@@ -56,15 +53,12 @@ func loadYaml(sourcePath string, data *Catalog) error {
 	return nil
 }
 
-// loadYaml opens a provided path to unmarshal its data as JSON.
-// sourcePath is a URL or local path to a file.
-// data is a pointer to the recieving object.
+// loadJson opens a provided path to unmarshal its data as JSON. It takes a URL or local path to a file as a sourcePath and a pointer to a Catalog object.
 func loadJson(sourcePath string, data *Catalog) error {
 	return fmt.Errorf("loadJson not implemented [%s, %v]", sourcePath, data)
 }
 
-// LoadControlFamiliesFile loads data from any number of YAML
-// files at the provided paths. JSON support is pending development.
+// LoadFiles loads data from any number of YAML files at the provided paths. JSON support is pending development.
 // If run multiple times, this method will append new data to previous data.
 func (c *Catalog) LoadFiles(sourcePaths []string) error {
 	for _, sourcePath := range sourcePaths {
@@ -80,8 +74,7 @@ func (c *Catalog) LoadFiles(sourcePaths []string) error {
 	return nil
 }
 
-// LoadControlFamiliesFile loads data from a single YAML
-// file at the provided path. JSON support is pending development.
+// LoadFile loads data from a single YAML file at the provided path. JSON support is pending development.
 // If run multiple times for the same data type, this method will override previous data.
 func (c *Catalog) LoadFile(sourcePath string) error {
 	if strings.Contains(sourcePath, ".yaml") || strings.Contains(sourcePath, ".yml") {
@@ -100,6 +93,7 @@ func (c *Catalog) LoadFile(sourcePath string) error {
 	return nil
 }
 
+// decode unmarshals the provided reader into the provided Catalog object.
 func decode(reader io.Reader, data *Catalog) error {
 	decoder := yaml.NewDecoder(reader, yaml.DisallowUnknownField())
 	err := decoder.Decode(data)
