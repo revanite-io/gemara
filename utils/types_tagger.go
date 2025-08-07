@@ -13,8 +13,11 @@ import (
 )
 
 func main() {
-	const filename = "./layer2/generated_types.go"
-
+	filename := os.Args[1]
+	if filename == "" {
+		fmt.Println("Usage: go run utils/types_tagger.go <filename>")
+		return
+	}
 	src, err := os.ReadFile(filename)
 	if err != nil {
 		panic(err)
