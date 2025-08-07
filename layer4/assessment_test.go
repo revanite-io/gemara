@@ -119,8 +119,8 @@ func TestRun(t *testing.T) {
 			if result != a.Result {
 				t.Errorf("expected match between Run return value (%s) and assessment Result value (%s)", result, data.expectedResult)
 			}
-			if a.Steps_Executed != data.numberOfStepsToRun {
-				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, a.Steps_Executed)
+			if a.StepsExecuted != data.numberOfStepsToRun {
+				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, a.StepsExecuted)
 			}
 		})
 	}
@@ -130,8 +130,8 @@ func TestRunB(t *testing.T) {
 	for _, data := range getAssessmentsTestData() {
 		t.Run(data.testName+"-no-changes", func(t *testing.T) {
 			data.assessment.Run(nil, false)
-			if data.assessment.Steps_Executed != data.numberOfStepsToRun {
-				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, data.assessment.Steps_Executed)
+			if data.assessment.StepsExecuted != data.numberOfStepsToRun {
+				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, data.assessment.StepsExecuted)
 			}
 			for _, change := range data.assessment.Changes {
 				if change.Allowed {

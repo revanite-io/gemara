@@ -107,8 +107,8 @@ func TestEvaluate(t *testing.T) {
 				t.Errorf("Expected Result to be %v, but it was %v", test.expectedResult, c.Result)
 			}
 
-			if c.Corrupted_State != test.expectedCorrupted {
-				t.Errorf("Expected Corrupted_State to be %v, but it was %v", test.expectedCorrupted, c.Corrupted_State)
+			if c.CorruptedState != test.expectedCorrupted {
+				t.Errorf("Expected CorruptedState to be %v, but it was %v", test.expectedCorrupted, c.CorruptedState)
 			}
 		})
 		t.Run(test.testName+"no-changes", func(t *testing.T) {
@@ -130,8 +130,8 @@ func TestEvaluate(t *testing.T) {
 				t.Errorf("Expected Result to be %v, but it was %v", test.expectedResult, c.Result)
 			}
 
-			if c.Corrupted_State != test.expectedCorrupted {
-				t.Errorf("Expected Corrupted_State to be %v, but it was %v", test.expectedCorrupted, c.Corrupted_State)
+			if c.CorruptedState != test.expectedCorrupted {
+				t.Errorf("Expected CorruptedState to be %v, but it was %v", test.expectedCorrupted, c.CorruptedState)
 			}
 		})
 	}
