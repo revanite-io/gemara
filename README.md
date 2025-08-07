@@ -82,6 +82,10 @@ Layer 3 controls are typically developed by an organization to compile into orga
 
 These policy documents may be referenced by other policy documents, or used as a starting point for Layer 4 assessments.
 
+#### Layer 3 Schema
+
+The Gemara [Layer 3 Schema](./schemas/layer-3.cue) describes the machine-readable format of Layer 3 policies. This allows for the programmatic validation and processing of policy documents, ensuring they adhere to a defined structure.
+
 ### Layer 4: Evaluation
 
 Activities in the Evaluation layer provide inspection of code, configurations, and deployments. Those elements are part of the _software development lifecycle_ which is not represented in this model.
@@ -94,7 +98,7 @@ The Gemara [Layer 4 Schema](./schemas/layer-4.cue) describes the machine-readabl
 
 The schema allows evaluations to be mapped to Layer 2 controls by their unique identifiers.
 
-The Gemara go module provides Layer 2 support for writing assessments that can write results in this schema. The work to add go module Layer 4 support for reading and writing assessments data is planned in [issue 30](https://github.com/revanite-io/gemara/issues/30), but not completed.
+The Gemara go module provides Layer 4 support for writing and executing assessments, which can produce results conforming to this schema.
 
 ### Layer 5: Enforcement
 
