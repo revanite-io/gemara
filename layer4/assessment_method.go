@@ -9,25 +9,25 @@ import (
 // AssessmentMethod describes the method used to assess the layer 2 control requirement referenced by requirementID.
 type AssessmentMethod struct {
 	// Id is the unique identifier of the assessment method being executed
-	Id string `json:"id"`
+	Id string `json:"id" yaml:"id"`
 
 	// Name is the name of the method used to assess the requirement.
-	Name string `json:"name"`
+	Name string `json:"name" yaml:"name"`
 
 	// Description is a detailed explanation of the method.
-	Description string `json:"description"`
+	Description string `json:"description" yaml:"description"`
 
 	// Run is a boolean indicating whether the method was run or not. When run is true, result is expected to be present.
-	Run bool `json:"run"`
+	Run bool `json:"run" yaml:"run"`
 
 	// Remediation guide is a URL to remediation guidance associated with the control's assessment requirement and this specific assessment method.
-	RemediationGuide URL `json:"remediation-guide,omitempty"`
+	RemediationGuide URL `json:"remediation-guide,omitempty" yaml:"remediation-guide,omitempty"`
 
 	// URL to documentation that describes how the assessment method evaluates the control requirement.
-	Documentation URL `json:"documentation,omitempty"`
+	Documentation URL `json:"documentation,omitempty" yaml:"documentation,omitempty"`
 
 	// Result is the status or outcome of an assessed method present when run us true.
-	Result *Result `json:"result,omitempty"`
+	Result *Result `json:"result,omitempty" yaml:"result,omitempty"`
 	// Executor is a function type that inspects the provided targetData and returns a Result with a message.
 	// The message may be an error string or other descriptive text.
 	Executor MethodExecutor
