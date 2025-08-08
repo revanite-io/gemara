@@ -1,15 +1,12 @@
 package layer4
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
-	"reflect"
-	"runtime"
 	"time"
 )
 
-// Assessment is a struct that contains the results of a single step within a ControlEvaluation.
+// Assessment is a struct that contains the results of a single method within a ControlEvaluation.
 type Assessment struct {
 	// RequirementID is the unique identifier for the requirement being tested
 	RequirementId string `yaml:"requirement-id"`
@@ -21,10 +18,10 @@ type Assessment struct {
 	Result Result `yaml:"result"`
 	// Message is the human-readable result of the test
 	Message string `yaml:"message"`
-	// Steps is a slice of steps that were executed during the test
-	Steps []AssessmentStep `yaml:"steps"`
-	// StepsExecuted is the number of steps that were executed during the test
-	StepsExecuted int `yaml:"steps-executed,omitempty"`
+	// Methods is a slice of assessment methods that were executed during the test
+	Methods []*AssessmentMethod `yaml:"methods"`
+	// MethodsExecuted is the number of assessment methods that were executed during the test
+	MethodsExecuted int `yaml:"methods-executed,omitempty"`
 	// RunDuration is the time it took to run the test
 	RunDuration string `yaml:"run-duration,omitempty"`
 	// Value is the object that was returned during the test
@@ -33,54 +30,33 @@ type Assessment struct {
 	Changes map[string]*Change `yaml:"changes,omitempty"`
 }
 
-// AssessmentStep is a function type that inspects the provided targetData and returns a Result with a message.
-// The message may be an error string or other descriptive text.
-type AssessmentStep func(payload interface{}, c map[string]*Change) (Result, string)
-
-func (as AssessmentStep) String() string {
-	// Get the function pointer correctly
-	fn := runtime.FuncForPC(reflect.ValueOf(as).Pointer())
-	if fn == nil {
-		return "<unknown function>"
-	}
-	return fn.Name()
-}
-
-func (as AssessmentStep) MarshalJSON() ([]byte, error) {
-	return json.Marshal(as.String())
-}
-
-func (as AssessmentStep) MarshalYAML() (interface{}, error) {
-	return as.String(), nil
-}
-
 // NewAssessment creates a new Assessment object and returns a pointer to it.
-func NewAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (*Assessment, error) {
+func NewAssessment(requirementId string, description string, applicability []string, methods []*AssessmentMethod) (*Assessment, error) {
 	a := &Assessment{
 		RequirementId: requirementId,
 		Description:   description,
 		Applicability: applicability,
 		Result:        NotRun,
-		Steps:         steps,
+		Methods:       methods,
 	}
 	err := a.precheck()
 	return a, err
 }
 
-// AddStep queues a new step in the Assessment
-func (a *Assessment) AddStep(step AssessmentStep) {
-	a.Steps = append(a.Steps, step)
+// AddMethod queues a new method in the Assessment
+func (a *Assessment) AddMethod(method AssessmentMethod) {
+	a.Methods = append(a.Methods, &method)
 }
 
-func (a *Assessment) runStep(targetData interface{}, step AssessmentStep) Result {
-	a.StepsExecuted++
-	result, message := step(targetData, a.Changes)
+func (a *Assessment) runMethod(targetData interface{}, method *AssessmentMethod) Result {
+	a.MethodsExecuted++
+	result, message := method.RunMethod(targetData, a.Changes)
 	a.Result = UpdateAggregateResult(a.Result, result)
 	a.Message = message
 	return result
 }
 
-// Run will execute all steps, halting if any step does not return layer4.Passed.
+// Run will execute all steps, halting if any method does not return layer4.Passed.
 func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 	if a.Result != NotRun {
 		return a.Result
@@ -97,8 +73,8 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 			change.Allow()
 		}
 	}
-	for _, step := range a.Steps {
-		if a.runStep(targetData, step) == Failed {
+	for _, method := range a.Methods {
+		if a.runMethod(targetData, method) == Failed {
 			return Failed
 		}
 	}
@@ -142,10 +118,10 @@ func (a *Assessment) RevertChanges() (corrupted bool) {
 // precheck verifies that the assessment has all the required fields.
 // It returns an error if the assessment is not valid.
 func (a *Assessment) precheck() error {
-	if a.RequirementId == "" || a.Description == "" || a.Applicability == nil || a.Steps == nil || len(a.Applicability) == 0 || len(a.Steps) == 0 {
+	if a.RequirementId == "" || a.Description == "" || a.Applicability == nil || a.Methods == nil || len(a.Applicability) == 0 || len(a.Methods) == 0 {
 		message := fmt.Sprintf(
-			"expected all Assessment fields to have a value, but got: requirementId=len(%v), description=len=(%v), applicability=len(%v), steps=len(%v)",
-			len(a.RequirementId), len(a.Description), len(a.Applicability), len(a.Steps),
+			"expected all Assessment fields to have a value, but got: requirementId=len(%v), description=len=(%v), applicability=len(%v), methods=len(%v)",
+			len(a.RequirementId), len(a.Description), len(a.Applicability), len(a.Methods),
 		)
 		a.Result = Unknown
 		a.Message = message
