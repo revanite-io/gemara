@@ -26,7 +26,7 @@ type AssessmentMethod struct {
 	// URL to documentation that describes how the assessment method evaluates the control requirement.
 	Documentation URL `json:"documentation,omitempty" yaml:"documentation,omitempty"`
 
-	// Result is the status or outcome of an assessed method present when run us true.
+	// Result is the status or outcome of an assessed method present. This field is present when Run is true.
 	Result *Result `json:"result,omitempty" yaml:"result,omitempty"`
 	// Executor is a function type that inspects the provided targetData and returns a Result with a message.
 	// The message may be an error string or other descriptive text.

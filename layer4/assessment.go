@@ -14,7 +14,7 @@ type Assessment struct {
 	Applicability []string `yaml:"applicability"`
 	// Description is a human-readable description of the test
 	Description string `yaml:"description"`
-	// Result is true if the test passed
+	// Result is the overall result of the assessment
 	Result Result `yaml:"result"`
 	// Message is the human-readable result of the test
 	Message string `yaml:"message"`
