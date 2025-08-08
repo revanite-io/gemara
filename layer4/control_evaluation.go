@@ -21,7 +21,7 @@ type ControlEvaluation struct {
 	CorruptedState bool `yaml:"corrupted-state"`
 	// RemediationGuide is the URL to the documentation for this evaluation
 	RemediationGuide string `yaml:"remediation-guide"`
-	// Assessments is a map of pointers to Assessment objects to establish idempotency
+	// Assessments is a slice of pointers to Assessment objects to establish idempotency
 	Assessments []*Assessment `yaml:"assessments"`
 }
 

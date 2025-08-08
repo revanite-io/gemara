@@ -26,7 +26,7 @@ type Assessment struct {
 	RunDuration string `yaml:"run-duration,omitempty"`
 	// Value is the object that was returned during the test
 	Value interface{} `yaml:"value,omitempty"`
-	// Changes is a slice of changes that were made during the test
+	// Changes is a map of changes that were made during the test
 	Changes map[string]*Change `yaml:"changes,omitempty"`
 }
 
