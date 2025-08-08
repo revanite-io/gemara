@@ -18,7 +18,7 @@ package schemas
 	"corrupted-state": bool
 	// RemediationGuide is the URL to the documentation for this evaluation
 	"remediation-guide": string
-	// Assessments is a map of pointers to Assessment objects to establish idempotency
+	// Assessments is a slice of pointers to Assessment objects to establish idempotency
 	assessments: [...#Assessment]
 }
 
@@ -37,12 +37,12 @@ package schemas
 	// Methods is a slice of assessment methods that were executed during the test
 	methods: [...#AssessmentMethod]
 	// MethodsExecuted is the number of assessment methods that were executed during the test
-	"methods-executed"?: int @go(MethodExecuted)
+	"methods-executed"?: int @go(MethodsExecuted)
 	// RunDuration is the time it took to run the test
 	"run-duration"?: string @go(RunDuration)
 	// Value is the object that was returned during the test
 	value?: _
-	// Changes is a slice of changes that were made during the test
+	// Changes is a map of changes that were made during the test
 	changes?: [string]: #Change
 }
 
@@ -72,13 +72,11 @@ package schemas
 // Change is a struct that contains the data and functions associated with a single change to a target resource.
 #Change: {
 	// TargetName is the name or ID of the resource or configuration that is to be changed
-	"target-name": string @go(TagertName)
+	"target-name": string @go(TargetName)
 	// Description is a human-readable description of the change
 	description: string
-	// The applyFunc and revertFunc fields are function types and are not directly
-	// representable in a CUE schema.
 	// TargetObject is supplemental data describing the object that was changed
-	"target-object"?: _ @go(TargetName)
+	"target-object"?: _ @go(TargetObject)
 	// Applied is true if the change was successfully applied at least once
 	applied?: bool
 	// Reverted is true if the change was successfully reverted and not applied again
