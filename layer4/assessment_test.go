@@ -23,7 +23,7 @@ func getAssessmentsTestData() []struct {
 			assessment: Assessment{},
 		},
 		{
-			testName:           "Assessment with one step",
+			testName:           "Assessment with one method",
 			assessment:         passingAssessment(),
 			numberOfSteps:      1,
 			numberOfStepsToRun: 1,
@@ -53,53 +53,53 @@ func getAssessmentsTestData() []struct {
 	}
 }
 
-// TestNewStep ensures that NewStep queues a new step in the Assessment
+// TestNewStep ensures that NewStep queues a new method in the Assessment
 func TestAddStep(t *testing.T) {
 	for _, test := range getAssessmentsTestData() {
 		t.Run(test.testName, func(t *testing.T) {
-			if len(test.assessment.Steps) != test.numberOfSteps {
-				t.Errorf("Bad test data: expected to start with %d, got %d", test.numberOfSteps, len(test.assessment.Steps))
+			if len(test.assessment.Methods) != test.numberOfSteps {
+				t.Errorf("Bad test data: expected to start with %d, got %d", test.numberOfSteps, len(test.assessment.Methods))
 			}
-			test.assessment.AddStep(passingAssessmentStep)
-			if len(test.assessment.Steps) != test.numberOfSteps+1 {
-				t.Errorf("expected %d, got %d", test.numberOfSteps, len(test.assessment.Steps))
+			test.assessment.AddMethod(passingAssessmentMethod)
+			if len(test.assessment.Methods) != test.numberOfSteps+1 {
+				t.Errorf("expected %d, got %d", test.numberOfSteps, len(test.assessment.Methods))
 			}
 		})
 	}
 }
 
-// TestRunStep ensures that runStep runs the step and updates the Assessment
+// TestRunStep ensures that runStep runs the method and updates the Assessment
 func TestRunStep(t *testing.T) {
 	stepsTestData := []struct {
 		testName string
-		step     AssessmentStep
+		method   AssessmentMethod
 		result   Result
 	}{
 		{
-			testName: "Failing step",
-			step:     failingAssessmentStep,
+			testName: "Failing method",
+			method:   failingAssessmentMethod,
 			result:   Failed,
 		},
 		{
-			testName: "Passing step",
-			step:     passingAssessmentStep,
+			testName: "Passing method",
+			method:   passingAssessmentMethod,
 			result:   Passed,
 		},
 		{
-			testName: "Needs review step",
-			step:     needsReviewAssessmentStep,
+			testName: "Needs review method",
+			method:   needsReviewAssessmentMethod,
 			result:   NeedsReview,
 		},
 		{
-			testName: "Unknown step",
-			step:     unknownAssessmentStep,
+			testName: "Unknown method",
+			method:   unknownAssessmentMethod,
 			result:   Unknown,
 		},
 	}
 	for _, test := range stepsTestData {
 		t.Run(test.testName, func(t *testing.T) {
 			anyOldAssessment := Assessment{}
-			result := anyOldAssessment.runStep(nil, test.step)
+			result := anyOldAssessment.runMethod(nil, &test.method)
 			if result != test.result {
 				t.Errorf("expected %s, got %s", test.result, result)
 			}
@@ -110,7 +110,7 @@ func TestRunStep(t *testing.T) {
 	}
 }
 
-// TestRun ensures that Run executes all steps, halting if any step does not return Passed
+// TestRun ensures that Run executes all steps, halting if any method does not return Passed
 func TestRun(t *testing.T) {
 	for _, data := range getAssessmentsTestData() {
 		t.Run(data.testName, func(t *testing.T) {
@@ -119,8 +119,8 @@ func TestRun(t *testing.T) {
 			if result != a.Result {
 				t.Errorf("expected match between Run return value (%s) and assessment Result value (%s)", result, data.expectedResult)
 			}
-			if a.StepsExecuted != data.numberOfStepsToRun {
-				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, a.StepsExecuted)
+			if a.MethodsExecuted != data.numberOfStepsToRun {
+				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, a.MethodsExecuted)
 			}
 		})
 	}
@@ -130,8 +130,8 @@ func TestRunB(t *testing.T) {
 	for _, data := range getAssessmentsTestData() {
 		t.Run(data.testName+"-no-changes", func(t *testing.T) {
 			data.assessment.Run(nil, false)
-			if data.assessment.StepsExecuted != data.numberOfStepsToRun {
-				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, data.assessment.StepsExecuted)
+			if data.assessment.MethodsExecuted != data.numberOfStepsToRun {
+				t.Errorf("expected to run %d tests, got %d", data.numberOfStepsToRun, data.assessment.MethodsExecuted)
 			}
 			for _, change := range data.assessment.Changes {
 				if change.Allowed {
@@ -234,7 +234,7 @@ func TestNewAssessment(t *testing.T) {
 		requirementId string
 		description   string
 		applicability []string
-		steps         []AssessmentStep
+		methods       []*AssessmentMethod
 		expectedError bool
 	}{
 		{
@@ -242,7 +242,7 @@ func TestNewAssessment(t *testing.T) {
 			requirementId: "",
 			description:   "test",
 			applicability: []string{"test"},
-			steps:         []AssessmentStep{passingAssessmentStep},
+			methods:       []*AssessmentMethod{&passingAssessmentMethod},
 			expectedError: true,
 		},
 		{
@@ -250,7 +250,7 @@ func TestNewAssessment(t *testing.T) {
 			requirementId: "test",
 			description:   "",
 			applicability: []string{"test"},
-			steps:         []AssessmentStep{passingAssessmentStep},
+			methods:       []*AssessmentMethod{&passingAssessmentMethod},
 			expectedError: true,
 		},
 		{
@@ -258,7 +258,7 @@ func TestNewAssessment(t *testing.T) {
 			requirementId: "test",
 			description:   "test",
 			applicability: []string{},
-			steps:         []AssessmentStep{passingAssessmentStep},
+			methods:       []*AssessmentMethod{&passingAssessmentMethod},
 			expectedError: true,
 		},
 		{
@@ -266,7 +266,7 @@ func TestNewAssessment(t *testing.T) {
 			requirementId: "test",
 			description:   "test",
 			applicability: []string{"test"},
-			steps:         []AssessmentStep{},
+			methods:       []*AssessmentMethod{},
 			expectedError: true,
 		},
 		{
@@ -274,13 +274,13 @@ func TestNewAssessment(t *testing.T) {
 			requirementId: "test",
 			description:   "test",
 			applicability: []string{"test"},
-			steps:         []AssessmentStep{passingAssessmentStep},
+			methods:       []*AssessmentMethod{&passingAssessmentMethod},
 			expectedError: false,
 		},
 	}
 	for _, data := range newAssessmentsTestData {
 		t.Run(data.testName, func(t *testing.T) {
-			assessment, err := NewAssessment(data.requirementId, data.description, data.applicability, data.steps)
+			assessment, err := NewAssessment(data.requirementId, data.description, data.applicability, data.methods)
 			if data.expectedError && err == nil {
 				t.Error("expected error, got nil")
 			}

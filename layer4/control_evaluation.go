@@ -26,8 +26,8 @@ type ControlEvaluation struct {
 }
 
 // AddAssessment creates a new Assessment object and adds it to the ControlEvaluation.
-func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (assessment *Assessment) {
-	assessment, err := NewAssessment(requirementId, description, applicability, steps)
+func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, methods []*AssessmentMethod) (assessment *Assessment) {
+	assessment, err := NewAssessment(requirementId, description, applicability, methods)
 	if err != nil {
 		c.Result = Failed
 		c.Message = err.Error()
@@ -36,8 +36,8 @@ func (c *ControlEvaluation) AddAssessment(requirementId string, description stri
 	return
 }
 
-// Evaluate runs each step in each assessment, updating the relevant fields on the control evaluation.
-// It will halt if a step returns a failed result. The targetData is the data that the assessment will be run against.
+// Evaluate runs each method in each assessment, updating the relevant fields on the control evaluation.
+// It will halt if a method returns a failed result. The targetData is the data that the assessment will be run against.
 // The userApplicability is a slice of strings that determine when the assessment is applicable. The changesAllowed
 // determines whether the assessment is allowed to execute its changes.
 func (c *ControlEvaluation) Evaluate(targetData interface{}, userApplicability []string, changesAllowed bool) {

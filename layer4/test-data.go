@@ -23,18 +23,18 @@ var (
 	}
 
 	// Assessment Results
-	passingAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
+	passingAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
 		return Passed, ""
-	}
-	failingAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
+	}}
+	failingAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
 		return Failed, ""
-	}
-	needsReviewAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
+	}}
+	needsReviewAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
 		return NeedsReview, ""
-	}
-	unknownAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
+	}}
+	unknownAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
 		return Unknown, ""
-	}
+	}}
 )
 
 func pendingChangePtr() *Change {
@@ -155,9 +155,9 @@ func failingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "failingAssessment()",
 		Description:   "failing assessment",
-		Steps: []AssessmentStep{
-			failingAssessmentStep,
-			passingAssessmentStep,
+		Methods: []*AssessmentMethod{
+			&failingAssessmentMethod,
+			&passingAssessmentMethod,
 		},
 		Applicability: testingApplicability,
 	}
@@ -171,8 +171,8 @@ func passingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "passingAssessment()",
 		Description:   "passing assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
+		Methods: []*AssessmentMethod{
+			&passingAssessmentMethod,
 		},
 		Applicability: testingApplicability,
 		Changes: map[string]*Change{
@@ -189,10 +189,10 @@ func needsReviewAssessment() Assessment {
 	return Assessment{
 		RequirementId: "needsReviewAssessment()",
 		Description:   "needs review assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			needsReviewAssessmentStep,
-			passingAssessmentStep,
+		Methods: []*AssessmentMethod{
+			&passingAssessmentMethod,
+			&needsReviewAssessmentMethod,
+			&passingAssessmentMethod,
 		},
 		Applicability: testingApplicability,
 	}
@@ -206,10 +206,10 @@ func unknownAssessment() Assessment {
 	return Assessment{
 		RequirementId: "unknownAssessment()",
 		Description:   "unknown assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			unknownAssessmentStep,
-			passingAssessmentStep,
+		Methods: []*AssessmentMethod{
+			&passingAssessmentMethod,
+			&unknownAssessmentMethod,
+			&passingAssessmentMethod,
 		},
 		Applicability: testingApplicability,
 	}
@@ -218,15 +218,15 @@ func unknownAssessment() Assessment {
 func badRevertPassingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "badRevertPassingAssessment()",
-		Description:   "bad revert passing assessment",
+		Description:    "bad revert passing assessment",
 		Changes: map[string]*Change{
 			"badRevertChange": badRevertChangePtr(),
 		},
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			passingAssessmentStep,
-			passingAssessmentStep,
-			passingAssessmentStep,
+		Methods: []*AssessmentMethod{
+			&passingAssessmentMethod,
+			&passingAssessmentMethod,
+			&passingAssessmentMethod,
+			&passingAssessmentMethod,
 		},
 		Applicability: testingApplicability,
 	}
