@@ -30,7 +30,7 @@ package schemas
 	applicability: [...string]
 	// Description is a human-readable description of the test
 	description: string
-	// Result is true if the test passed
+	// Result is the overall result of the assessment
 	result: #Result
 	// Message is the human-readable result of the test
 	message: string
@@ -60,7 +60,7 @@ package schemas
 	"remediation-guide"?: #URL @go(RemediationGuide)
 	// URL to documentation that describes how the assessment method evaluates the control requirement.
 	documentation?: #URL
-	// Result is the status or outcome of an assessed method present when run us true.
+	// Result is the status or outcome of an assessed method present. This field is present when Run is true.
 	result?: #Result @go(Result,optional=nillable)
 	// Address or location of the code providing logic for the assessment
 	executor?: string
