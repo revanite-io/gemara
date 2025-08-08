@@ -1,0 +1,28 @@
+evaluations:
+  - name: "Test Evaluation"
+    control-id: "CTRL-1"
+    result: Passed
+    message: "The control is an example that passed."
+    corrupted-state: false
+    remediation-guide: "https://example-remediation.dev"
+    assessments:
+      - requirement-id: passingAssessment()
+        applicability:
+          - test-applicability
+        description: passing assessment
+        result: Passed
+        message: "The requirement has passed."
+        methods:
+          - id: "method-1"
+            name: "The first method"
+            description: "The is the only method executed for this requirement"
+            run: true
+            result: Passed
+            executor: github.com/revanite-io/gemara/layer4.init.func5
+        methods-executed: 1
+        run-duration: 1.253µs
+        changes:
+          pendingChange:
+            target-name: pendingChange
+            description: description placeholder
+            allowed: true
