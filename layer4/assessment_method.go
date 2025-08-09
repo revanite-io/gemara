@@ -6,12 +6,12 @@ import (
 	"runtime"
 )
 
-// AssessmentMethod describes the method used to assess the layer 2 control requirement referenced by requirementID.
+// AssessmentMethod defines a specific procedure for assessing a Layer 2 control requirement.
 type AssessmentMethod struct {
 	// Id is the unique identifier of the assessment method being executed
 	Id string `json:"id" yaml:"id"`
 
-	// Name is the name of the method used to assess the requirement.
+	// Name is the human-readable name of the method.
 	Name string `json:"name" yaml:"name"`
 
 	// Description is a detailed explanation of the method.
@@ -26,7 +26,8 @@ type AssessmentMethod struct {
 	// URL to documentation that describes how the assessment method evaluates the control requirement.
 	Documentation URL `json:"documentation,omitempty" yaml:"documentation,omitempty"`
 
-	// Result is the status or outcome of an assessed method present. This field is present when Run is true.
+	// Result is the outcome of the assessment method.
+	// This field must be present if Run is true.
 	Result *Result `json:"result,omitempty" yaml:"result,omitempty"`
 	// Executor is a function type that inspects the provided targetData and returns a Result with a message.
 	// The message may be an error string or other descriptive text.

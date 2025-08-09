@@ -15,9 +15,9 @@ package schemas
 	// Message is the human-readable result of the final assessment to run in this evaluation
 	message: string
 	// CorruptedState is true if the control evaluation was interrupted and changes were not reverted
-	"corrupted-state": bool
+	"corrupted-state"?: bool
 	// RemediationGuide is the URL to the documentation for this evaluation
-	"remediation-guide": string
+	"remediation-guide"?: string
 	// Assessments is a slice of pointers to Assessment objects to establish idempotency
 	assessments: [...#Assessment]
 }
@@ -46,11 +46,11 @@ package schemas
 	changes?: [string]: #Change
 }
 
-// AssessmentMethod describes the method used to assess the layer 2 control requirement referenced by requirementID.
+// AssessmentMethod describes a specific procedure for evaluating a Layer 2 control requirement.
 #AssessmentMethod: {
 	// Id is the unique identifier of the assessment method being executed.
 	id: string
-	// Name is the name of the method used to assess the requirement.
+	// Name is the human-readable name of the method.
 	name: string
 	// Description is a detailed explanation of the method.
 	description: string
@@ -62,7 +62,7 @@ package schemas
 	documentation?: #URL
 	// Result is the status or outcome of an assessed method present. This field is present when Run is true.
 	result?: #Result @go(Result,optional=nillable)
-	// Address or location of the code providing logic for the assessment
+	 // Executor is a string identifier for the address or location for the specific assessment function to be used.
 	executor?: string
 }
 
