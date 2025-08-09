@@ -1,0 +1,30 @@
+evaluations:
+  - control-id: "OSPS-BR-06"
+    name: "Produce all released software assets with signatures and hashes"
+    message: "Security insights required for this assessment, but file not found"
+    result: Needs Review
+    assessments:
+      - requirement-id: "OSPS-BR-06.01"
+        description: "Determine if the project publishes SLSA provenance attestations"
+        result: Needs Review
+        message: "Security insights required for this assessment, but file not found"
+        # This show an example from
+        # https://github.com/revanite-io/pvtr-github-repo/blob/main/evaluation_plans/osps/build_release/evaluations.go#L174-L178
+        # where this support a multistep assessment
+        methods:
+          - id: has-made-release
+            name: "Review the project releases"
+            description: "Determine if the project has any releases that require review of release artifacts"
+            run: true
+            executor: github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
+            result: Passed
+          - id: has-security-insights-file
+            name: "Check the project for security-insights.yml"
+            description: "Determine if the project has a security-insights.yml in expected locations"
+            executor: github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
+            run: true
+            result: Needs Review
+          - id: insights-has-attestation
+            name: "Check the project for SLSA provenance attestation"
+            description: "Check security-insights.yml attestation for a SLSA provenance attestation"
+            run: false
