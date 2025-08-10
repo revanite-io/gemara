@@ -60,14 +60,24 @@ package schemas
 	"remediation-guide"?: #URL @go(RemediationGuide)
 	// URL to documentation that describes how the assessment method evaluates the control requirement.
 	documentation?: #URL
-	// Result is the status or outcome of an assessed method present. This field is present when Run is true.
-	result?: #Result @go(Result,optional=nillable)
 	 // Executor is a string identifier for the address or location for the specific assessment function to be used.
 	executor?: string
 }
 
+// Additional constraints on Assessment Method.
+#AssessmentMethod: {
+	run: false
+	result?: ("Not Run" | *null) @go(Result,optional=nillable)
+} | {
+	run:     true
+	result!: #ResultWhenRun
+}
+
+// Result is valid assessment outcomes before and after execution.
+#Result: #ResultWhenRun | "Not Run"
+
 // Result is the outcome of an assessment method when it is executed.
-#Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
+#ResultWhenRun: "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
 
 // Change is a struct that contains the data and functions associated with a single change to a target resource.
 #Change: {
@@ -82,7 +92,7 @@ package schemas
 	// Reverted is true if the change was successfully reverted and not applied again
 	reverted?: bool
 	// Error is used if any error occurred during the change
-	error?: _
+	error?: string
 	// Allowed may be disabled to prevent the change from being applied
 	allowed?: bool
 }
