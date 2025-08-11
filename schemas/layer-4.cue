@@ -22,45 +22,45 @@ package schemas
 	assessments: [...#Assessment]
 }
 
-// Assessment is a struct that contains the results of a single step within a ControlEvaluation.
+// Assessment provides all assessment results from evaluation of a single control requirement
 #Assessment: {
-	// RequirementID is the unique identifier for the requirement being tested
+	// RequirementID uniquely identifies the requirement being tested
 	"requirement-id": string @go(RequirementId)
-	// Applicability is a slice of identifier strings to determine when this test is applicable
+	// Applicability provides identifier strings to determine when this assessment is applicable
 	applicability: [...string]
-	// Description is a human-readable description of the test
+	// Description provides a detailed explanation of the assessment
 	description: string
-	// Result is the overall result of the assessment
+	// Result communicates whether the assessment has been run, and if so, the outcome(s)
 	result: #Result
-	// Message is the human-readable result of the test
+	// Message describes the result of the assessment
 	message: string
-	// Methods is a slice of assessment methods that were executed during the test
+	// Methods defines the assessment methods associated with the assessment
 	methods: [...#AssessmentMethod]
-	// MethodsExecuted is the number of assessment methods that were executed during the test
+	// MethodsExecuted is the number of assessment methods that were executed during the assessment
 	"methods-executed"?: int @go(MethodsExecuted)
-	// RunDuration is the time it took to run the test
+	// RunDuration is the time it took to run the assessment
 	"run-duration"?: string @go(RunDuration)
-	// Value is the object that was returned during the test
+	// Value is the object that was returned during the assessment
 	value?: _
-	// Changes is a map of changes that were made during the test
+	// Changes describes changes that were made during the assessment
 	changes?: [string]: #Change
 }
 
 // AssessmentMethod describes a specific procedure for evaluating a Layer 2 control requirement.
 #AssessmentMethod: {
-	// Id is the unique identifier of the assessment method being executed.
+	// Id uniquely identifies the assessment method being executed
 	id: string
-	// Name is the human-readable name of the method.
+	// Name provides a summary of the method
 	name: string
-	// Description is a detailed explanation of the method.
+	// Description provides a detailed explanation of the method
 	description: string
-	// Run is a boolean indicating whether the method was run or not. When run is true, result is expected to be present.
+	// Run is a boolean indicating whether the method was run or not. When run is true, result is expected to be present
 	run: bool
-	// Remediation guide is a URL to remediation guidance associated with the control's assessment requirement and this specific assessment method.
+	// RemediationGuide provides a URL with remediation guidance associated with the control's assessment requirement and this specific assessment method
 	"remediation-guide"?: #URL @go(RemediationGuide)
-	// URL to documentation that describes how the assessment method evaluates the control requirement.
+	// Documentation provides a URL to documentation that describes how the assessment method evaluates the control requirement
 	documentation?: #URL
-	 // Executor is a string identifier for the address or location for the specific assessment function to be used.
+	 // Executor provides the address or location for the specific assessment logic used
 	executor?: string
 }
 
@@ -73,10 +73,10 @@ package schemas
 	result!: #ResultWhenRun
 }
 
-// Result is valid assessment outcomes before and after execution.
+// Result describes valid assessment outcomes before and after execution.
 #Result: #ResultWhenRun | "Not Run"
 
-// Result is the outcome of an assessment method when it is executed.
+// Result describes the outcome(s) of an assessment method when it is executed.
 #ResultWhenRun: "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
 
 // Change is a struct that contains the data and functions associated with a single change to a target resource.
