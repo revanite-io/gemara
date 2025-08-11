@@ -4,21 +4,21 @@ package schemas
 	evaluations: [#ControlEvaluation, ...#ControlEvaluation]
 }
 
-// ControlEvaluation is a struct that contains all assessment results, organized by name.
+// ControlEvaluation provides all assessment results for a single control
 #ControlEvaluation: {
 	// Name is the name of the control being evaluated
 	name: string
-	// ControlID is the unique identifier for the control being evaluated
+	// ControlID uniquely identifies the control
 	"control-id": string
-	// Result is the overall result of the control evaluation
+	// Result communicates whether the evaluation has been run, and if so, the outcome(s)
 	result: #Result
-	// Message is the human-readable result of the final assessment to run in this evaluation
+	// Message describes the result of the evaluation
 	message: string
 	// CorruptedState is true if the control evaluation was interrupted and changes were not reverted
 	"corrupted-state"?: bool
-	// RemediationGuide is the URL to the documentation for this evaluation
+	// RemediationGuide provides a URL with guidance on how to remediate systems that fail control evaluation
 	"remediation-guide"?: string
-	// Assessments is a slice of pointers to Assessment objects to establish idempotency
+	// Assessments represents the collection of results from evaluation of each control requirement
 	assessments: [...#Assessment]
 }
 
