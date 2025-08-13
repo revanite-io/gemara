@@ -32,6 +32,7 @@ package schemas
 }
 
 #ControlFamily: {
+    id: string
     title: string
     description: string
     controls: [...#Control]

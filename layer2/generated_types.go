@@ -56,6 +56,8 @@ type MappingReference struct {
 }
 
 type ControlFamily struct {
+	Id	string	`json:"id" yaml:"id"`
+
 	Title	string	`json:"title" yaml:"title"`
 
 	Description	string	`json:"description" yaml:"description"`
