@@ -92,7 +92,17 @@ type AssessmentRequirement struct {
 type Mapping struct {
 	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
 
-	Identifiers	[]string	`json:"identifiers" yaml:"identifiers"`
+	Entries	[]MappingEntry	`json:"entries" yaml:"entries"`
+
+	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
+}
+
+type MappingEntry struct {
+	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
+
+	Strength	string	`json:"strength" yaml:"strength"`
+
+	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
 }
 
 type Threat struct {

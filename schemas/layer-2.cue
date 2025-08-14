@@ -70,9 +70,17 @@ package schemas
     url?: =~"^https?://[^\\s]+$"
 }
 
+
 #Mapping: {
-    "reference-id": string @go(ReferenceId)
-    identifiers: [...string]
+	"reference-id": string @go(ReferenceId)
+	entries: [...#MappingEntry]
+	remarks?: string
+}
+
+#MappingEntry: {
+	"reference-id": string @go(ReferenceId)
+	strength: string
+	remarks?: string
 }
 
 #AssessmentRequirement: {

@@ -164,8 +164,16 @@ type Part struct {
 type Mapping struct {
 	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
 
-	Identifiers	[]string	`json:"identifiers" yaml:"identifiers"`
+	Entries	[]MappingEntry	`json:"entries" yaml:"entries"`
 
 	// Adding context about this particular mapping and why it was mapped.
+	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
+}
+
+type MappingEntry struct {
+	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
+
+	Strength	string	`json:"strength" yaml:"strength"`
+
 	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
 }

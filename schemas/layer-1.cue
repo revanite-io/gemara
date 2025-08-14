@@ -118,8 +118,14 @@ package schemas
 
 #Mapping: {
 	"reference-id": string @go(ReferenceId)
-	identifiers: [...string]
+	entries: [...#MappingEntry]
 	// Adding context about this particular mapping and why it was mapped.
+	remarks?: string
+}
+
+#MappingEntry: {
+	"reference-id": string @go(ReferenceId)
+	strength: string
 	remarks?: string
 }
 
