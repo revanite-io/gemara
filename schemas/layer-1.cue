@@ -125,7 +125,7 @@ package schemas
 
 #MappingEntry: {
 	"reference-id": string @go(ReferenceId)
-	strength: int
+	strength: int & >=1 & <=10
 	remarks?: string
 }
 
