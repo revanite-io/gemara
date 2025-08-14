@@ -38,13 +38,13 @@ control-families:
           - reference-id: CCC
             entries:
               - reference-id: CCC.TH02
-                strength: strong
+                strength: 7
                 remarks: Data is Intercepted in Transit
         guideline-mappings:
           - reference-id: CSF
             entries:
               - reference-id: PR.DS-02
-                strength: strong
+                strength: 7
                 remarks: Data-in-transit is protected
           - reference-id: CCM
             entries:
@@ -53,7 +53,7 @@ control-families:
           - reference-id: ISO-27001
             entries:
               - reference-id: 2013 A.13.1.1
-                strength: strong
+                strength: 7
                 remarks: This control is closely related to 2013 A.13.1.1.
           - reference-id: NIST-800-53
             entries:
@@ -91,31 +91,31 @@ control-families:
           - reference-id: CCC
             entries:
               - reference-id: CCC.TH03
-                strength: strong
+                strength: 7
                 remarks: Deployment Region Network is Untrusted
         guideline-mappings:
           - reference-id: CCM
             entries:
               - reference-id: DSI-06
-                strength: strong
+                strength: 7
                 remarks: This control is closely related to DSI-06.
               - reference-id: DSI-08
-                strength: strong
+                strength: 7
                 remarks: This control is closely related to DSI-08.
           - reference-id: ISO-27001
             entries:
               - reference-id: 2013 A.11.1.1
-                strength: strong
+                strength: 7
                 remarks: This control is closely related to 2013 A.11.1.1.
           - reference-id: NIST-800-53
             entries:
               - reference-id: AC-6
-                strength: strong
+                strength: 7
                 remarks: This control is closely related to AC-6.
           - reference-id: CSF
             entries:
               - reference-id: PR.DS-1
-                strength: strong
+                strength: 7
                 remarks: Data-at-rest is protected
         assessment-requirements:
           - id: CCC.C06.TR01
@@ -149,26 +149,26 @@ control-families:
           - reference-id: CCC
             entries:
               - reference-id: CCC.TH06
-                strength: strong
+                strength: 7
                 remarks: Data is Lost or Corrupted
         guideline-mappings:
           - reference-id: CSF
             entries:
               - reference-id: PR.DS-5
-                strength: strong
+                strength: 7
                 remarks: Protections against data leaks are implemented
           - reference-id: CCM
             entries:
               - reference-id: BCR-08
-                strength: strong
+                strength: 7
                 remarks: Backup
           - reference-id: NIST-800-53
             entries:
               - reference-id: CP-2
-                strength: strong
+                strength: 7
                 remarks: Contingency plan
               - reference-id: CP-10
-                strength: strong
+                strength: 7
                 remarks: Information system recovery and reconstitution
         assessment-requirements:
           - id: CCC.C08.TR01
@@ -200,30 +200,30 @@ control-families:
           - reference-id: CCC
             entries:
               - reference-id: CCC.TH07
-                strength: strong
+                strength: 7
                 remarks: Logs are Tampered with or Deleted
               - reference-id: CCC.TH09
-                strength: strong
+                strength: 7
                 remarks: Logs or Monitoring Data are Read by Unauthorized Users
               - reference-id: CCC.TH04
-                strength: strong
+                strength: 7
                 remarks: Data is Replicated to Untrusted or External Locations
         guideline-mappings:
           - reference-id: CCM
             entries:
               - reference-id: LOG-02
-                strength: strong
+                strength: 7
                 remarks: Audit log protection
               - reference-id: LOG-04
-                strength: strong
+                strength: 7
                 remarks: Audit log access and accountability
               - reference-id: LOG-09
-                strength: strong
+                strength: 7
                 remarks: Log protection
           - reference-id: NIST-800-53
             entries:
               - reference-id: AU-9
-                strength: strong
+                strength: 7
                 remarks: Protection of audit information
         assessment-requirements:
           - id: CCC.C09.TR01
@@ -267,26 +267,26 @@ control-families:
           - reference-id: CCC
             entries:
               - reference-id: CCC.TH04
-                strength: strong
+                strength: 7
                 remarks: Data is Replicated to Untrusted or External Locations
         guideline-mappings:
           - reference-id: CSF
             entries:
               - reference-id: PR.DS-5
-                strength: strong
+                strength: 7
                 remarks: Protections against data leaks are implemented
           - reference-id: CCM
             entries:
               - reference-id: DSP-10
-                strength: strong
+                strength: 7
                 remarks: Sensitive data transfer
               - reference-id: DSP-19
-                strength: strong
+                strength: 7
                 remarks: Data location
           - reference-id: NIST-800-53
             entries:
               - reference-id: AC-4
-                strength: strong
+                strength: 7
                 remarks: Information flow enforcement
         assessment-requirements:
           - id: CCC.C10.TR01
