@@ -69,30 +69,45 @@ control-families:
           repository settings or accessing sensitive data.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - CC-G-1
+            entries:
+              - reference-id: CC-G-1
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2d
-              - 1.2e
-              - 1.2f
+            entries:
+              - reference-id: 1.2d
+                strength: 7
+              - reference-id: 1.2e
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - PR.A-02
-              - PR.A-05
+            entries:
+              - reference-id: PR.A-02
+                strength: 7
+              - reference-id: PR.A-05
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 347-352
-              - 333-858
-              - 152-725
-              - 201-246
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 347-352
+                strength: 7
+              - reference-id: 333-858
+                strength: 7
+              - reference-id: 152-725
+                strength: 7
+              - reference-id: 201-246
+                strength: 7
         assessment-requirements:
           - id: OSPS-AC-01.01
             text: |
@@ -118,25 +133,37 @@ control-families:
           limiting the permissions granted to new collaborators.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2f
+            entries:
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO2
-              - PO3.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO2
+                strength: 7
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - PR.AA-02
-              - PR.AA-05
+            entries:
+              - reference-id: PR.AA-02
+                strength: 7
+              - reference-id: PR.AA-05
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 802-056
-              - 368-633
-              - 152-725
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 802-056
+                strength: 7
+              - reference-id: 368-633
+                strength: 7
+              - reference-id: 152-725
+                strength: 7
         assessment-requirements:
           - id: OSPS-AC-02.01
             text: |
@@ -162,25 +189,35 @@ control-families:
           of the project's repository by preventing unintentional modification.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2f
+            entries:
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - PR.A-02
-              - PR.A-05
+            entries:
+              - reference-id: PR.A-02
+                strength: 7
+              - reference-id: PR.A-05
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 152-725
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 152-725
+                strength: 7
           - reference-id: ScCrd
-            identifiers:
-              - Branch-Protection 
+            entries:
+              - reference-id: Branch-Protection
+                strength: 7
         assessment-requirements:
           - id: OSPS-AC-03.01
             text: |
@@ -219,31 +256,47 @@ control-families:
           pipelines.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2d
-              - 1.2e
-              - 1.2f
+            entries:
+              - reference-id: 1.2d
+                strength: 7
+              - reference-id: 1.2e
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO2
-              - PO3.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO2
+                strength: 7
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - PR.AA-02
-              - PR.AA-05
+            entries:
+              - reference-id: PR.AA-02
+                strength: 7
+              - reference-id: PR.AA-05
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 347-507
-              - 263-284
-              - 123-124
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 347-507
+                strength: 7
+              - reference-id: 263-284
+                strength: 7
+              - reference-id: 123-124
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Producer - Choose an appropriate build platform
-              - Build platform - Isolation strength - Isolated
+            entries:
+              - reference-id: Producer - Choose an appropriate build platform
+                strength: 7
+              - reference-id: Build platform - Isolation strength - Isolated
+                strength: 7
         assessment-requirements:
           - id: OSPS-AC-04.01
             text: |
@@ -291,25 +344,35 @@ control-families:
           accessing privileged resources.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2f
+            entries:
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PO5.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PO5.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - PR.AA-02
+            entries:
+              - reference-id: PR.AA-02
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 357-352
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 357-352
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Choose an appropriate build platform
+            entries:
+              - reference-id: Choose an appropriate build platform
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-01.01
             text: |
@@ -341,27 +404,39 @@ control-families:
           over time.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - CC-B-5
-              - CC-B-6
-              - CC-B-7
+            entries:
+              - reference-id: CC-B-5
+                strength: 7
+              - reference-id: CC-B-6
+                strength: 7
+              - reference-id: CC-B-7
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2f
+            entries:
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PS1
-              - PS2
-              - PS3
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: PS3
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Follow a consistent build process
-              - Provenance generation- Exists, Authentic
+            entries:
+              - reference-id: Follow a consistent build process
+                strength: 7
+              - reference-id: Provenance generation- Exists, Authentic
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-02.01
             text: |
@@ -394,30 +469,45 @@ control-families:
           development, reducing the risk of eavesdropping or data tampering.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-11
+            entries:
+              - reference-id: B-B-11
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2d
-              - 1.2e
-              - 1.2f
-              - 1.2i
-              - 1.2j
-              - 1.2k
+            entries:
+              - reference-id: 1.2d
+                strength: 7
+              - reference-id: 1.2e
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
+              - reference-id: 1.2i
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
+              - reference-id: 1.2k
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PO5.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PO5.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 483-813
-              - 124-564
-              - 263-184
+            entries:
+              - reference-id: 483-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 263-184
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Choose an appropriate build platform
+            entries:
+              - reference-id: Choose an appropriate build platform
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-03.01
             text: |
@@ -452,42 +542,69 @@ control-families:
           improvements included in each release.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - CC-B-8
-              - CC-B-9
-              - Q-B-7
-              - A-B-1
-              - A-S-1
+            entries:
+              - reference-id: CC-B-8
+                strength: 7
+              - reference-id: CC-B-9
+                strength: 7
+              - reference-id: Q-B-7
+                strength: 7
+              - reference-id: A-B-1
+                strength: 7
+              - reference-id: A-S-1
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2d
-              - 1.2f
-              - 1.2h
-              - 1.2j
-              - 1.2l
-              - 2.5
+            entries:
+              - reference-id: 1.2d
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
+              - reference-id: 1.2h
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
+              - reference-id: 1.2l
+                strength: 7
+              - reference-id: 2.5
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PS1
-              - PS2
-              - PS3
-              - PW1.2
+            entries:
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: PS3
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 483-813
-              - 068-486
-              - 124-564
-              - 757-271
-              - 347-352
-              - 263-184
-              - 208-355
-              - 745-356
-              - 732-148
+            entries:
+              - reference-id: 483-813
+                strength: 7
+              - reference-id: 068-486
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 757-271
+                strength: 7
+              - reference-id: 347-352
+                strength: 7
+              - reference-id: 263-184
+                strength: 7
+              - reference-id: 208-355
+                strength: 7
+              - reference-id: 745-356
+                strength: 7
+              - reference-id: 732-148
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Choose an appropriate build platform
-              - Follow a consistent build process
-              - Build platform - Isolation strength - isolated
+            entries:
+              - reference-id: Choose an appropriate build platform
+                strength: 7
+              - reference-id: Follow a consistent build process
+                strength: 7
+              - reference-id: Build platform - Isolation strength - isolated
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-04.01
             text: |
@@ -515,32 +632,49 @@ control-families:
           issues or security vulnerabilities in the software.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - Q-B-2
+            entries:
+              - reference-id: Q-B-2
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
-              - 1.2d
-              - 1.2f
-              - 1.2h
-              - 1.2j
-              - 2.1
-              - 2.2
-              - 2.3
+            entries:
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: 1.2d
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
+              - reference-id: 1.2h
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
+              - reference-id: 2.1
+                strength: 7
+              - reference-id: 2.2
+                strength: 7
+              - reference-id: 2.3
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 347-352
-              - 715-334
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 347-352
+                strength: 7
+              - reference-id: 715-334
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Isolation strength - isolated
+            entries:
+              - reference-id: Isolation strength - isolated
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-05.01
             text: |
@@ -564,17 +698,23 @@ control-families:
           signed manifest including each asset's cryptographic hashes.
         guideline-mappings:
           - reference-id: SSDF
-            identifiers:
-              - PO5.2
-              - PS2
-              - PS2.1
-              - PW6.2
+            entries:
+              - reference-id: PO5.2
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: PS2.1
+                strength: 7
+              - reference-id: PW6.2
+                strength: 7
           - reference-id: ScCrd
-            identifiers:
-              - Signed-Releases
+            entries:
+              - reference-id: Signed-Releases
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Distribute provenance - Exists
+            entries:
+              - reference-id: Distribute provenance - Exists
+                strength: 7
         assessment-requirements:
           - id: OSPS-BR-06.01
             text: |
@@ -609,29 +749,41 @@ control-families:
           misconfiguration.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-1
-              - B-B-9
-              - B-S-7
-              - B-S-9
+            entries:
+              - reference-id: B-B-1
+                strength: 7
+              - reference-id: B-B-9
+                strength: 7
+              - reference-id: B-S-7
+                strength: 7
+              - reference-id: B-S-9
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
-              - 1.2j
-              - 1.2k
+            entries:
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
+              - reference-id: 1.2k
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PW1.2
+            entries:
+              - reference-id: PW1.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - GV.OC-04
-              - GV.OC-05
+            entries:
+              - reference-id: GV.OC-04
+                strength: 7
+              - reference-id: GV.OC-05
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.4
+            entries:
+              - reference-id: 4.1.4
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 036-275
+            entries:
+              - reference-id: 036-275
+                strength: 7
         assessment-requirements:
           - id: OSPS-DO-01.01
             text: |
@@ -656,33 +808,51 @@ control-families:
           defect fixes and improvements.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-3
-              - R-B-1+
-              - R-B-1
-              - R-B-2
-              - R-S-2
+            entries:
+              - reference-id: B-B-3
+                strength: 7
+              - reference-id: R-B-1+
+                strength: 7
+              - reference-id: R-B-1
+                strength: 7
+              - reference-id: R-B-2
+                strength: 7
+              - reference-id: R-S-2
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2c
-              - 1.2l
-              - 2.1
-              - 2.2
-              - 2.5
-              - 2.6
+            entries:
+              - reference-id: 1.2c
+                strength: 7
+              - reference-id: 1.2l
+                strength: 7
+              - reference-id: 2.1
+                strength: 7
+              - reference-id: 2.2
+                strength: 7
+              - reference-id: 2.5
+                strength: 7
+              - reference-id: 2.6
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PW1.2
-              - RV1.1
-              - RV2.1
-              - RV1.2
+            entries:
+              - reference-id: PW1.2
+                strength: 7
+              - reference-id: RV1.1
+                strength: 7
+              - reference-id: RV2.1
+                strength: 7
+              - reference-id: RV1.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - RS.MA-02
-              - GV.RM-05
+            entries:
+              - reference-id: RS.MA-02
+                strength: 7
+              - reference-id: GV.RM-05
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.2.1
+            entries:
+              - reference-id: 4.2.1
+                strength: 7
         assessment-requirements:
           - id: OSPS-DO-02.01
             text: |
@@ -711,21 +881,29 @@ control-families:
           unauthorized versions of the software.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - CC-B-8
+            entries:
+              - reference-id: CC-B-8
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2d
+            entries:
+              - reference-id: 1.2d
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO4.2
-              - PS.2
-              - PS2.1
-              - PS3.1
-              - RV1.3
+            entries:
+              - reference-id: PO4.2
+                strength: 7
+              - reference-id: PS.2
+                strength: 7
+              - reference-id: PS2.1
+                strength: 7
+              - reference-id: PS3.1
+                strength: 7
+              - reference-id: RV1.3
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 171-222
+            entries:
+              - reference-id: 171-222
+                strength: 7
         assessment-requirements:
           - id: OSPS-DO-03.01
             text: |
@@ -767,17 +945,17 @@ control-families:
           ensure the continued functionality and security of their systems.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - R-B-3
+            entries:
+              - reference-id: R-B-3
           - reference-id: SSDF
-            identifiers:
-              - PO4.2
-              - PS3.1
-              - RV1.3
+            entries:
+              - reference-id: PO4.2
+              - reference-id: PS3.1
+              - reference-id: RV1.3
           - reference-id: OC
-            identifiers:
-              - 4.1
-              - 4.3.1
+            entries:
+              - reference-id: 4.1
+              - reference-id: 4.3.1
         assessment-requirements:
           - id: OSPS-DO-04.01
             text: |
@@ -801,17 +979,23 @@ control-families:
           alternative solutions or alternative means of support for the project.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2c
-              - 2.6
+            entries:
+              - reference-id: 1.2c
+                strength: 7
+              - reference-id: 2.6
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.1
-              - 4.3.1
+            entries:
+              - reference-id: 4.1.1
+                strength: 7
+              - reference-id: 4.3.1
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 673-475
-              - 053-751
+            entries:
+              - reference-id: 673-475
+                strength: 7
+              - reference-id: 053-751
+                strength: 7
         assessment-requirements:
           - id: OSPS-DO-05.01
             text: |
@@ -836,18 +1020,23 @@ control-families:
           that are required necessary for the software to function.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - A-S-1
+            entries:
+              - reference-id: A-S-1
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 2.1
+            entries:
+              - reference-id: 2.1
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 613-286
-              - 053-751
+            entries:
+              - reference-id: 613-286
+                strength: 7
+              - reference-id: 053-751
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - Pinned-Dependencies
+            entries:
+              - reference-id: Pinned-Dependencies
+                strength: 7
         assessment-requirements:
           - id: OSPS-DO-06.01
             text: |
@@ -881,12 +1070,15 @@ control-families:
           they may have.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-S-3
-              - B-S-4
+            entries:
+              - reference-id: B-S-3
+                strength: 7
+              - reference-id: B-S-4
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 013-021
+            entries:
+              - reference-id: 013-021
+                strength: 7
         assessment-requirements:
           - id: OSPS-GV-01.01
             text: |
@@ -923,19 +1115,27 @@ control-families:
           or usage challenges.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-3
-              - B-B-12
+            entries:
+              - reference-id: B-B-3
+                strength: 7
+              - reference-id: B-B-12
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2l
-              - 2.3
-              - 2.4
-              - 2.6
+            entries:
+              - reference-id: 1.2l
+                strength: 7
+              - reference-id: 2.3
+                strength: 7
+              - reference-id: 2.4
+                strength: 7
+              - reference-id: 2.6
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PS3
-              - PW1.2
+            entries:
+              - reference-id: PS3
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
         assessment-requirements:
           - id: OSPS-GV-02.01
             text: |
@@ -960,22 +1160,31 @@ control-families:
           project's codebase.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-4
-              - B-S-3
-              - B-B-4+
-              - R-B-1
-              - Q-G-2
+            entries:
+              - reference-id: B-B-4
+                strength: 7
+              - reference-id: B-S-3
+                strength: 7
+              - reference-id: B-B-4+
+                strength: 7
+              - reference-id: R-B-1
+                strength: 7
+              - reference-id: Q-G-2
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2l
-              - 2.4
+            entries:
+              - reference-id: 1.2l
+                strength: 7
+              - reference-id: 2.4
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PW1.2
+            entries:
+              - reference-id: PW1.2
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.2
+            entries:
+              - reference-id: 4.1.2
+                strength: 7
         assessment-requirements:
           - id: OSPS-GV-03.01
             text: |
@@ -1014,34 +1223,34 @@ control-families:
           the risk of unauthorized access or misuse.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-5
-              - B-S-3
-              - B-B-4+
-              - Q-G-2
+            entries:
+              - reference-id: B-B-5
+              - reference-id: B-S-3
+              - reference-id: B-B-4+
+              - reference-id: Q-G-2
           - reference-id: CRA
-            identifiers:
-              - 1.2d
-              - 1.2l
-              - 2.1
-              - 2.2
-              - 2.5
-              - 2.6
+            entries:
+              - reference-id: 1.2d
+              - reference-id: 1.2l
+              - reference-id: 2.1
+              - reference-id: 2.2
+              - reference-id: 2.5
+              - reference-id: 2.6
           - reference-id: SSDF
-            identifiers:
-              - PO2
-              - PO3.2
+            entries:
+              - reference-id: PO2
+              - reference-id: PO3.2
           - reference-id: CSF
-            identifiers:
-              - PR.AA-02
-              - PR.AA-05
+            entries:
+              - reference-id: PR.AA-02
+              - reference-id: PR.AA-05
           - reference-id: OCRE
-            identifiers:
-              - 123-124
-              - 152-725
+            entries:
+              - reference-id: 123-124
+              - reference-id: 152-725
           - reference-id: OC
-            identifiers:
-              - 4.1.2     
+            entries:
+              - reference-id: 4.1.2     
         assessment-requirements:
           - id: OSPS-GV-04.01
             text: |
@@ -1080,18 +1289,25 @@ control-families:
           the risk of intellectual property disputes against the project.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-S-1
+            entries:
+              - reference-id: B-S-1
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
-              - 1.2f
+            entries:
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PS1
-              - PW1.2
-              - PW2.1
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
+              - reference-id: PW2.1
+                strength: 7
         assessment-requirements:
           - id: OSPS-LE-01.01
             text: |
@@ -1119,18 +1335,23 @@ control-families:
           how the code can be used and shared by others.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-6
-              - B-B-7
+            entries:
+              - reference-id: B-B-6
+                strength: 7
+              - reference-id: B-B-7
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
+            entries:
+              - reference-id: 1.2b
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - GV.OC-03
+            entries:
+              - reference-id: GV.OC-03
+                strength: 7
         assessment-requirements:
           - id: OSPS-LE-02.01
             text: |
@@ -1175,14 +1396,17 @@ control-families:
           and contributors how each can be used and shared.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-8
+            entries:
+              - reference-id: B-B-8
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
+            entries:
+              - reference-id: 1.2b
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
         assessment-requirements:
           - id: OSPS-LE-03.01
             text: |
@@ -1237,39 +1461,59 @@ control-families:
           promoting transparency and collaboration within the project community.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - CC-B-1
-              - CC-B-2
-              - CC-B-3
-              - R-B-5
+            entries:
+              - reference-id: CC-B-1
+                strength: 7
+              - reference-id: CC-B-2
+                strength: 7
+              - reference-id: CC-B-3
+                strength: 7
+              - reference-id: R-B-5
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2b
-              - 1.2f
-              - 1.2j
+            entries:
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PS1
-              - PS2
-              - PS3
-              - PW1.2
-              - PW2.1
+            entries:
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: PS3
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
+              - reference-id: PW2.1
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 757-271
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 757-271
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.AM-02
-              - ID.RA-01
-              - ID.RA-08
+            entries:
+              - reference-id: ID.AM-02
+                strength: 7
+              - reference-id: ID.RA-01
+                strength: 7
+              - reference-id: ID.RA-08
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.4
+            entries:
+              - reference-id: 4.1.4
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Build platform - isolation strength - Isolated
+            entries:
+              - reference-id: Build platform - isolation strength - Isolated
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-01.01
             text: |
@@ -1308,36 +1552,50 @@ control-families:
           dependencies.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - Q-S-8
-              - Q-S-9
+            entries:
+              - reference-id: Q-S-8
+              - reference-id: Q-S-9
           - reference-id: CRA
-            identifiers:
-              - 2.1
-              - 2.2
-              - 2.3
+            entries:
+              - reference-id: 2.1
+              - reference-id: 2.2
+              - reference-id: 2.3
           - reference-id: SSDF
-            identifiers:
-              - PO3.3
-              - PS1
-              - PS2
-              - PS3.2
-              - PW4
+            entries:
+              - reference-id: PO3.3
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: PS3.2
+                strength: 7
+              - reference-id: PW4
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.AM.01
-              - ID.AM-02
+            entries:
+              - reference-id: ID.AM.01
+                strength: 7
+              - reference-id: ID.AM-02
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.5
-              - 4.3.1
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
+              - reference-id: 4.3.1
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
-              - 673-475
-              - 863-521
-              - 613-286
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
+              - reference-id: 673-475
+                strength: 7
+              - reference-id: 863-521
+                strength: 7
+              - reference-id: 613-286
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-02.01
             text: |
@@ -1375,25 +1633,35 @@ control-families:
           checks.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2f
-              - 1.2k
+            entries:
+              - reference-id: 1.2f
+                strength: 7
+              - reference-id: 1.2k
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO4.1
-              - PS1
-              - PS2
-              - RV1.2
+            entries:
+              - reference-id: PO4.1
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: RV1.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.IM-02
+            entries:
+              - reference-id: ID.IM-02
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.5
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 263-184
-              - 253-452
+            entries:
+              - reference-id: 263-184
+                strength: 7
+              - reference-id: 253-452
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-03.01
             text: |
@@ -1420,23 +1688,33 @@ control-families:
           codebase.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2b
-              - 1.2f
+            entries:
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: 1.2f
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO3.2
-              - PO4.1
-              - PS1
-              - PS2
-              - RV1.2
+            entries:
+              - reference-id: PO3.2
+                strength: 7
+              - reference-id: PO4.1
+                strength: 7
+              - reference-id: PS1
+                strength: 7
+              - reference-id: PS2
+                strength: 7
+              - reference-id: RV1.2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
+            entries:
+              - reference-id: 486-813
+                strength: 7
+              - reference-id: 124-564
+                strength: 7
           - reference-id: SLSA
-            identifiers:
-              - Build platform - isolation strength - Isolated
+            entries:
+              - reference-id: Build platform - isolation strength - Isolated
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-04.01
             text: |
@@ -1476,16 +1754,16 @@ control-families:
           necessary files are stored in the repository.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2b
+            entries:
+              - reference-id: 1.2b
           - reference-id: SSDF
-            identifiers:
-              - PS1
-              - PS2
+            entries:
+              - reference-id: PS1
+              - reference-id: PS2
           - reference-id: OCRE
-            identifiers:
-              - 486-813
-              - 124-564
+            entries:
+              - reference-id: 486-813
+              - reference-id: 124-564
         assessment-requirements:
           - id: OSPS-QA-05.01
             text: |
@@ -1511,28 +1789,39 @@ control-families:
           source code repository which clearly documents when and how tests are run.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - Q-B-4
-              - Q-B-8
-              - Q-B-9
-              - Q-B-10
-              - Q-S-2
+            entries:
+              - reference-id: Q-B-4
+                strength: 7
+              - reference-id: Q-B-8
+                strength: 7
+              - reference-id: Q-B-9
+                strength: 7
+              - reference-id: Q-B-10
+                strength: 7
+              - reference-id: Q-S-2
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 2.3
+            entries:
+              - reference-id: 2.3
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PW8.2
+            entries:
+              - reference-id: PW8.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.AM-02
+            entries:
+              - reference-id: ID.AM-02
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.5
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 207-435
-              - 088-377
+            entries:
+              - reference-id: 207-435
+                strength: 7
+              - reference-id: 088-377
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-06.01
             text: |
@@ -1583,8 +1872,9 @@ control-families:
           branch.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-G-3
+            entries:
+              - reference-id: B-G-3
+                strength: 7
         assessment-requirements:
           - id: OSPS-QA-07.01
             text: |
@@ -1618,29 +1908,42 @@ control-families:
           assets.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-1
-              - B-S-7
-              - B-S-8
+            entries:
+              - reference-id: B-B-1
+                strength: 7
+              - reference-id: B-S-7
+                strength: 7
+              - reference-id: B-S-8
           - reference-id: CRA
-            identifiers:
-              - 1.2a
-              - 1.2b
+            entries:
+              - reference-id: 1.2a
+                strength: 7
+              - reference-id: 1.2b
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO.1
-              - PO.2
-              - PO3.2
+            entries:
+              - reference-id: PO.1
+                strength: 7
+              - reference-id: PO.2
+                strength: 7
+              - reference-id: PO3.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.AM-02
+            entries:
+              - reference-id: ID.AM-02
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 155-155
-              - 326-704
-              - 068-102
-              - 036-275
-              - 162-655
+            entries:
+              - reference-id: 155-155
+                strength: 7
+              - reference-id: 326-704
+                strength: 7
+              - reference-id: 068-102
+                strength: 7
+              - reference-id: 036-275
+                strength: 7
+              - reference-id: 162-655
+                strength: 7
         assessment-requirements:
           - id: OSPS-SA-01.01
             text: |
@@ -1667,29 +1970,41 @@ control-families:
           to use the software effectively.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-B-10
-              - B-S-7
+            entries:
+              - reference-id: B-B-10
+                strength: 7
+              - reference-id: B-S-7
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.2a
-              - 1.2b
+            entries:
+              - reference-id: 1.2a
+                strength: 7
+              - reference-id: 1.2b
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PW1.2
+            entries:
+              - reference-id: PW1.2
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - GV.OC-05
-              - ID.AM-01
+            entries:
+              - reference-id: GV.OC-05
+                strength: 7
+              - reference-id: ID.AM-01
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.4
+            entries:
+              - reference-id: 4.1.4
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 155-155
-              - 068-102
-              - 072-713
-              - 820-878
+            entries:
+              - reference-id: 155-155
+                strength: 7
+              - reference-id: 068-102
+                strength: 7
+              - reference-id: 072-713
+                strength: 7
+              - reference-id: 820-878
+                strength: 7
         assessment-requirements:
           - id: OSPS-SA-02.01
             text: |
@@ -1714,33 +2029,49 @@ control-families:
           of those threats from occurring.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-S-8
-              - S-G-1
+            entries:
+              - reference-id: B-S-8
+                strength: 7
+              - reference-id: S-G-1
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 1.1
-              - 1.2j
-              - 1.2k
-              - 2.2
+            entries:
+              - reference-id: 1.1
+                strength: 7
+              - reference-id: 1.2j
+                strength: 7
+              - reference-id: 1.2k
+                strength: 7
+              - reference-id: 2.2
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO5.1
-              - PW1.1
+            entries:
+              - reference-id: PO5.1
+                strength: 7
+              - reference-id: PW1.1
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - ID.RA-01
-              - ID.RA-04
-              - ID.RA-05
-              - DE.AE-07
+            entries:
+              - reference-id: ID.RA-01
+                strength: 7
+              - reference-id: ID.RA-04
+                strength: 7
+              - reference-id: ID.RA-05
+                strength: 7
+              - reference-id: DE.AE-07
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.5
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 068-102
-              - 154-031
-              - 888-770
+            entries:
+              - reference-id: 068-102
+                strength: 7
+              - reference-id: 154-031
+                strength: 7
+              - reference-id: 888-770
+                strength: 7
         assessment-requirements:
           - id: OSPS-SA-03.01
             text: |
@@ -1794,40 +2125,61 @@ control-families:
           transparently.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - R-B-6
-              - R-B-8
-              - R-S-2
-              - S-B-14
-              - S-B-15
+            entries:
+              - reference-id: R-B-6
+                strength: 7
+              - reference-id: R-B-8
+                strength: 7
+              - reference-id: R-S-2
+                strength: 7
+              - reference-id: S-B-14
+                strength: 7
+              - reference-id: S-B-15
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 2.1
-              - 2.2
-              - 2.3
-              - 2.6
-              - 2.7
-              - 2.8
+            entries:
+              - reference-id: "2.1"
+                strength: 7
+              - reference-id: "2.2"
+                strength: 7
+              - reference-id: "2.3"
+                strength: 7
+              - reference-id: "2.6"
+                strength: 7
+              - reference-id: "2.7"
+                strength: 7
+              - reference-id: "2.8"
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - RV1.3
+            entries:
+              - reference-id: RV1.3
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - GV.PO-01
-              - GV.PO-02
-              - ID.RA-01
-              - ID.RA-08
+            entries:
+              - reference-id: GV.PO-01
+                strength: 7
+              - reference-id: GV.PO-02
+                strength: 7
+              - reference-id: ID.RA-01
+                strength: 7
+              - reference-id: ID.RA-08
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.5
-              - 4.2.1
-              - 4.3.2
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
+              - reference-id: 4.2.1
+                strength: 7
+              - reference-id: 4.3.2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 887-750
+            entries:
+              - reference-id: 887-750
+                strength: 7
           - reference-id: ScCrd
-            identifiers:
-              - Security-policy          
+            entries:
+              - reference-id: Security-policy
+                strength: 7
         assessment-requirements:
           - id: OSPS-VM-01.01
             text: |
@@ -1854,31 +2206,43 @@ control-families:
           the report to the project.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-S-8
+            entries:
+              - reference-id: B-S-8
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 2.5
+            entries:
+              - reference-id: "2.5"
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - RV1.3
+            entries:
+              - reference-id: RV1.3
+                strength: 7
           - reference-id: CSF
-            identifiers:
-              - GV.PO-01
-              - GV.PO-02
-              - ID.RA-01
+            entries:
+              - reference-id: GV.PO-01
+                strength: 7
+              - reference-id: GV.PO-02
+                strength: 7
+              - reference-id: ID.RA-01
+                strength: 7
           - reference-id: OC
-            identifiers:
-              - 4.1.1
-              - 4.1.3
-              - 4.1.5
-              - 4.2.2
+            entries:
+              - reference-id: 4.1.1
+                strength: 7
+              - reference-id: 4.1.3
+                strength: 7
+              - reference-id: 4.1.5
+                strength: 7
+              - reference-id: 4.2.2
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 464-513
+            entries:
+              - reference-id: 464-513
+                strength: 7
           - reference-id: ScCrd
-            identifiers:
-              - Security-policy                  
+            entries:
+              - reference-id: Security-policy
+                strength: 7
         assessment-requirements:
           - id: OSPS-VM-02.01
             text: |
@@ -1900,15 +2264,19 @@ control-families:
           remediations to protect users of the project.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - R-B-7
+            entries:
+              - reference-id: R-B-7
+                strength: 7
           - reference-id: CRA
-            identifiers:
-              - 2.5
-              - 2.6
+            entries:
+              - reference-id: "2.5"
+                strength: 7
+              - reference-id: "2.6"
+                strength: 7
           - reference-id: OCRE
-            identifiers:
-              - 308-514
+            entries:
+              - reference-id: 308-514
+                strength: 7
         assessment-requirements:
           - id: OSPS-VM-03.01
             text: |
@@ -1932,23 +2300,28 @@ control-families:
           found within the project.
         guideline-mappings:
           - reference-id: CRA
-            identifiers:
-              - 1.2a
-              - 1.2b
-              - 2.1
-              - 2.4
-              - 2.6
+            entries:
+              - reference-id: 1.2a
+                strength: 7
+              - reference-id: 1.2b
+                strength: 7
+              - reference-id: "2.1"
+                strength: 7
+              - reference-id: "2.4"
+                strength: 7
+              - reference-id: "2.6"
+                strength: 7
           - reference-id: SSDF
-            identifiers:
-              - PO4.1
-              - RV2.1
-              - RV2.2
+            entries:
+              - reference-id: PO4.1
+              - reference-id: RV2.1
+              - reference-id: RV2.2
           - reference-id: CSF
-            identifiers:
-              - ID.RA-01
+            entries:
+              - reference-id: ID.RA-01
           - reference-id: OC
-            identifiers:
-              - 4.1.5
+            entries:
+              - reference-id: 4.1.5
         assessment-requirements:
           - id: OSPS-VM-04.01
             text: |
@@ -1990,62 +2363,85 @@ control-families:
           malicious.
         guideline-mappings:
           - reference-id: BPB
-            identifiers:
-              - B-S-8
-              - Q-B-12
-              - Q-S-9
-              - S-B-14
-              - S-B-15
-              - A-B-1
-              - A-B-3
-              - A-B-8
-              - A-S-1
+            entries:
+              - reference-id: B-S-8
+                strength: 7
+              - reference-id: Q-B-12
+                strength: 7
+              - reference-id: Q-S-9
+                strength: 7
+              - reference-id: S-B-14
+                strength: 7
+              - reference-id: S-B-15
+                strength: 7
+              - reference-id: A-B-1
+                strength: 7
+              - reference-id: A-B-3
+                strength: 7
+              - reference-id: A-B-8
+                strength: 7
+              - reference-id: A-S-1
           - reference-id: CRA
-            identifiers:
-              - 1.2a
-              - 1.2b
-              - 1.2c
-              - 2.1
-              - 2.2
-              - 2.3
-              - 2.4
+            entries:
+              - reference-id: 1.2a
+                strength: 7
+              - reference-id: 1.2b
+              - reference-id: 1.2c
+              - reference-id: 2.1
+              - reference-id: 2.2
+              - reference-id: 2.3
+              - reference-id: 2.4
           - reference-id: SSDF
-            identifiers:
-              - PO.4
-              - PW1.2
-              - PW8.1
-              - RV1.2
-              - RV1.3
-              - RV2.1
-              - RV 2.2
+            entries:
+              - reference-id: PO.4
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
+              - reference-id: PW8.1
+                strength: 7
+              - reference-id: RV1.2
+                strength: 7
+              - reference-id: RV1.3
+                strength: 7
+              - reference-id: RV2.1
+                strength: 7
+              - reference-id: RV 2.2
           - reference-id: CSF
-            identifiers:
-              - GV.RM-05
-              - GV.RM-06
-              - GV.PO-01
-              - GV.PO-02
-              - ID.RA-01
-              - ID.RA-08
-              - ID.IM-02
+            entries:
+              - reference-id: GV.RM-05
+                strength: 7
+              - reference-id: PV.RM-06
+                strength: 7
+              - reference-id: PV.PO-01
+                strength: 7
+              - reference-id: PV.PO-02
+                strength: 7
+              - reference-id: ID.RA-01
+                strength: 7
+              - reference-id: ID.RA-08
+                strength: 7
+              - reference-id: ID.IM-02
           - reference-id: OC
-            identifiers:
-              - 4.1.5
-              - 4.2.1
-              - 4.2.2
-              - 4.3.2
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
+              - reference-id: 4.2.1
+              - reference-id: 4.2.2
+              - reference-id: 4.3.2
           - reference-id: OCRE
-            identifiers:
-              - 155-155
-              - 124-564
-              - 757-271
-              - 464-513
-              - 611-158
-              - 207-435
-              - 088-377
+            entries:
+              - reference-id: 155-155
+                strength: 7
+              - reference-id: 124-564
+              - reference-id: 757-271
+              - reference-id: 464-513
+              - reference-id: 611-158
+              - reference-id: 207-435
+              - reference-id: 088-377
           - reference-id: ScCrd
-            identifiers:
-              - Security-policy  
-              - Vulnerabilities
+            entries:
+              - reference-id: Security-policy  
+              - reference-id: Vulnerabilities
         assessment-requirements:
           - id: OSPS-VM-05.01
             text: |
@@ -2094,62 +2490,85 @@ control-families:
           insecure software.
         guideline-mappings: 
           - reference-id: BPB
-            identifiers:
-              - B-S-8
-              - Q-B-12
-              - Q-S-9
-              - S-B-14
-              - S-B-15
-              - A-B-1
-              - A-B-3
-              - A-B-8
-              - A-S-1
+            entries:
+              - reference-id: B-S-8
+                strength: 7
+              - reference-id: Q-B-12
+                strength: 7
+              - reference-id: Q-S-9
+                strength: 7
+              - reference-id: S-B-14
+                strength: 7
+              - reference-id: S-B-15
+                strength: 7
+              - reference-id: A-B-1
+                strength: 7
+              - reference-id: A-B-3
+                strength: 7
+              - reference-id: A-B-8
+                strength: 7
+              - reference-id: A-S-1
           - reference-id: CRA
-            identifiers:
-              - 1.2a
-              - 1.2b
-              - 1.2c
-              - 2.1
-              - 2.2
-              - 2.3
-              - 2.4
+            entries:
+              - reference-id: 1.2a
+                strength: 7
+              - reference-id: 1.2b
+              - reference-id: 1.2c
+              - reference-id: 2.1
+              - reference-id: 2.2
+              - reference-id: 2.3
+              - reference-id: 2.4
           - reference-id: SSDF
-            identifiers:
-              - PO.4
-              - PW1.2
-              - PW8.1
-              - RV1.2
-              - RV1.3
-              - RV2.1
-              - RV 2.2
+            entries:
+              - reference-id: PO.4
+                strength: 7
+              - reference-id: PW1.2
+                strength: 7
+              - reference-id: PW8.1
+                strength: 7
+              - reference-id: RV1.2
+                strength: 7
+              - reference-id: RV1.3
+                strength: 7
+              - reference-id: RV2.1
+                strength: 7
+              - reference-id: RV 2.2
           - reference-id: CSF
-            identifiers:
-              - GV.RM-05
-              - GV.RM-06
-              - GV.PO-01
-              - GV.PO-02
-              - ID.RA-01
-              - ID.RA-08
-              - ID.IM-02
+            entries:
+              - reference-id: GV.RM-05
+                strength: 7
+              - reference-id: PV.RM-06
+                strength: 7
+              - reference-id: PV.PO-01
+                strength: 7
+              - reference-id: PV.PO-02
+                strength: 7
+              - reference-id: ID.RA-01
+                strength: 7
+              - reference-id: ID.RA-08
+                strength: 7
+              - reference-id: ID.IM-02
           - reference-id: OC
-            identifiers:
-              - 4.1.5
-              - 4.2.1
-              - 4.2.2
-              - 4.3.2
+            entries:
+              - reference-id: 4.1.5
+                strength: 7
+              - reference-id: 4.2.1
+              - reference-id: 4.2.2
+              - reference-id: 4.3.2
           - reference-id: OCRE
-            identifiers:
-              - 155-155
-              - 124-564
-              - 757-271
-              - 464-513
-              - 611-158
-              - 207-435
-              - 088-377
+            entries:
+              - reference-id: 155-155
+                strength: 7
+              - reference-id: 124-564
+              - reference-id: 757-271
+              - reference-id: 464-513
+              - reference-id: 611-158
+              - reference-id: 207-435
+              - reference-id: 088-377
           - reference-id: ScCrd
-            identifiers:
-              - Security-policy  
-              - Vulnerabilities
+            entries:
+              - reference-id: Security-policy  
+              - reference-id: Vulnerabilities
         assessment-requirements:
           - id: OSPS-VM-06.01
             text: |

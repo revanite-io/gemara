@@ -79,7 +79,7 @@ package schemas
 
 #MappingEntry: {
 	"reference-id": string @go(ReferenceId)
-	strength: string
+	strength: int
 	remarks?: string
 }
 
