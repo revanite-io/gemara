@@ -173,7 +173,7 @@ type Mapping struct {
 type MappingEntry struct {
 	ReferenceId	string	`json:"reference-id" yaml:"reference-id"`
 
-	Strength	string	`json:"strength" yaml:"strength"`
+	Strength	int64	`json:"strength" yaml:"strength"`
 
 	Remarks	string	`json:"remarks,omitempty" yaml:"remarks,omitempty"`
 }
