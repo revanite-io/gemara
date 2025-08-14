@@ -10,8 +10,8 @@ package schemas
 	"categories"?: [...#Category] @go(Categories)
 
 	// For inheriting from other guidance documents to create tailored documents/baselines
-	"shared-guidelines"?: [...#Mapping] @go(SharedGuidelines) @yaml("shared-guidelines,omitempty")
-	"shared-principles"?: [...#Mapping] @go(SharedPrinciples) @yaml("shared-principles,omitempty")
+	"imported-guidelines"?: [...#Mapping] @go(ImportedGuidelines) @yaml("imported-guidelines,omitempty")
+	"imported-principles"?: [...#Mapping] @go(ImportedPrinciples) @yaml("imported-principles,omitempty")
 }
 
 #Metadata: {

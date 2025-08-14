@@ -9,9 +9,9 @@ package schemas
     threats?: [...#Threat] @go(Threats)
     capabilities?: [...#Capability] @go(Capabilities)
 
-    "shared-controls"?: [...#Mapping] @go(SharedControls)
-    "shared-threats"?: [...#Mapping] @go(SharedThreats)
-    "shared-capabilities"?: [...#Mapping] @go(SharedCapabilities)
+    "imported-controls"?: [...#Mapping] @go(ImportedControls)
+    "imported-threats"?: [...#Mapping] @go(ImportedThreats)
+    "imported-capabilities"?: [...#Mapping] @go(ImportedCapabilities)
 }
 
 // Resuable types //

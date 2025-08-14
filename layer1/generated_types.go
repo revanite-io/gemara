@@ -11,9 +11,9 @@ type GuidanceDocument struct {
 	Categories	[]Category	`json:"categories,omitempty" yaml:"categories,omitempty"`
 
 	// For inheriting from other guidance documents to create tailored documents/baselines
-	SharedGuidelines	[]Mapping	`json:"shared-guidelines,omitempty" yaml:"shared-guidelines,omitempty"`
+	ImportedGuidelines	[]Mapping	`json:"imported-guidelines,omitempty" yaml:"imported-guidelines,omitempty"`
 
-	SharedPrinciples	[]Mapping	`json:"shared-principles,omitempty" yaml:"shared-principles,omitempty"`
+	ImportedPrinciples	[]Mapping	`json:"imported-principles,omitempty" yaml:"imported-principles,omitempty"`
 }
 
 type Metadata struct {

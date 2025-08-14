@@ -11,11 +11,11 @@ type Catalog struct {
 
 	Capabilities	[]Capability	`json:"capabilities,omitempty" yaml:"capabilities,omitempty"`
 
-	SharedControls	[]Mapping	`json:"shared-controls,omitempty" yaml:"shared-controls,omitempty"`
+	ImportedControls	[]Mapping	`json:"imported-controls,omitempty" yaml:"imported-controls,omitempty"`
 
-	SharedThreats	[]Mapping	`json:"shared-threats,omitempty" yaml:"shared-threats,omitempty"`
+	ImportedThreats	[]Mapping	`json:"imported-threats,omitempty" yaml:"imported-threats,omitempty"`
 
-	SharedCapabilities	[]Mapping	`json:"shared-capabilities,omitempty" yaml:"shared-capabilities,omitempty"`
+	ImportedCapabilities	[]Mapping	`json:"imported-capabilities,omitempty" yaml:"imported-capabilities,omitempty"`
 }
 
 // Resuable types //
