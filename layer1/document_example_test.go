@@ -105,27 +105,27 @@ func ExampleGuidanceDocument() {
 								Entries: []MappingEntry{
 									{
 										ReferenceId: "CA-7",
-										Strength:    "strong",
+										Strength:    7,
 										Remarks:     "This control is closely related to CA-7.",
 									},
 									{
 										ReferenceId: "IR-6",
-										Strength:    "moderate",
+										Strength:    5,
 										Remarks:     "This control has some relevance to IR-6.",
 									},
 									{
 										ReferenceId: "PM-26",
-										Strength:    "weak",
+										Strength:    3,
 										Remarks:     "This control is loosely related to PM-26.",
 									},
 									{
 										ReferenceId: "RA-5",
-										Strength:    "strong",
+										Strength:    7,
 										Remarks:     "This control is closely related to RA-5.",
 									},
 									{
 										ReferenceId: "SI-2",
-										Strength:    "moderate",
+										Strength:    5,
 										Remarks:     "This control has some relevance to SI-2.",
 									},
 								},
@@ -137,7 +137,7 @@ func ExampleGuidanceDocument() {
 								Entries: []MappingEntry{
 									{
 										ReferenceId: "TIMELINESS",
-										Strength:    "strong",
+										Strength:    7,
 										Remarks:     "This principle emphasizes the importance of timely feedback.",
 									},
 								},
