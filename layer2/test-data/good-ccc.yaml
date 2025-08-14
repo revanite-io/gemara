@@ -1,5 +1,6 @@
 metadata:
   id: FINOS-CCC
+  title: FINOS Cloud Control Catalog
   description: |
     FINOS CCC is an open standard project that describes consistent controls for
     compliant public cloud deployments in the financial services sector.
@@ -23,7 +24,8 @@ metadata:
       description: |
         Information is restricted to the organization.
 control-families:
-  - title: Data Protection
+  - id: data-protection
+    title: Data Protection
     description: |
       Data protection controls ensure that data is protected from unauthorized
       access, disclosure, and tampering. This includes encryption of data at
@@ -49,7 +51,9 @@ control-families:
           - reference-id: CCM
             entries:
               - reference-id: IVS-03
+                strength: 7
               - reference-id: IVS-07
+                strength: 7
           - reference-id: ISO-27001
             entries:
               - reference-id: 2013 A.13.1.1
@@ -58,7 +62,9 @@ control-families:
           - reference-id: NIST-800-53
             entries:
               - reference-id: SC-8
+                strength: 7
               - reference-id: SC-13
+                strength: 7
         assessment-requirements:
           - id: CCC.C01.TR01
             text: |
