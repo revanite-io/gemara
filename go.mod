@@ -1,4 +1,4 @@
-module github.com/revanite-io/gemara
+module github.com/ossf/gemara
 
 go 1.23.0
 
