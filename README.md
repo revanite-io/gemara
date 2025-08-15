@@ -7,6 +7,7 @@
   - [Layer 2: Controls](#layer-2-controls)
     - [Layer 2 Schema](#layer-2-schema)
   - [Layer 3: Policy](#layer-3-policy)
+    - [Layer 3 Schema](#layer-3-schema)
   - [Layer 4: Evaluation](#layer-4-evaluation)
     - [Layer 4 Schema](#layer-4-schema)
   - [Layer 5: Enforcement](#layer-5-enforcement)
