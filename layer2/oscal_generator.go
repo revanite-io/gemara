@@ -9,25 +9,33 @@ import (
 )
 
 // ToOSCAL converts a Catalog to OSCAL Catalog format.
+// TODO: Consider using go-oscal's UUID generation for future OSCAL elements:
+// - uuid.NewUUID() for random UUIDs in production
+// - uuid.NewUUIDWithSource() for deterministic UUIDs in testing
 func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
-	versionOSPS, controlHREF, catalogUUID, namespace string) (oscal.Catalog, error) {
-
+	version, controlHREF, catalogUUID, namespace string) (oscal.Catalog, error) {
 	now := time.Now()
+	lastModified := now
+	if c.Metadata.LastModified != "" {
+		if parsedTime, err := time.Parse(time.RFC3339, c.Metadata.LastModified); err == nil {
+			lastModified = parsedTime
+		}
+	}
 	oscalCatalog := oscal.Catalog{
 		UUID:   catalogUUID,
 		Groups: nil,
 		Metadata: oscal.Metadata{
-			LastModified: now,
+			LastModified: lastModified,
 			Links: &[]oscal.Link{
 				{
-					Href: fmt.Sprintf(controlHREF, versionOSPS, ""),
+					Href: fmt.Sprintf(controlHREF, version, ""),
 					Rel:  "canonical",
 				},
 			},
 			OscalVersion: "1.1.3",
 			Published:    &now,
 			Title:        c.Metadata.Title,
-			Version:      versionOSPS,
+			Version:      version,
 		},
 	}
 
@@ -58,7 +66,7 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 							Prose: ar.Recommendation,
 							Links: &[]oscal.Link{
 								{
-									Href: fmt.Sprintf(controlHREF, versionOSPS, ar.Id),
+									Href: fmt.Sprintf(controlHREF, version, ar.Id),
 									Rel:  "canonical",
 								},
 							},
@@ -74,7 +82,7 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 				ID:    control.Id,
 				Links: &[]oscal.Link{
 					{
-						Href: fmt.Sprintf(controlHREF, versionOSPS, strings.ToLower(control.Id)),
+						Href: fmt.Sprintf(controlHREF, version, strings.ToLower(control.Id)),
 						Rel:  "canonical",
 					},
 				},

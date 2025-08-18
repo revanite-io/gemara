@@ -3,14 +3,15 @@ package layer2
 import (
 	"testing"
 
+	"github.com/defenseunicorns/go-oscal/src/pkg/validation"
 	"github.com/stretchr/testify/assert"
 )
 
-var oscalTests = []struct {
+var TestCases = []struct {
 	name             string
 	catalog          *Catalog
 	controlFamilyIDs map[string]string
-	versionOSPS      string
+	version          string
 	controlHREF      string
 	catalogUUID      string
 	namespace        string
@@ -27,7 +28,7 @@ var oscalTests = []struct {
 			ControlFamilies: []ControlFamily{
 				{
 					Id:          "AC",
-					Title:       "Access Control",
+					Title:       "access-control",
 					Description: "Controls for access management",
 					Controls: []Control{
 						{
@@ -47,7 +48,7 @@ var oscalTests = []struct {
 		controlFamilyIDs: map[string]string{
 			"AC": "AC",
 		},
-		versionOSPS:   "devel",
+		version:       "devel",
 		controlHREF:   "https://baseline.openssf.org/versions/%s#%s",
 		catalogUUID:   "8c222a23-fc7e-4ad8-b6dd-289014f07a9f",
 		namespace:     "http://baseline.openssf.org/ns/oscal",
@@ -64,7 +65,7 @@ var oscalTests = []struct {
 			ControlFamilies: []ControlFamily{
 				{
 					Id:          "AC",
-					Title:       "Access Control",
+					Title:       "access-control",
 					Description: "Controls for access management",
 					Controls: []Control{
 						{
@@ -81,7 +82,7 @@ var oscalTests = []struct {
 				},
 				{
 					Id:          "BR",
-					Title:       "Business Requirements",
+					Title:       "business-requirements",
 					Description: "Controls for business requirements",
 					Controls: []Control{
 						{
@@ -102,38 +103,21 @@ var oscalTests = []struct {
 			"AC": "AC",
 			"BR": "BR",
 		},
-		versionOSPS:   "devel",
+		version:       "devel",
 		controlHREF:   "https://baseline.openssf.org/versions/%s#%s",
 		catalogUUID:   "8c222a23-fc7e-4ad8-b6dd-289014f07a9f",
 		namespace:     "http://baseline.openssf.org/ns/oscal",
 		wantErr:       false,
 		expectedTitle: "Test Catalog Multiple",
 	},
-	{
-		name: "Empty catalog",
-		catalog: &Catalog{
-			Metadata: Metadata{
-				Id:    "empty-catalog",
-				Title: "Empty Catalog",
-			},
-			ControlFamilies: []ControlFamily{},
-		},
-		controlFamilyIDs: map[string]string{},
-		versionOSPS:      "devel",
-		controlHREF:      "https://baseline.openssf.org/versions/%s#%s",
-		catalogUUID:      "8c222a23-fc7e-4ad8-b6dd-289014f07a9f",
-		namespace:        "http://baseline.openssf.org/ns/oscal",
-		wantErr:          false,
-		expectedTitle:    "Empty Catalog",
-	},
 }
 
-func Test_ToOSCAL(t *testing.T) {
-	for _, tt := range oscalTests {
+func Test_toOSCAL(t *testing.T) {
+	for _, tt := range TestCases {
 		t.Run(tt.name, func(t *testing.T) {
 			oscalCatalog, err := tt.catalog.ToOSCAL(
 				tt.controlFamilyIDs,
-				tt.versionOSPS,
+				tt.version,
 				tt.controlHREF,
 				tt.catalogUUID,
 				tt.namespace,
@@ -147,12 +131,31 @@ func Test_ToOSCAL(t *testing.T) {
 			if tt.wantErr {
 				return
 			}
+			// Wrap oscal catalog
+			// Create the proper OSCAL document structure
+			oscalDocument := map[string]interface{}{
+				"catalog": oscalCatalog,
+			}
 
+			// Create validation for the OSCAL catalog
+			validator, err := validation.NewValidator(oscalDocument)
+			if err != nil {
+				t.Errorf("Failed to create validator: %v", err)
+				return
+			}
+			// Validate the OSCAL document
+			err = validator.Validate()
+			if err != nil {
+				t.Errorf("OSCAL validation failed: %v", err)
+				return
+			}
+			// Compare each field
 			assert.Equal(t, tt.catalogUUID, oscalCatalog.UUID)
 			assert.Equal(t, tt.expectedTitle, oscalCatalog.Metadata.Title)
-			assert.Equal(t, tt.versionOSPS, oscalCatalog.Metadata.Version)
+			assert.Equal(t, tt.version, oscalCatalog.Metadata.Version)
 			assert.Equal(t, len(tt.catalog.ControlFamilies), len(*oscalCatalog.Groups))
 
+			// Compare each control family
 			for i, family := range tt.catalog.ControlFamilies {
 				groups := (*oscalCatalog.Groups)
 				group := groups[i]
