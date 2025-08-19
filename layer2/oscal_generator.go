@@ -43,7 +43,7 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 
 	for _, family := range c.ControlFamilies {
 		group := oscal.Group{
-			Class:    "OSPS",
+			Class:    "family",
 			Controls: nil,
 			ID:       controlFamilyIDs[family.Id],
 			Title:    family.Description,
