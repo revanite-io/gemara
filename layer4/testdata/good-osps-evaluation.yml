@@ -8,23 +8,23 @@ evaluations:
         description: "Determine if the project publishes SLSA provenance attestations"
         result: Needs Review
         message: "Security insights required for this assessment, but file not found"
-        # This show an example from
-        # https://github.com/revanite-io/pvtr-github-repo/blob/main/evaluation_plans/osps/build_release/evaluations.go#L174-L178
-        # where this support a multistep assessment
-        methods:
-          - id: has-made-release
-            name: "Review the project releases"
-            description: "Determine if the project has any releases that require review of release artifacts"
+        procedures:
+          # This show an example from
+          # https://github.com/revanite-io/pvtr-github-repo/blob/main/evaluation_plans/osps/build_release/evaluations.go#L174-L178
+          # where this support a multistep assessment
+          - id: "insight-has-attestation"
+            name: "Automated review of project declared attestations"
+            description: "Check the security insights file in the repository for SLSA attestations."
+            method: Test
             run: true
-            executor: github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
-            result: Passed
-          - id: has-security-insights-file
-            name: "Check the project for security-insights.yml"
-            description: "Determine if the project has a security-insights.yml in expected locations"
-            executor: github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
-            run: true
+            message: "Security insights required for this assessment, but file not found"
             result: Needs Review
-          - id: insights-has-attestation
-            name: "Check the project for SLSA provenance attestation"
-            description: "Check security-insights.yml attestation for a SLSA provenance attestation"
+            steps:
+              - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
+              - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
+              - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.insightsHasSlsaAttestation
+          - id: "release-has-attestation"
+            name: "Manual review of project release artifacts"
+            description: "Manually review the project release artifacts to find SLSA attestations."
+            method: Observation
             run: false

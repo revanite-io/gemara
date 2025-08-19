@@ -34,10 +34,8 @@ package schemas
 	result: #Result
 	// Message describes the result of the assessment
 	message: string
-	// Methods defines the assessment methods associated with the assessment
-	methods: [...#AssessmentMethod]
-	// MethodsExecuted is the number of assessment methods that were executed during the assessment
-	"methods-executed"?: int @go(MethodsExecuted)
+	// Procedures defines the assessment procedures associated with the assessment
+	procedures: [...#AssessmentProcedure]
 	// RunDuration is the time it took to run the assessment
 	"run-duration"?: string @go(RunDuration)
 	// Value is the object that was returned during the assessment
@@ -46,38 +44,47 @@ package schemas
 	changes?: [string]: #Change
 }
 
-// AssessmentMethod describes a specific procedure for evaluating a Layer 2 control requirement.
-#AssessmentMethod: {
-	// Id uniquely identifies the assessment method being executed
+// AssessmentProcedure describes a testing procedure for evaluating a Layer 2 control requirement.
+#AssessmentProcedure: {
+	// Id uniquely identifies the assessment procedure being executed
 	id: string
-	// Name provides a summary of the method
+	// Name provides a summary of the procedure
 	name: string
-	// Description provides a detailed explanation of the method
+	// Description provides a detailed explanation of the procedure
 	description: string
-	// Run is a boolean indicating whether the method was run or not. When run is true, result is expected to be present
+	// Method describe the high-level method used to determine the results of the procedure
+	method: #ProcedureMethod
+	// Run is a boolean indicating whether the procedure was run or not. When run is true, result is expected to be present
 	run: bool
-	// RemediationGuide provides a URL with remediation guidance associated with the control's assessment requirement and this specific assessment method
+	// RemediationGuide provides a URL with remediation guidance associated with the control's assessment requirement and this specific assessment procedure
 	"remediation-guide"?: #URL @go(RemediationGuide)
-	// Documentation provides a URL to documentation that describes how the assessment method evaluates the control requirement
+	// Documentation provides a URL to documentation that describes how the assessment procedure evaluates the control requirement
 	documentation?: #URL
-	 // Executor provides the address or location for the specific assessment logic used
-	executor?: string
+	// Steps provides the address for the assessment steps executed
+	"steps"?: [...string]
 }
 
-// Additional constraints on Assessment Method.
-#AssessmentMethod: {
+// Additional constraints on Assessment Procedure.
+#AssessmentProcedure: {
 	run: false
+	// Message describes the result of the procedure
+	message?: string
+	// Result communicates the outcome(s) of the procedure
 	result?: ("Not Run" | *null) @go(Result,optional=nillable)
 } | {
 	run:     true
+	message!: string
 	result!: #ResultWhenRun
 }
 
 // Result describes valid assessment outcomes before and after execution.
 #Result: #ResultWhenRun | "Not Run"
 
-// Result describes the outcome(s) of an assessment method when it is executed.
+// Result describes the outcome(s) of an assessment procedure when it is executed.
 #ResultWhenRun: "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
+
+// ProcedureMethod describes method options that can be used to determine the results
+#ProcedureMethod: "Test" | "Observation"
 
 // Change is a struct that contains the data and functions associated with a single change to a target resource.
 #Change: {

@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Assessment is a struct that contains the results of a single method within a ControlEvaluation.
+// Assessment is a struct that contains the results of a single step within a ControlEvaluation.
 type Assessment struct {
 	// RequirementID is the unique identifier for the requirement being tested
 	RequirementId string `yaml:"requirement-id"`
@@ -18,10 +18,8 @@ type Assessment struct {
 	Result Result `yaml:"result"`
 	// Message is the human-readable result of the test
 	Message string `yaml:"message"`
-	// Methods is a slice of assessment methods that were executed during the test
-	Methods []*AssessmentMethod `yaml:"methods"`
-	// MethodsExecuted is the number of assessment methods that were executed during the test
-	MethodsExecuted int `yaml:"methods-executed,omitempty"`
+	// Procedures is a slice of assessment procedures that were executed during the test
+	Procedures []*AssessmentProcedure `yaml:"procedures"`
 	// RunDuration is the time it took to run the test
 	RunDuration string `yaml:"run-duration,omitempty"`
 	// Value is the object that was returned during the test
@@ -31,32 +29,24 @@ type Assessment struct {
 }
 
 // NewAssessment creates a new Assessment object and returns a pointer to it.
-func NewAssessment(requirementId string, description string, applicability []string, methods []*AssessmentMethod) (*Assessment, error) {
+func NewAssessment(requirementId string, description string, applicability []string, procedures []*AssessmentProcedure) (*Assessment, error) {
 	a := &Assessment{
 		RequirementId: requirementId,
 		Description:   description,
 		Applicability: applicability,
 		Result:        NotRun,
-		Methods:       methods,
+		Procedures:    procedures,
 	}
 	err := a.precheck()
 	return a, err
 }
 
-// AddMethod queues a new method in the Assessment
-func (a *Assessment) AddMethod(method AssessmentMethod) {
-	a.Methods = append(a.Methods, &method)
+// AddProcedure queues a new procedure in the Assessment
+func (a *Assessment) AddProcedure(procedure AssessmentProcedure) {
+	a.Procedures = append(a.Procedures, &procedure)
 }
 
-func (a *Assessment) runMethod(targetData interface{}, method *AssessmentMethod) Result {
-	a.MethodsExecuted++
-	result, message := method.RunMethod(targetData, a.Changes)
-	a.Result = UpdateAggregateResult(a.Result, result)
-	a.Message = message
-	return result
-}
-
-// Run will execute all steps, halting if any method does not return layer4.Passed.
+// Run executes all assessment procedures using the test method.
 func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 	if a.Result != NotRun {
 		return a.Result
@@ -73,11 +63,15 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 			change.Allow()
 		}
 	}
-	for _, method := range a.Methods {
-		if a.runMethod(targetData, method) == Failed {
-			return Failed
+
+	for _, procedure := range a.Procedures {
+		if procedure.Method == TestMethod {
+			result := procedure.RunProcedure(targetData, a.Changes)
+			a.Result = UpdateAggregateResult(a.Result, result)
+			a.Message = procedure.Message
 		}
 	}
+
 	a.RunDuration = time.Since(startTime).String()
 	return a.Result
 }
@@ -118,10 +112,10 @@ func (a *Assessment) RevertChanges() (corrupted bool) {
 // precheck verifies that the assessment has all the required fields.
 // It returns an error if the assessment is not valid.
 func (a *Assessment) precheck() error {
-	if a.RequirementId == "" || a.Description == "" || a.Applicability == nil || a.Methods == nil || len(a.Applicability) == 0 || len(a.Methods) == 0 {
+	if a.RequirementId == "" || a.Description == "" || a.Applicability == nil || a.Procedures == nil || len(a.Applicability) == 0 || len(a.Procedures) == 0 {
 		message := fmt.Sprintf(
-			"expected all Assessment fields to have a value, but got: requirementId=len(%v), description=len=(%v), applicability=len(%v), methods=len(%v)",
-			len(a.RequirementId), len(a.Description), len(a.Applicability), len(a.Methods),
+			"expected all Assessment fields to have a value, but got: requirementId=len(%v), description=len=(%v), applicability=len(%v), procedures=len(%v)",
+			len(a.RequirementId), len(a.Description), len(a.Applicability), len(a.Procedures),
 		)
 		a.Result = Unknown
 		a.Message = message

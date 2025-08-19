@@ -1,8 +1,8 @@
 package layer4
 
-// This file is for reusable test data to help seed ideas and reduce duplication.
-
 import "errors"
+
+// This file is for reusable test data to help seed ideas and reduce duplication.
 
 var (
 	// Generic applicability for testing
@@ -23,18 +23,53 @@ var (
 	}
 
 	// Assessment Results
-	passingAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
+	passingAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
 		return Passed, ""
-	}}
-	failingAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
+	}
+	failingAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
 		return Failed, ""
-	}}
-	needsReviewAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
+	}
+	needsReviewAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
 		return NeedsReview, ""
-	}}
-	unknownAssessmentMethod = AssessmentMethod{Executor: func(interface{}, map[string]*Change) (Result, string) {
+	}
+	unknownAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
 		return Unknown, ""
-	}}
+	}
+
+	// AssessmentProcedures
+	failingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			failingAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	passingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	needsReviewProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+			needsReviewAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	badRevertPassingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+			passingAssessmentStep,
+			passingAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
 )
 
 func pendingChangePtr() *Change {
@@ -155,10 +190,7 @@ func failingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "failingAssessment()",
 		Description:   "failing assessment",
-		Methods: []*AssessmentMethod{
-			&failingAssessmentMethod,
-			&passingAssessmentMethod,
-		},
+		Procedures:    []*AssessmentProcedure{&failingProcedure},
 		Applicability: testingApplicability,
 	}
 }
@@ -171,9 +203,7 @@ func passingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "passingAssessment()",
 		Description:   "passing assessment",
-		Methods: []*AssessmentMethod{
-			&passingAssessmentMethod,
-		},
+		Procedures:    []*AssessmentProcedure{&passingProcedure},
 		Applicability: testingApplicability,
 		Changes: map[string]*Change{
 			"pendingChange": pendingChangePtr(),
@@ -189,14 +219,11 @@ func needsReviewAssessment() Assessment {
 	return Assessment{
 		RequirementId: "needsReviewAssessment()",
 		Description:   "needs review assessment",
-		Methods: []*AssessmentMethod{
-			&passingAssessmentMethod,
-			&needsReviewAssessmentMethod,
-			&passingAssessmentMethod,
-		},
+		Procedures:    []*AssessmentProcedure{&needsReviewProcedure},
 		Applicability: testingApplicability,
 	}
 }
+
 func unknownAssessmentPtr() *Assessment {
 	a := unknownAssessment()
 	return &a
@@ -206,10 +233,15 @@ func unknownAssessment() Assessment {
 	return Assessment{
 		RequirementId: "unknownAssessment()",
 		Description:   "unknown assessment",
-		Methods: []*AssessmentMethod{
-			&passingAssessmentMethod,
-			&unknownAssessmentMethod,
-			&passingAssessmentMethod,
+		Procedures: []*AssessmentProcedure{
+			{
+				Steps: []AssessmentStep{
+					passingAssessmentStep,
+					unknownAssessmentStep,
+					passingAssessmentStep,
+				},
+				Method: TestMethod,
+			},
 		},
 		Applicability: testingApplicability,
 	}
@@ -218,16 +250,11 @@ func unknownAssessment() Assessment {
 func badRevertPassingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "badRevertPassingAssessment()",
-		Description:    "bad revert passing assessment",
+		Description:   "bad revert passing assessment",
 		Changes: map[string]*Change{
 			"badRevertChange": badRevertChangePtr(),
 		},
-		Methods: []*AssessmentMethod{
-			&passingAssessmentMethod,
-			&passingAssessmentMethod,
-			&passingAssessmentMethod,
-			&passingAssessmentMethod,
-		},
+		Procedures:    []*AssessmentProcedure{&badRevertPassingProcedure},
 		Applicability: testingApplicability,
 	}
 }
