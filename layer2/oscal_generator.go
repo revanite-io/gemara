@@ -9,6 +9,13 @@ import (
 )
 
 // ToOSCAL converts a Catalog to OSCAL Catalog format.
+// Parameters:
+//   - controlFamilyIDs: Maps internal family IDs to OSCAL group IDs (e.g., "AC" -> "AC" for Access Control)
+//   - version: Catalog version string (e.g., "1.0.0", "devel")
+//   - controlHREF: URL template for control links, uses fmt.Sprintf(controlHREF, version, controlID)
+//   - catalogUUID: Unique identifier for the OSCAL catalog
+//   - namespace: XML namespace for OSCAL elements (e.g., "http://baseline.openssf.org/ns/oscal")
+//
 // TODO: Consider using go-oscal's UUID generation for future OSCAL elements:
 // - uuid.NewUUID() for random UUIDs in production
 // - uuid.NewUUIDWithSource() for deterministic UUIDs in testing
