@@ -11,6 +11,15 @@ import (
 )
 
 // ToOSCAL converts a Catalog to OSCAL Catalog format.
+// Parameters:
+//   - controlFamilyIDs: Maps your control family IDs to OSCAL group IDs.
+//     Example: {"AC": "AC", "BR": "BR"} maps "AC" family to "AC" OSCAL group
+//   - version: The version number for your catalog (e.g., "1.0.0", "devel")
+//   - controlHREF: URL template for linking to controls. Uses format: controlHREF(version, controlID)
+//     Example: "https://baseline.openssf.org/versions/%s#%s"
+//   - catalogUUID: A unique identifier for the OSCAL catalog (e.g., "123e4567-e89b-12d3-a456-426614174000")
+//   - namespace: The XML namespace for OSCAL elements (e.g., "http://baseline.openssf.org/ns/oscal")
+//
 // TODO: Consider using go-oscal's UUID generation for future OSCAL elements:
 // - uuid.NewUUID() for random UUIDs in production
 // - uuid.NewUUIDWithSource() for deterministic UUIDs in testing
