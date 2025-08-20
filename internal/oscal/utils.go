@@ -22,11 +22,23 @@ func NilIfEmpty[T any](slice *[]T) *[]T {
 	return slice
 }
 
-func NormalizeControl(input string) string {
+// NormalizeControl alters the given control id to conform to OSCAL constraints. If the control is a
+// subpart, the subpart identifier is extracted and returned.
+func NormalizeControl(controlId string, subPart bool) string {
 	re := regexp.MustCompile(`\((\d+)\)`)
-	replacedString := re.ReplaceAllString(input, ".$1")
-	finalString := strings.ToLower(replacedString)
-	return finalString
+	replacedString := re.ReplaceAllString(controlId, ".$1")
+	normalizedString := strings.ToLower(replacedString)
+
+	if subPart {
+		// This logic ensures the ids match the convention
+		// <control>_<type>.<subpart>
+		lastDotIndex := strings.LastIndex(normalizedString, ".")
+		if lastDotIndex != -1 && lastDotIndex < len(normalizedString)-1 {
+			return normalizedString[lastDotIndex+1:]
+		}
+	}
+
+	return normalizedString
 }
 
 func GetTimeWithFallback(timeStr string, fallback time.Time) time.Time {

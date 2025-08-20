@@ -85,7 +85,7 @@ func (g *GuidanceDocument) ToOSCALProfile(guidanceDocHref string, opts ...Genera
 
 		withIds := make([]string, 0, len(mapping.Entries))
 		for _, entry := range mapping.Entries {
-			withIds = append(withIds, oscalUtils.NormalizeControl(entry.ReferenceId))
+			withIds = append(withIds, oscalUtils.NormalizeControl(entry.ReferenceId, false))
 		}
 
 		selector := oscal.SelectControlById{WithIds: &withIds}
@@ -236,7 +236,7 @@ func (g *GuidanceDocument) createControlGroup(category Category, resourcesMap ma
 }
 
 func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap map[string]string) (oscal.Control, string) {
-	controlId := oscalUtils.NormalizeControl(guideline.Id)
+	controlId := oscalUtils.NormalizeControl(guideline.Id, false)
 
 	control := oscal.Control{
 		ID:    controlId,
@@ -247,7 +247,7 @@ func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap 
 	var links []oscal.Link
 	for _, also := range guideline.SeeAlso {
 		relatedLink := oscal.Link{
-			Href: fmt.Sprintf("#%s", oscalUtils.NormalizeControl(also)),
+			Href: fmt.Sprintf("#%s", oscalUtils.NormalizeControl(also, false)),
 			Rel:  "related",
 		}
 		links = append(links, relatedLink)
@@ -274,14 +274,7 @@ func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap 
 	var subSmts []oscal.Part
 	for _, part := range guideline.GuidelineParts {
 
-		partId := oscalUtils.NormalizeControl(part.Id)
-
-		// This logic ensures the ids match the convention
-		// <control>_<type>.<subpart>
-		lastDotIndex := strings.LastIndex(partId, ".")
-		if lastDotIndex != -1 && lastDotIndex < len(partId)-1 {
-			partId = partId[lastDotIndex+1:]
-		}
+		partId := oscalUtils.NormalizeControl(part.Id, true)
 
 		subSmt := oscal.Part{
 			Name:  "item",
@@ -326,7 +319,7 @@ func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap 
 		*control.Parts = append(*control.Parts, gdnPart)
 	}
 
-	return control, oscalUtils.NormalizeControl(guideline.BaseGuidelineID)
+	return control, oscalUtils.NormalizeControl(guideline.BaseGuidelineID, false)
 }
 
 func resourcesToBackMatter(resourceRefs []ResourceReference) *oscal.BackMatter {
