@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	oscalUtils "github.com/ossf/gemara/internal/oscal_exporter"
+	oscalUtils "github.com/ossf/gemara/internal/oscal"
 )
 
 func TestToOSCALCatalog(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 
 	oscal "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
 
-	oscalUtils "github.com/ossf/gemara/internal/oscal_exporter"
+	oscalUtils "github.com/ossf/gemara/internal/oscal"
 )
 
 // ToOSCAL converts a Catalog to OSCAL Catalog format.

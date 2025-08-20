@@ -1,4 +1,4 @@
-package oscal_exporter
+package oscalexporter
 
 import (
 	"fmt"

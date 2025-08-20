@@ -6,7 +6,7 @@ import (
 	oscal "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
 	"github.com/stretchr/testify/assert"
 
-	oscalUtils "github.com/ossf/gemara/internal/oscal_exporter"
+	oscalUtils "github.com/ossf/gemara/internal/oscal"
 )
 
 var TestCases = []struct {
