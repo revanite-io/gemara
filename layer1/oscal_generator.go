@@ -155,7 +155,7 @@ func (g *GuidanceDocument) ToOSCALCatalog(opts ...GenerateOption) (oscal.Catalog
 	catalog := oscal.Catalog{
 		UUID:       uuid.NewUUID(),
 		Metadata:   metadata,
-		Groups:     oscalUtils.NilIfEmpty(&groups),
+		Groups:     oscalUtils.NilIfEmpty(groups),
 		BackMatter: backmatter,
 	}
 	return catalog, nil
@@ -231,7 +231,7 @@ func (g *GuidanceDocument) createControlGroup(category Category, resourcesMap ma
 		controls = append(controls, control)
 	}
 
-	group.Controls = oscalUtils.NilIfEmpty(&controls)
+	group.Controls = oscalUtils.NilIfEmpty(controls)
 	return group
 }
 
@@ -264,7 +264,7 @@ func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap 
 		}
 		links = append(links, externalLink)
 	}
-	control.Links = oscalUtils.NilIfEmpty(&links)
+	control.Links = oscalUtils.NilIfEmpty(links)
 
 	// Top-level statements are required for controls per OSCAL guidance
 	smtPart := oscal.Part{
@@ -296,7 +296,7 @@ func (g *GuidanceDocument) guidelineToControl(guideline Guideline, resourcesMap 
 
 		subSmts = append(subSmts, subSmt)
 	}
-	smtPart.Parts = oscalUtils.NilIfEmpty(&subSmts)
+	smtPart.Parts = oscalUtils.NilIfEmpty(subSmts)
 	control.Parts = &[]oscal.Part{smtPart}
 
 	if guideline.Objective != "" {

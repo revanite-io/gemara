@@ -1,4 +1,4 @@
-package oscalexporter
+package oscal
 
 import (
 	"testing"

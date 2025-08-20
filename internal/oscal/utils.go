@@ -1,4 +1,4 @@
-package oscalexporter
+package oscal
 
 import (
 	"fmt"
@@ -7,6 +7,7 @@ import (
 	"time"
 
 	oscalValidation "github.com/defenseunicorns/go-oscal/src/pkg/validation"
+
 	oscal "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
 )
 
@@ -15,19 +16,19 @@ const (
 	GemaraNamespace = "https://github.com/ossf/gemara/ns/oscal"
 )
 
-func NilIfEmpty[T any](slice *[]T) *[]T {
-	if slice == nil || len(*slice) == 0 {
+// NilIfEmpty returns a pointer to the slice, or nil if empty.
+func NilIfEmpty[T any](slice []T) *[]T {
+	if len(slice) == 0 {
 		return nil
 	}
-	return slice
+	return &slice
 }
 
 // NormalizeControl alters the given control id to conform to OSCAL constraints. If the control is a
 // subpart, the subpart identifier is extracted and returned.
 func NormalizeControl(controlId string, subPart bool) string {
 	re := regexp.MustCompile(`\((\d+)\)`)
-	replacedString := re.ReplaceAllString(controlId, ".$1")
-	normalizedString := strings.ToLower(replacedString)
+	normalizedString := strings.ToLower(re.ReplaceAllString(controlId, ".$1"))
 
 	if subPart {
 		// This logic ensures the ids match the convention
@@ -42,20 +43,22 @@ func NormalizeControl(controlId string, subPart bool) string {
 }
 
 func GetTimeWithFallback(timeStr string, fallback time.Time) time.Time {
-	if parsedTime := GetTime(timeStr); parsedTime != nil {
-		return *parsedTime
+	if t := GetTime(timeStr); t != nil {
+		return *t
 	}
 	return fallback
 }
 
+// GetTime parses a RFC3339 time string. Returns pointer to time if valid, else nil.
 func GetTime(timeStr string) *time.Time {
 	if timeStr == "" {
 		return nil
 	}
-	if parsedTime, err := time.Parse(time.RFC3339, timeStr); err == nil {
-		return &parsedTime
+	t, err := time.Parse(time.RFC3339, timeStr)
+	if err != nil {
+		return nil
 	}
-	return nil
+	return &t
 }
 
 func Validate(oscalModels oscal.OscalModels) error {
