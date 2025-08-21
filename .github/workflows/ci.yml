@@ -22,7 +22,9 @@ jobs:
         uses: cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1 # v1.0.1
         with:
           version: "v0.13.2"
-      - name: Validate the layer 2 schema
+      - name: Validate the formatting of cue schema files
+        run: make cuefmtcheck
+      - name: Validate the syntax of cue schema files
         run: make lintcue
       - name: Validate the security-insights file
         run: make lintinsights

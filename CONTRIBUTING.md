@@ -19,8 +19,7 @@ PRs MUST meet the following criteria:
 
 ### Useful make tasks when making schema changes
 
-Use `make lintcue` to validate the syntax of your changes. If you forget to do this before opening a PR and your changes are invalid, the [CI workflow](.github/workflows/ci.yml) will fail and alert you. Use `make cuegen` to regenerate `go` types based on your changes.
-
+Use `cue fmt ./schemas` and `make cuefmtcheck` to ensure proper formatting and `make lintcue` to validate the syntax of your changes. If you forget to do this before opening a PR and your changes are invalid, the [CI workflow](.github/workflows/ci.yml) will fail and alert you. Use `make cuegen` to regenerate `go` types based on your changes.
 
 ### Generated Code
 

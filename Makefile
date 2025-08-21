@@ -1,5 +1,4 @@
-all: tidy test testcov lintcue cuegen dirtycheck lintinsights
-	# Runs all main targets
+all: tidy test testcov cuefmtcheck lintcue cuegen dirtycheck lintinsights
 
 tidy:
 	@echo "  >  Tidying go.mod ..."
@@ -15,6 +14,11 @@ testcov:
 	@go test ./... -coverprofile coverage.out -covermode count
 	@sleep 2 # Sleeping to allow for coverage.out file to get generated
 	@echo "Current test coverage : $(shell go tool cover -func=coverage.out | grep total | grep -Eo '[0-9]+\.[0-9]+') %"
+
+# Verify CUE formatting in ./schemas
+cuefmtcheck:
+	@echo "  >  Verifying CUE formatting in ./schemas ..."
+	@cue fmt --check --files ./schemas
 
 lintcue:
 	@echo "  >  Linting CUE files ..."
