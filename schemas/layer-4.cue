@@ -2,14 +2,14 @@ package schemas
 
 #EvaluationOutput: {
 	"evaluation-set": [#ControlEvaluation, ...#ControlEvaluation] @go(EvaluationSet)
-    ...
+	...
 }
 
 #ControlEvaluation: {
-	name: string
-	"control-id": string @go(ControlId)
-	result: #Result
-	message: string
+	name:              string
+	"control-id":      string @go(ControlId)
+	result:            #Result
+	message:           string
 	"corrupted-state": bool @go(CorruptedState)
 	assessments: [...#Assessment]
 }
@@ -18,26 +18,26 @@ package schemas
 	"requirement-id": string @go(RequirementId)
 	applicability: [...string]
 	description: string
-	result: #Result
-	message: string
+	result:      #Result
+	message:     string
 	steps: [...#AssessmentStep]
-	"steps-executed"?: int @go(StepsExecuted)
-	"run-duration"?: string @go(RunDuration)
-	value?: _
-	changes?: { [string]: #Change }
+	"steps-executed"?: int    @go(StepsExecuted)
+	"run-duration"?:   string @go(RunDuration)
+	value?:            _
+	changes?: {[string]: #Change}
 	recommendation?: string
 }
 
 #AssessmentStep: string
 
 #Change: {
-	"target-name": string @go(TargetName)
-	description: string
+	"target-name":    string @go(TargetName)
+	description:      string
 	"target-object"?: _ @go(TargetObject)
-	applied?: bool
-	reverted?: bool
-	error?: string
-	allowed?: bool
+	applied?:         bool
+	reverted?:        bool
+	error?:           string
+	allowed?:         bool
 }
 
 #Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
