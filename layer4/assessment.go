@@ -31,7 +31,7 @@ type Assessment struct {
 	Value interface{} `yaml:"value,omitempty"`
 	// Changes is a slice of changes that were made during the test
 	Changes map[string]*Change `yaml:"changes,omitempty"`
-	// Recommendation should optionally present the corresponding text from a layer 2 assessment requirement
+	// Recommendation is a string to aid users in remediation, such as the text from a layer 2 assessment requirement
 	Recommendation string `yaml:"recommendation,omitempty"`
 }
 
