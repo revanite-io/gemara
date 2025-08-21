@@ -1,8 +1,8 @@
 package layer4
 
-// This file is for reusable test data to help seed ideas and reduce duplication.
-
 import "errors"
+
+// This file is for reusable test data to help seed ideas and reduce duplication.
 
 var (
 	// Generic applicability for testing
@@ -34,6 +34,41 @@ var (
 	}
 	unknownAssessmentStep = func(interface{}, map[string]*Change) (Result, string) {
 		return Unknown, ""
+	}
+
+	// AssessmentProcedures
+	failingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			failingAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	passingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	needsReviewProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+			needsReviewAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
+	}
+
+	badRevertPassingProcedure = AssessmentProcedure{
+		Steps: []AssessmentStep{
+			passingAssessmentStep,
+			passingAssessmentStep,
+			passingAssessmentStep,
+			passingAssessmentStep,
+		},
+		Method: TestMethod,
 	}
 )
 
@@ -155,10 +190,7 @@ func failingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "failingAssessment()",
 		Description:   "failing assessment",
-		Steps: []AssessmentStep{
-			failingAssessmentStep,
-			passingAssessmentStep,
-		},
+		Procedures:    []*AssessmentProcedure{&failingProcedure},
 		Applicability: testingApplicability,
 	}
 }
@@ -171,9 +203,7 @@ func passingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "passingAssessment()",
 		Description:   "passing assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-		},
+		Procedures:    []*AssessmentProcedure{&passingProcedure},
 		Applicability: testingApplicability,
 		Changes: map[string]*Change{
 			"pendingChange": pendingChangePtr(),
@@ -189,14 +219,11 @@ func needsReviewAssessment() Assessment {
 	return Assessment{
 		RequirementId: "needsReviewAssessment()",
 		Description:   "needs review assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			needsReviewAssessmentStep,
-			passingAssessmentStep,
-		},
+		Procedures:    []*AssessmentProcedure{&needsReviewProcedure},
 		Applicability: testingApplicability,
 	}
 }
+
 func unknownAssessmentPtr() *Assessment {
 	a := unknownAssessment()
 	return &a
@@ -206,10 +233,15 @@ func unknownAssessment() Assessment {
 	return Assessment{
 		RequirementId: "unknownAssessment()",
 		Description:   "unknown assessment",
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			unknownAssessmentStep,
-			passingAssessmentStep,
+		Procedures: []*AssessmentProcedure{
+			{
+				Steps: []AssessmentStep{
+					passingAssessmentStep,
+					unknownAssessmentStep,
+					passingAssessmentStep,
+				},
+				Method: TestMethod,
+			},
 		},
 		Applicability: testingApplicability,
 	}
@@ -222,12 +254,7 @@ func badRevertPassingAssessment() Assessment {
 		Changes: map[string]*Change{
 			"badRevertChange": badRevertChangePtr(),
 		},
-		Steps: []AssessmentStep{
-			passingAssessmentStep,
-			passingAssessmentStep,
-			passingAssessmentStep,
-			passingAssessmentStep,
-		},
+		Procedures:    []*AssessmentProcedure{&badRevertPassingProcedure},
 		Applicability: testingApplicability,
 	}
 }

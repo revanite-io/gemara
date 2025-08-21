@@ -21,13 +21,13 @@ type ControlEvaluation struct {
 	CorruptedState bool `yaml:"corrupted-state"`
 	// RemediationGuide is the URL to the documentation for this evaluation
 	RemediationGuide string `yaml:"remediation-guide"`
-	// Assessments is a map of pointers to Assessment objects to establish idempotency
+	// Assessments is a slice of pointers to Assessment objects to establish idempotency
 	Assessments []*Assessment `yaml:"assessments"`
 }
 
 // AddAssessment creates a new Assessment object and adds it to the ControlEvaluation.
-func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (assessment *Assessment) {
-	assessment, err := NewAssessment(requirementId, description, applicability, steps)
+func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, procedures []*AssessmentProcedure) (assessment *Assessment) {
+	assessment, err := NewAssessment(requirementId, description, applicability, procedures)
 	if err != nil {
 		c.Result = Failed
 		c.Message = err.Error()
@@ -36,8 +36,8 @@ func (c *ControlEvaluation) AddAssessment(requirementId string, description stri
 	return
 }
 
-// Evaluate runs each step in each assessment, updating the relevant fields on the control evaluation.
-// It will halt if a step returns a failed result. The targetData is the data that the assessment will be run against.
+// Evaluate runs each test procedure in each assessment, updating the relevant fields on the control evaluation.
+// It will halt an assessment if a procedure step returns a failed result. The targetData is the data that the assessment will be run against.
 // The userApplicability is a slice of strings that determine when the assessment is applicable. The changesAllowed
 // determines whether the assessment is allowed to execute its changes.
 func (c *ControlEvaluation) Evaluate(targetData interface{}, userApplicability []string, changesAllowed bool) {

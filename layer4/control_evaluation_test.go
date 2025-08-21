@@ -137,16 +137,16 @@ func TestEvaluate(t *testing.T) {
 	}
 }
 
-func TestAddAssesment(t *testing.T) {
+func TestAddAssessment(t *testing.T) {
 
-	controlEvaluationTestData[0].control.AddAssessment("test", "test", []string{}, []AssessmentStep{})
+	controlEvaluationTestData[0].control.AddAssessment("test", "test", []string{}, []*AssessmentProcedure{})
 
 	if controlEvaluationTestData[0].control.Result != Failed {
 		t.Errorf("Expected Result to be Failed, but it was %v", controlEvaluationTestData[0].control.Result)
 	}
 
-	if controlEvaluationTestData[0].control.Message != "expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), steps=len(0)" {
-		t.Errorf("Expected error message to be 'expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), steps=len(0)', but instead it was '%v'", controlEvaluationTestData[0].control.Message)
+	if controlEvaluationTestData[0].control.Message != "expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), procedures=len(0)" {
+		t.Errorf("Expected error message to be 'expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), procedures=len(0)', but instead it was '%v'", controlEvaluationTestData[0].control.Message)
 	}
 
 }
