@@ -1,7 +1,7 @@
 package schemas
 
 #EvaluationOutput: {
-	"evaluation-set": [...#ControlEvaluation] @go(EvaluationSet)
+	"evaluation-set": [#ControlEvaluation, ...#ControlEvaluation] @go(EvaluationSet)
     ...
 }
 

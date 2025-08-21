@@ -62,7 +62,7 @@ package schemas
 }
 
 #Risk: {
-	title:        string
+	title:       string
 	description: string
 }
 
@@ -125,8 +125,8 @@ package schemas
 
 #MappingEntry: {
 	"reference-id": string @go(ReferenceId)
-	strength: int & >=1 & <=10
-	remarks?: string
+	strength:       int & >=1 & <=10
+	remarks?:       string
 }
 
 // ResourceReferences defines a references to an external document (possibly unstructured)

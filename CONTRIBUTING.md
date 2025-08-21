@@ -2,9 +2,9 @@
 
 The project welcomes your contributions whether they be:
 
-* reporting an [issue](https://github.com/revanite-io/sci/issues/new/choose)
-* making a code contribution ([create a fork](https://github.com/revanite-io/sci/fork))
-* updating our [docs](https://github.com/revanite-io/sci/blob/main/README.md)
+* reporting an [issue](https://github.com/ossf/gemara/issues/new/choose)
+* making a code contribution ([create a fork](https://github.com/ossf/gemara/fork))
+* updating our [docs](https://github.com/ossf/gemara/blob/main/README.md)
 
 ## PR guidelines
 
@@ -19,8 +19,7 @@ PRs MUST meet the following criteria:
 
 ### Useful make tasks when making schema changes
 
-Use `make lintcue` to validate the syntax of your changes. If you forget to do this before opening a PR and your changes are invalid, the [CI workflow](.github/workflows/ci.yml) will fail and alert you. Use `make cuegen` to regenerate `go` types based on your changes.
-
+Use `cue fmt ./schemas` and `make cuefmtcheck` to ensure proper formatting and `make lintcue` to validate the syntax of your changes. If you forget to do this before opening a PR and your changes are invalid, the [CI workflow](.github/workflows/ci.yml) will fail and alert you. Use `make cuegen` to regenerate `go` types based on your changes.
 
 ### Generated Code
 

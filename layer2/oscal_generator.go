@@ -5,37 +5,39 @@ import (
 	"strings"
 	"time"
 
+	"github.com/defenseunicorns/go-oscal/src/pkg/uuid"
 	oscal "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
+
+	oscalUtils "github.com/ossf/gemara/internal/oscal"
 )
 
 // ToOSCAL converts a Catalog to OSCAL Catalog format.
-// TODO: Consider using go-oscal's UUID generation for future OSCAL elements:
-// - uuid.NewUUID() for random UUIDs in production
-// - uuid.NewUUIDWithSource() for deterministic UUIDs in testing
-func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
-	version, controlHREF, catalogUUID, namespace string) (oscal.Catalog, error) {
+// Parameters:
+//   - controlHREF: URL template for linking to controls. Uses format: controlHREF(version, controlID)
+//     Example: "https://baseline.openssf.org/versions/%s#%s"
+//
+// The function automatically:
+//   - Uses the catalog's internal version from Metadata.Version
+//   - Uses the ControlFamily.Id as the OSCAL group ID
+//   - Generates a unique UUID for the catalog
+func (c *Catalog) ToOSCAL(controlHREF string) (oscal.Catalog, error) {
 	now := time.Now()
-	lastModified := now
-	if c.Metadata.LastModified != "" {
-		if parsedTime, err := time.Parse(time.RFC3339, c.Metadata.LastModified); err == nil {
-			lastModified = parsedTime
-		}
-	}
+
 	oscalCatalog := oscal.Catalog{
-		UUID:   catalogUUID,
+		UUID:   uuid.NewUUID(),
 		Groups: nil,
 		Metadata: oscal.Metadata{
-			LastModified: lastModified,
+			LastModified: oscalUtils.GetTimeWithFallback(c.Metadata.LastModified, now),
 			Links: &[]oscal.Link{
 				{
-					Href: fmt.Sprintf(controlHREF, version, ""),
+					Href: fmt.Sprintf(controlHREF, c.Metadata.Version, ""),
 					Rel:  "canonical",
 				},
 			},
-			OscalVersion: "1.1.3",
+			OscalVersion: oscalUtils.OSCALVersion,
 			Published:    &now,
 			Title:        c.Metadata.Title,
-			Version:      version,
+			Version:      c.Metadata.Version,
 		},
 	}
 
@@ -45,7 +47,7 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 		group := oscal.Group{
 			Class:    "family",
 			Controls: nil,
-			ID:       controlFamilyIDs[family.Id],
+			ID:       family.Id,
 			Title:    family.Description,
 		}
 
@@ -62,11 +64,11 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 						{
 							ID:    ar.Id + ".R",
 							Name:  "recommendation",
-							Ns:    namespace,
+							Ns:    oscalUtils.GemaraNamespace,
 							Prose: ar.Recommendation,
 							Links: &[]oscal.Link{
 								{
-									Href: fmt.Sprintf(controlHREF, version, ar.Id),
+									Href: fmt.Sprintf(controlHREF, c.Metadata.Version, ar.Id),
 									Rel:  "canonical",
 								},
 							},
@@ -82,7 +84,7 @@ func (c *Catalog) ToOSCAL(controlFamilyIDs map[string]string,
 				ID:    control.Id,
 				Links: &[]oscal.Link{
 					{
-						Href: fmt.Sprintf(controlHREF, version, strings.ToLower(control.Id)),
+						Href: fmt.Sprintf(controlHREF, c.Metadata.Version, strings.ToLower(control.Id)),
 						Rel:  "canonical",
 					},
 				},

@@ -22,7 +22,9 @@ jobs:
         uses: cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1 # v1.0.1
         with:
           version: "v0.13.2"
-      - name: Validate the layer 2 schema
+      - name: Validate the formatting of cue schema files
+        run: make cuefmtcheck
+      - name: Validate the syntax of cue schema files
         run: make lintcue
       - name: Validate the security-insights file
         run: make lintinsights
@@ -30,27 +32,17 @@ jobs:
         run: make cuegen
       - name: Check for missing generated artifacts
         run: make dirtycheck
-      - uses: actions/setup-go@v5.4.0
-        with:
-          go-version: "^1.23.4"
-
-      - name: Setup GO environment
-        run: |
-          go mod download
-          go get -u golang.org/x/lint/golint
-          go get -t ./...
-
       - name: Vet
         run: |
           go vet ./...
 
       - name: Unit tests
         run: |
-          make test-cov
+          make testcov
 
       - name: Quality Gate - Test coverage shall be above threshold
         env:
-          TESTCOVERAGE_THRESHOLD: 50
+          TESTCOVERAGE_THRESHOLD: 70
         run: |
           echo "Quality Gate: checking test coverage is above threshold ..."
           echo "Threshold             : $TESTCOVERAGE_THRESHOLD %"
@@ -63,7 +55,3 @@ jobs:
               echo "Failed"
               exit 1
           fi
-
-      - name: Ensure build is functional
-        run: |
-          make build
