@@ -37,7 +37,6 @@ package schemas
 	applied?:         bool
 	reverted?:        bool
 	error?:           string
-	allowed?:         bool
 }
 
 #Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
