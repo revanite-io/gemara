@@ -1,37 +1,44 @@
 package schemas
 
 #Layer4: {
-    evaluations: [#ControlEvaluation, ...#ControlEvaluation]
+	evaluations: [...#ControlEvaluation]
 }
-
-// Types
 
 #ControlEvaluation: {
-    name: string
-    "control-id": string
-    result: #Result
-    message: string
-    "documentation-url"?: =~"^https?://[^\\s]+$"
-    "corrupted-state"?: bool
-    "assessment-results"?: [...#AssessmentResult]
+	name: string
+	controlID: string
+	result: #Result
+	message: string
+	corruptedState: bool
+	assessments: [...#Assessment]
 }
 
-#AssessmentResult: {
-    result: #Result
-    name: string
-    description: string
-    message: string
-    "function-address": string
-    change?: #Change
-    value?: _
+#Assessment: {
+	requirementId: string
+	applicability: [...string]
+	description: string
+	result: #Result
+	message: string
+	steps: [...#AssessmentStep]
+	stepsExecuted?: int
+	runDuration?: string
+	value?: _
+	changes?: { [string]: #Change }
+	recommendation?: string
 }
 
-#Result: "Passed" | "Failed" | "Needs Review"
+// AssessmentStep is a function type that inspects the provided targetData and returns a Result with a message.
+// The message may be an error string or other descriptive text.
+#AssessmentStep: string
 
 #Change: {
-    "target-name": string
-    applied: bool
-    reverted: bool
-    error?: string
-    "target-object"?: _
+	targetName: string
+	description: string
+	targetObject?: _
+	applied?: bool
+	reverted?: bool
+	error?: string
+	allowed?: bool
 }
+
+#Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"

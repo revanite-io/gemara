@@ -19,8 +19,6 @@ type ControlEvaluation struct {
 	Message string `yaml:"message"`
 	// CorruptedState is true if the control evaluation was interrupted and changes were not reverted
 	CorruptedState bool `yaml:"corrupted-state"`
-	// RemediationGuide is the URL to the documentation for this evaluation
-	RemediationGuide string `yaml:"remediation-guide"`
 	// Assessments is a map of pointers to Assessment objects to establish idempotency
 	Assessments []*Assessment `yaml:"assessments"`
 }
