@@ -1,40 +1,39 @@
 package schemas
 
-#Layer4: {
-	evaluations: [...#ControlEvaluation]
+#EvaluationOutput: {
+	"evaluation-set": [...#ControlEvaluation] @go(EvaluationSet)
+    ...
 }
 
 #ControlEvaluation: {
 	name: string
-	controlID: string
+	"control-id": string @go(ControlId)
 	result: #Result
 	message: string
-	corruptedState: bool
+	"corrupted-state": bool @go(CorruptedState)
 	assessments: [...#Assessment]
 }
 
 #Assessment: {
-	requirementId: string
+	"requirement-id": string @go(RequirementId)
 	applicability: [...string]
 	description: string
 	result: #Result
 	message: string
 	steps: [...#AssessmentStep]
-	stepsExecuted?: int
-	runDuration?: string
+	"steps-executed"?: int @go(StepsExecuted)
+	"run-duration"?: string @go(RunDuration)
 	value?: _
 	changes?: { [string]: #Change }
 	recommendation?: string
 }
 
-// AssessmentStep is a function type that inspects the provided targetData and returns a Result with a message.
-// The message may be an error string or other descriptive text.
 #AssessmentStep: string
 
 #Change: {
-	targetName: string
+	"target-name": string @go(TargetName)
 	description: string
-	targetObject?: _
+	"target-object"?: _ @go(TargetObject)
 	applied?: bool
 	reverted?: bool
 	error?: string
