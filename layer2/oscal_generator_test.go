@@ -10,21 +10,19 @@ import (
 )
 
 var TestCases = []struct {
-	name             string
-	catalog          *Catalog
-	controlFamilyIDs map[string]string
-	version          string
-	controlHREF      string
-	catalogUUID      string
-	wantErr          bool
-	expectedTitle    string
+	name          string
+	catalog       *Catalog
+	controlHREF   string
+	wantErr       bool
+	expectedTitle string
 }{
 	{
 		name: "Valid catalog with single control family",
 		catalog: &Catalog{
 			Metadata: Metadata{
-				Id:    "test-catalog",
-				Title: "Test Catalog",
+				Id:      "test-catalog",
+				Title:   "Test Catalog",
+				Version: "devel",
 			},
 			ControlFamilies: []ControlFamily{
 				{
@@ -46,12 +44,7 @@ var TestCases = []struct {
 				},
 			},
 		},
-		controlFamilyIDs: map[string]string{
-			"AC": "AC",
-		},
-		version:       "devel",
 		controlHREF:   "https://baseline.openssf.org/versions/%s#%s",
-		catalogUUID:   "8c222a23-fc7e-4ad8-b6dd-289014f07a9f",
 		wantErr:       false,
 		expectedTitle: "Test Catalog",
 	},
@@ -59,8 +52,9 @@ var TestCases = []struct {
 		name: "Valid catalog with multiple control families",
 		catalog: &Catalog{
 			Metadata: Metadata{
-				Id:    "test-catalog-multi",
-				Title: "Test Catalog Multiple",
+				Id:      "test-catalog-multi",
+				Title:   "Test Catalog Multiple",
+				Version: "devel",
 			},
 			ControlFamilies: []ControlFamily{
 				{
@@ -99,13 +93,7 @@ var TestCases = []struct {
 				},
 			},
 		},
-		controlFamilyIDs: map[string]string{
-			"AC": "AC",
-			"BR": "BR",
-		},
-		version:       "devel",
 		controlHREF:   "https://baseline.openssf.org/versions/%s#%s",
-		catalogUUID:   "8c222a23-fc7e-4ad8-b6dd-289014f07a9f",
 		wantErr:       false,
 		expectedTitle: "Test Catalog Multiple",
 	},
@@ -114,12 +102,7 @@ var TestCases = []struct {
 func Test_toOSCAL(t *testing.T) {
 	for _, tt := range TestCases {
 		t.Run(tt.name, func(t *testing.T) {
-			oscalCatalog, err := tt.catalog.ToOSCAL(
-				tt.controlFamilyIDs,
-				tt.version,
-				tt.controlHREF,
-				tt.catalogUUID,
-			)
+			oscalCatalog, err := tt.catalog.ToOSCAL(tt.controlHREF)
 
 			if (err == nil) == tt.wantErr {
 				t.Errorf("ToOSCAL() error = %v, wantErr %v", err, tt.wantErr)
@@ -129,6 +112,7 @@ func Test_toOSCAL(t *testing.T) {
 			if tt.wantErr {
 				return
 			}
+
 			// Wrap oscal catalog
 			// Create the proper OSCAL document structure
 			oscalDocument := oscal.OscalModels{
@@ -139,16 +123,16 @@ func Test_toOSCAL(t *testing.T) {
 			assert.NoError(t, oscalUtils.Validate(oscalDocument))
 
 			// Compare each field
-			assert.Equal(t, tt.catalogUUID, oscalCatalog.UUID)
+			assert.NotEmpty(t, oscalCatalog.UUID)
 			assert.Equal(t, tt.expectedTitle, oscalCatalog.Metadata.Title)
-			assert.Equal(t, tt.version, oscalCatalog.Metadata.Version)
+			assert.Equal(t, tt.catalog.Metadata.Version, oscalCatalog.Metadata.Version)
 			assert.Equal(t, len(tt.catalog.ControlFamilies), len(*oscalCatalog.Groups))
 
 			// Compare each control family
 			for i, family := range tt.catalog.ControlFamilies {
 				groups := (*oscalCatalog.Groups)
 				group := groups[i]
-				assert.Equal(t, group.ID, tt.controlFamilyIDs[family.Id])
+				assert.Equal(t, family.Id, group.ID) 
 			}
 		})
 	}
