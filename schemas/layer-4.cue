@@ -1,6 +1,6 @@
 package schemas
 
-#EvaluationOutput: {
+#EvaluationResults: {
 	"evaluation-set": [#ControlEvaluation, ...#ControlEvaluation] @go(EvaluationSet)
 	...
 }
