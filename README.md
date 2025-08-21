@@ -1,4 +1,4 @@
-# Gemara: GRC Engineering Model for Automated Risk Assessment  [![Go Reference](https://pkg.go.dev/badge/github.com/revanite-io/gemara.svg)](https://pkg.go.dev/github.com/revanite-io/gemara)
+# Gemara: GRC Engineering Model for Automated Risk Assessment  [![Go Reference](https://pkg.go.dev/badge/github.com/ossf/gemara.svg)](https://pkg.go.dev/github.com/ossf/gemara)
 
 - [Overview](#overview)
 - [The Model](#the-model)
@@ -13,8 +13,8 @@
   - [Layer 5: Enforcement](#layer-5-enforcement)
   - [Layer 6: Audit](#layer-6-audit)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [Projects and tooling using Gemara](#projects-and-tooling-using-gemara)
+- [Contributing](#contributing)
 
 ## Overview
 
@@ -115,7 +115,7 @@ Audits consider information from all of the lower layers. These activities are t
 
 ## Usage
 
-Install the go module with `go get github.com/revanite-io/gemara` and consult our [go docs](https://pkg.go.dev/github.com/revanite-io/gemara)
+Install the go module with `go get github.com/ossf/gemara` and consult our [go docs](https://pkg.go.dev/github.com/ossf/gemara)
 
 Use the schemas directly with [cue](https://cuelang.org/) for validating Gemara data payloads against the schemas and more.
 

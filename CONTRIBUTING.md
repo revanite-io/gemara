@@ -2,9 +2,9 @@
 
 The project welcomes your contributions whether they be:
 
-* reporting an [issue](https://github.com/revanite-io/sci/issues/new/choose)
-* making a code contribution ([create a fork](https://github.com/revanite-io/sci/fork))
-* updating our [docs](https://github.com/revanite-io/sci/blob/main/README.md)
+* reporting an [issue](https://github.com/ossf/gemara/issues/new/choose)
+* making a code contribution ([create a fork](https://github.com/ossf/gemara/fork))
+* updating our [docs](https://github.com/ossf/gemara/blob/main/README.md)
 
 ## PR guidelines
 

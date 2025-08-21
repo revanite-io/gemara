@@ -1,8 +1,8 @@
 header:
   schema-version: 2.0.0
-  last-updated: '2025-04-25'
-  last-reviewed: '2025-04-25'
-  url: https://github.com/revanite-io/gemara
+  last-updated: '2025-08-21'
+  last-reviewed: '2025-08-21'
+  url: https://github.com/ossf/gemara
 
 project:
   name: "Gemara: GRC Engineering Model for Automated Risk Assessment"
@@ -16,12 +16,12 @@ project:
       email: jmeridth@gmail.com
       primary: false
   documentation:
-    detailed-guide: https://pkg.go.dev/github.com/revanite-io/gemara
-    quickstart-guide: https://github.com/revanite-io/gemara/blob/main/README.md#usage
-    code-of-conduct: https://github.com/revanite-io/gemara?tab=coc-ov-file#readme
+    detailed-guide: https://pkg.go.dev/github.com/ossf/gemara
+    quickstart-guide: https://github.com/ossf/gemara/blob/main/README.md#usage
+    code-of-conduct: https://github.com/ossf/gemara?tab=coc-ov-file#readme
   repositories:
     - name: sci
-      url: https://github.com/revanite-io/gemara
+      url: https://github.com/ossf/gemara
       comment: |
         The main repository for the GRC Engineering Model for Automated Risk Assessment (Gemara) project.
         It contains the core codebase and documentation for the project.
@@ -30,7 +30,7 @@ project:
     bug-bounty-available: false
 
 repository:
-  url: https://github.com/revanite-io/gemara
+  url: https://github.com/ossf/gemara
   status: active
   accepts-change-request: true
   accepts-automated-change-request: true
@@ -52,9 +52,9 @@ repository:
       email: alex.speasmaker@gmail.com
       primary: false
   documentation:
-    contributing-guide: https://github.com/revanite-io/gemara/blob/main/CONTRIBUTING.md
+    contributing-guide: https://github.com/ossf/gemara/blob/main/CONTRIBUTING.md
   license:
-    url: https://github.com/revanite-io/gemara?tab=Apache-2.0-1-ov-file#readme
+    url: https://github.com/ossf/gemara?tab=Apache-2.0-1-ov-file#readme
     expression: Apache-2.0
   security:
     assessments:
@@ -71,7 +71,7 @@ repository:
           adhoc:
             name: Scheduled SCA Scan Results
             predicate-uri: https://docs.github.com/en/graphql/reference/objects#repositoryvulnerabilityalert
-            location: https://github.com/revanite-io/gemara/security/dependabot
+            location: https://github.com/ossf/gemara/security/dependabot
             comment: |
               The results of the scheduled SCA scan are available in the Dependabot tab of the Security Insights page.
         integration:
@@ -88,13 +88,13 @@ repository:
           adhoc:
             name: Scheduled SAST Results
             predicate-uri: https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json
-            location: https://github.com/revanite-io/gemara/security/code-scanning
+            location: https://github.com/ossf/gemara/security/code-scanning
             comment: |
               The results of the scheduled SAST scan are available in the Code Scanning tab of the Security Insights page and as an artifact on the scheduled job.
           ci:
             name: CI SAST Results
             predicate-uri: https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json
-            location: https://github.com/revanite-io/gemara/security/code-scanning
+            location: https://github.com/ossf/gemara/security/code-scanning
             comment: |
               The results of the CI SAST scan are available in the Code Scanning tab of the Security Insights page.
         integration:
