@@ -25,9 +25,10 @@ type Assessment struct {
 	Steps []AssessmentStep `yaml:"steps"`
 	// StepsExecuted is the number of steps that were executed during the test
 	StepsExecuted int `yaml:"steps-executed,omitempty"`
-	// Start is the time when the assessment run started
+	// Start is the time the assessment run began.
 	Start string `yaml:"start"`
-	// End is the time when the assessment finished running
+	// End is the time the assessment run finished.
+	// This is omitted if the assessment was interrupted or did not complete.
 	End string `yaml:"end,omitempty"`
 	// Value is the object that was returned during the test
 	Value interface{} `yaml:"value,omitempty"`
