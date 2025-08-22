@@ -8,25 +8,37 @@ package schemas
 #ControlEvaluation: {
 	name:              string
 	"control-id":      string @go(ControlId)
-	result:            #Result
-	message:           string
+	run:               bool
 	"corrupted-state": bool @go(CorruptedState)
 	assessments: [...#Assessment]
-}
+} & (
+	{
+		run:     false
+		result?: #Result
+	} | {
+		run:     true
+		result!: #Result
+	})
 
 #Assessment: {
 	"requirement-id": string @go(RequirementId)
 	applicability: [...string]
 	description: string
-	result:      #Result
-	message:     string
+	run:         bool
 	steps: [...#AssessmentStep]
 	"steps-executed"?: int    @go(StepsExecuted)
 	"run-duration"?:   string @go(RunDuration)
 	value?:            _
 	changes?: {[string]: #Change}
 	recommendation?: string
-}
+} & (
+	{
+		run:     false
+		result?: #Result
+	} | {
+		run:     true
+		result!: #Result
+	})
 
 #AssessmentStep: string
 
@@ -39,4 +51,9 @@ package schemas
 	error?:           string
 }
 
-#Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
+#Result: {
+	state:   #State
+	message: string
+}
+
+#State: "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
