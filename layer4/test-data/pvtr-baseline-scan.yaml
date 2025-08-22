@@ -4,8 +4,10 @@ payload: omitted
 evaluation-set:
   - name: ""
     control-id: OSPS-AC-01
-    result: Passed
-    message: Two-factor authentication is configured as required by the parent organization
+    run: true
+    result:
+      state: Passed
+      message: Two-factor authentication is configured as required by the parent organization
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-AC-01.01
@@ -14,8 +16,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a user attempts to access a sensitive resource in the project's version control system, the system MUST require the user to complete a multi-factor authentication process.
-      result: Passed
-      message: Two-factor authentication is configured as required by the parent organization
+      run: true
+      result:
+        state: Passed
+        message: Two-factor authentication is configured as required by the parent organization
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.orgRequiresMFA
       steps-executed: 1
@@ -24,8 +28,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-AC-02
-    result: Passed
-    message: This control is enforced by GitHub for all projects
+    run: true
+    result:
+      state: Passed
+      message: This control is enforced by GitHub for all projects
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-AC-02.01
@@ -34,8 +40,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a new collaborator is added, the version control system MUST require manual permission assignment, or restrict the collaborator permissions to the lowest available privileges by default.
-      result: Passed
-      message: This control is enforced by GitHub for all projects
+      run: true
+      result:
+        state: Passed
+        message: This control is enforced by GitHub for all projects
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubBuiltIn
       steps-executed: 1
@@ -44,8 +52,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-AC-03
-    result: Passed
-    message: Branch protection rule prevents deletions
+    run: true
+    result:
+      state: Passed
+      message: Branch protection rule prevents deletions
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-AC-03.01
@@ -54,8 +64,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a direct commit is attempted on the project's primary branch, an enforcement mechanism MUST prevent the change from being applied.
-      result: Passed
-      message: Branch protection rule requires approving reviews
+      run: true
+      result:
+        state: Passed
+        message: Branch protection rule requires approving reviews
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.branchProtectionRestrictsPushes
@@ -69,8 +81,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When an attempt is made to delete the project's primary branch, the version control system MUST treat this as a sensitive activity and require explicit confirmation of intent.
-      result: Passed
-      message: Branch protection rule prevents deletions
+      run: true
+      result:
+        state: Passed
+        message: Branch protection rule prevents deletions
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.branchProtectionPreventsDeletion
       steps-executed: 1
@@ -79,8 +93,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-AC-04
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-AC-04.01
@@ -88,8 +101,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a CI/CD task is executed with no permissions specified, the project's version control system MUST default to the lowest available permissions for all activities in the pipeline.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.workflowDefaultReadPermissions
       steps-executed: 0
@@ -98,8 +110,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-01
-    result: Needs Review
-    message: Not implemented
+    run: true
+    result:
+      state: Needs Review
+      message: Not implemented
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-01.01
@@ -108,8 +122,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a CI/CD pipeline accepts an input parameter, that parameter MUST be sanitized and validated prior to use in the pipeline.
-      result: Passed
-      message: GitHub Workflows variables do not contain untrusted inputs
+      run: true
+      result:
+        state: Passed
+        message: GitHub Workflows variables do not contain untrusted inputs
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.cicdSanitizedInputParameters
@@ -123,8 +139,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a CI/CD pipeline uses a branch name in its functionality, that name value MUST be sanitized and validated prior to use in the pipeline.
-      result: Needs Review
-      message: Not implemented
+      run: true
+      result:
+        state: Needs Review
+        message: Not implemented
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 1
@@ -133,8 +151,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-02
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-02.01
@@ -142,8 +159,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When an official release is created, that release MUST be assigned a unique version identifier.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.releaseHasUniqueIdentifier
@@ -153,8 +169,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-03
-    result: Needs Review
-    message: No official distribution points found in Security Insights data
+    run: true
+    result:
+      state: Needs Review
+      message: No official distribution points found in Security Insights data
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-03.01
@@ -163,8 +181,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project lists a URI as an official project channel, that URI MUST be exclusively delivered using encrypted channels.
-      result: Needs Review
-      message: All links use HTTPS
+      run: true
+      result:
+        state: Needs Review
+        message: All links use HTTPS
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.ensureInsightsLinksUseHTTPS
@@ -178,8 +198,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project lists a URI as an official distribution channel, that URI MUST be exclusively delivered using encrypted channels.
-      result: Passed
-      message: No official distribution points found in Security Insights data
+      run: true
+      result:
+        state: Passed
+        message: No official distribution points found in Security Insights data
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.distributionPointsUseHTTPS
       steps-executed: 1
@@ -188,8 +210,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-04
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-04.01
@@ -197,8 +218,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When an official release is created, that release MUST contain a descriptive log of functional and security modifications.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.ensureLatestReleaseHasChangelog
@@ -208,8 +228,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-05
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-05.01
@@ -217,8 +236,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a build and release pipeline ingests dependencies, it MUST use standardized tooling where available.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -227,8 +245,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-BR-06
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-BR-06.01
@@ -236,8 +253,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When an official release is created, that release MUST be signed or accounted for in a signed manifest including each asset's cryptographic hashes.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
@@ -248,8 +264,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-01
-    result: Failed
-    message: User guide was NOT specified in Security Insights data
+    run: true
+    result:
+      state: Failed
+      message: User guide was NOT specified in Security Insights data
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-01.01
@@ -258,8 +276,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include user guides for all basic functionality.
-      result: Failed
-      message: User guide was NOT specified in Security Insights data
+      run: true
+      result:
+        state: Failed
+        message: User guide was NOT specified in Security Insights data
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
@@ -270,8 +290,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-02
-    result: Failed
-    message: Repository does not accept vulnerability reports
+    run: true
+    result:
+      state: Failed
+      message: Repository does not accept vulnerability reports
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-02.01
@@ -280,8 +302,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include a guide for reporting defects.
-      result: Failed
-      message: Repository does not accept vulnerability reports
+      run: true
+      result:
+        state: Failed
+        message: Repository does not accept vulnerability reports
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasIssuesOrDiscussionsEnabled
@@ -292,16 +316,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-03
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-03.01
       applicability:
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST contain instructions to verify the integrity and authenticity of the release assets.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
@@ -312,16 +334,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-04
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-04.01
       applicability:
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include a descriptive statement about the scope and duration of support for each release.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasSupportDocs
       steps-executed: 0
@@ -330,16 +350,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-05
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-05.01
       applicability:
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST provide a descriptive statement when releases or versions will no longer receive security updates.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasSupportDocs
       steps-executed: 0
@@ -348,8 +366,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-DO-06
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-DO-06.01
@@ -357,8 +374,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include a description of how the project selects, obtains, and tracks its dependencies.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
@@ -370,8 +386,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-GV-01
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-GV-01.01
@@ -379,8 +394,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST include a list of project members with access to sensitive resources.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsActive
@@ -395,8 +409,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST include descriptions of the roles and responsibilities for members of the project.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.hasRolesAndResponsibilities
       steps-executed: 0
@@ -405,8 +418,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-GV-02
-    result: Passed
-    message: Issues are enabled for the repository
+    run: true
+    result:
+      state: Passed
+      message: Issues are enabled for the repository
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-GV-02.01
@@ -415,8 +430,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project MUST have one or more mechanisms for public discussions about proposed changes and usage obstacles.
-      result: Passed
-      message: Issues are enabled for the repository
+      run: true
+      result:
+        state: Passed
+        message: Issues are enabled for the repository
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasIssuesOrDiscussionsEnabled
       steps-executed: 1
@@ -425,8 +442,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-GV-03
-    result: Needs Review
-    message: "Contributing guide was found via GitHub API (Recommendation: Add code of conduct location to Security Insights data)"
+    run: true
+    result:
+      state: Needs Review
+      message: "Contributing guide was found via GitHub API (Recommendation: Add code of conduct location to Security Insights data)"
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-GV-03.01
@@ -435,8 +454,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST include an explanation of the contribution process.
-      result: Needs Review
-      message: "Contributing guide was found via GitHub API (Recommendation: Add code of conduct location to Security Insights data)"
+      run: true
+      result:
+        state: Needs Review
+        message: "Contributing guide was found via GitHub API (Recommendation: Add code of conduct location to Security Insights data)"
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.hasContributionGuide
       steps-executed: 1
@@ -448,8 +469,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST include a guide for code contributors that includes requirements for acceptable contributions.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
@@ -461,16 +481,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-GV-04
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-GV-04.01
       applicability:
       - Maturity Level 3
       description: While active, the project documentation MUST have a policy that code contributors are reviewed prior to granting escalated permissions to sensitive resources.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -479,8 +497,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-LE-01
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-LE-01.01
@@ -488,8 +505,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the version control system MUST require all code contributors to assert that they are legally authorized to make the associated contributions on every commit.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubTermsOfService
       steps-executed: 0
@@ -498,8 +514,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-LE-02
-    result: Needs Review
-    message: All license found are OSI or FSF approved
+    run: true
+    result:
+      state: Needs Review
+      message: All license found are OSI or FSF approved
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-LE-02.01
@@ -508,8 +526,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the license for the source code MUST meet the OSI Open Source Definition or the FSF Free Software Definition.
-      result: Needs Review
-      message: All license found are OSI or FSF approved
+      run: true
+      result:
+        state: Needs Review
+        message: All license found are OSI or FSF approved
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.foundLicense
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.goodLicense
@@ -519,8 +539,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-LE-03
-    result: Passed
-    message: GitHub releases include the license(s) in the released source code.
+    run: true
+    result:
+      state: Passed
+      message: GitHub releases include the license(s) in the released source code.
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-LE-03.01
@@ -529,8 +551,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the license for the source code MUST be maintained in the corresponding repository's LICENSE file, COPYING file, or LICENSE/ directory.
-      result: Passed
-      message: License was found in a well known location via the GitHub API
+      run: true
+      result:
+        state: Passed
+        message: License was found in a well known location via the GitHub API
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.foundLicense
       steps-executed: 1
@@ -543,8 +567,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the license for the released software assets MUST be included in the released source code, or in a LICENSE file, COPYING file, or LICENSE/ directory alongside the corresponding release assets.
-      result: Passed
-      message: GitHub releases include the license(s) in the released source code.
+      run: true
+      result:
+        state: Passed
+        message: GitHub releases include the license(s) in the released source code.
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.releasesLicensed
       steps-executed: 1
@@ -553,8 +579,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-01
-    result: Passed
-    message: This control is enforced by GitHub for all projects
+    run: true
+    result:
+      state: Passed
+      message: This control is enforced by GitHub for all projects
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-01.01
@@ -563,8 +591,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project's source code repository MUST be publicly readable at a static URL.
-      result: Passed
-      message: Repository is public
+      run: true
+      result:
+        state: Passed
+        message: Repository is public
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.repoIsPublic
       steps-executed: 1
@@ -577,8 +607,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: The version control system MUST contain a publicly readable record of all changes made, who made the changes, and when the changes were made.
-      result: Passed
-      message: This control is enforced by GitHub for all projects
+      run: true
+      result:
+        state: Passed
+        message: This control is enforced by GitHub for all projects
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubBuiltIn
       steps-executed: 1
@@ -587,8 +619,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-02
-    result: Passed
-    message: Found 8 dependency manifests from GitHub API
+    run: true
+    result:
+      state: Passed
+      message: Found 8 dependency manifests from GitHub API
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-02.01
@@ -597,8 +631,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the package management system supports it, the source code repository MUST contain a dependency list that accounts for the direct language dependencies.
-      result: Passed
-      message: Found 8 dependency manifests from GitHub API
+      run: true
+      result:
+        state: Passed
+        message: Found 8 dependency manifests from GitHub API
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.verifyDependencyManagement
       steps-executed: 1
@@ -609,8 +645,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: When the project has made a release, all compiled released software assets MUST be delivered with a software bill of materials.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -619,8 +654,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-03
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-03.01
@@ -628,8 +662,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When a commit is made to the primary branch, any automated status checks for commits MUST pass or be manually bypassed.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.statusChecksAreRequiredByRulesets
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.statusChecksAreRequiredByBranchProtection
@@ -639,8 +672,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-04
-    result: Failed
-    message: Insights does NOT contains a list of repositories
+    run: true
+    result:
+      state: Failed
+      message: Insights does NOT contains a list of repositories
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-04.01
@@ -649,8 +684,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST contain a list of any codebases that are considered subprojects or additional repositories.
-      result: Failed
-      message: Insights does NOT contains a list of repositories
+      run: true
+      result:
+        state: Failed
+        message: Insights does NOT contains a list of repositories
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
@@ -662,8 +699,10 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-05
-    result: Passed
-    message: No common binary file extensions were found in the repository
+    run: true
+    result:
+      state: Passed
+      message: No common binary file extensions were found in the repository
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-05.01
@@ -672,8 +711,10 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the version control system MUST NOT contain generated executable artifacts.
-      result: Passed
-      message: No common binary file extensions were found in the repository
+      run: true
+      result:
+        state: Passed
+        message: No common binary file extensions were found in the repository
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.noBinariesInRepo
       steps-executed: 1
@@ -682,8 +723,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-06
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-06.01
@@ -691,8 +731,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: Prior to a commit being accepted, the project's CI/CD pipelines MUST run at least one automated test suite to ensure the changes meet expectations.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.hasOneOrMoreStatusChecks
@@ -704,8 +743,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, project's documentation MUST clearly document when and how tests are run.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.documentsTestExecution
       steps-executed: 0
@@ -716,8 +754,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, the project's documentation MUST include a policy that all major changes to the software produced by the project should add or update tests of the functionality in an automated test suite.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.documentsTestMaintenancePolicy
@@ -727,16 +764,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-QA-07
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-QA-07.01
       applicability:
       - Maturity Level 3
       description: When a commit is made to the primary branch, the project's version control system MUST require at least one non-author approval of the changes before merging.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.requiresNonAuthorApproval
       steps-executed: 0
@@ -745,8 +780,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-SA-01
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-SA-01.01
@@ -754,8 +788,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include design documentation demonstrating all actions and actors within the system.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -764,8 +797,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-SA-02
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-SA-02.01
@@ -773,8 +805,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project documentation MUST include descriptions of all external software interfaces of the released software assets.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -783,8 +814,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-SA-03
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-SA-03.01
@@ -792,8 +822,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: When the project has made a release, the project MUST perform a security assessment to understand the most likely and impactful potential security problems that could occur within the software.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -804,8 +833,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: When the project has made a release, the project MUST perform a threat modeling and attack surface analysis to understand and protect against attacks on critical code paths, functions, and interactions within the system.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -814,8 +842,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-01
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-01.01
@@ -823,8 +850,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST include a policy for coordinated vulnerability reporting, with a clear timeframe for response.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -833,16 +859,20 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-02
-    result: Failed
-    message: Security contacts were not specified in Security Insights data
+    run: true
+    result:
+      state: Failed
+      message: Security contacts were not specified in Security Insights data
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-02.01
       applicability:
       - Maturity Level 1
       description: While active, the project documentation MUST contain security contacts.
-      result: Failed
-      message: Security contacts were not specified in Security Insights data
+      run: true
+      result:
+        state: Failed
+        message: Security contacts were not specified in Security Insights data
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/vuln_management.hasSecContact
@@ -852,8 +882,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-03
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-03.01
@@ -861,8 +890,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST provide a means for reporting security vulnerabilities privately to the security contacts within the project.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -871,8 +899,7 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-04
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-04.01
@@ -880,8 +907,7 @@ evaluation-set:
       - Maturity Level 2
       - Maturity Level 3
       description: While active, the project documentation MUST publicly publish data about discovered vulnerabilities.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -892,8 +918,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, any vulnerabilities in the software components not affecting the project MUST be accounted for in a VEX document, augmenting the vulnerability report with non-exploitability details.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -902,16 +927,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-05
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-05.01
       applicability:
       - Maturity Level 3
       description: While active, the project documentation MUST include a policy that defines a threshold for remediation of SCA findings related to vulnerabilities and licenses.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -922,8 +945,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, the project documentation MUST include a policy to address SCA violations prior to any release.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -934,8 +956,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, all changes to the project's codebase MUST be automatically evaluated against a documented policy for malicious dependencies and known vulnerabilities in dependencies, then blocked in the event of violations, except when declared and suppressed as non-exploitable.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
@@ -944,16 +965,14 @@ evaluation-set:
       changes: {}
   - name: ""
     control-id: OSPS-VM-06
-    result: Not Run
-    message: ""
+    run: false
     corrupted-state: false
     assessments:
     - requirement-id: OSPS-VM-06.01
       applicability:
       - Maturity Level 3
       description: While active, the project documentation MUST include a policy that defines a threshold for remediation of SAST findings.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasDependencyManagementPolicy
       steps-executed: 0
@@ -964,8 +983,7 @@ evaluation-set:
       applicability:
       - Maturity Level 3
       description: While active, all changes to the project's codebase MUST be automatically evaluated against a documented policy for security weaknesses and blocked in the event of violations except when declared and suppressed as non-exploitable.
-      result: Not Run
-      message: ""
+      run: false
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
