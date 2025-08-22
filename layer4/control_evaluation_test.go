@@ -14,7 +14,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    NeedsReview,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{},
+			Assessments: []Assessment{},
 		},
 	},
 	{
@@ -22,7 +22,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Passed,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{passingAssessmentPtr()},
+			Assessments: []Assessment{passingAssessment()},
 		},
 	},
 	{
@@ -30,7 +30,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Failed,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{failingAssessmentPtr()},
+			Assessments: []Assessment{failingAssessment()},
 		},
 	},
 	{
@@ -38,7 +38,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    NeedsReview,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{needsReviewAssessmentPtr()},
+			Assessments: []Assessment{needsReviewAssessment()},
 		},
 	},
 	{
@@ -46,7 +46,7 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Unknown,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{unknownAssessmentPtr()},
+			Assessments: []Assessment{unknownAssessment()},
 		},
 	},
 	{
@@ -54,9 +54,9 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Unknown,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{
-				needsReviewAssessmentPtr(),
-				unknownAssessmentPtr(),
+			Assessments: []Assessment{
+				needsReviewAssessment(),
+				unknownAssessment(),
 			},
 		},
 	},
@@ -65,9 +65,9 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Unknown,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{
-				unknownAssessmentPtr(),
-				needsReviewAssessmentPtr(),
+			Assessments: []Assessment{
+				unknownAssessment(),
+				needsReviewAssessment(),
 			},
 		},
 	},
@@ -76,9 +76,9 @@ var controlEvaluationTestData = []struct {
 		expectedResult:    Failed,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{
-				failingAssessmentPtr(),
-				needsReviewAssessmentPtr(),
+			Assessments: []Assessment{
+				failingAssessment(),
+				needsReviewAssessment(),
 			},
 		},
 	},
@@ -88,9 +88,9 @@ var controlEvaluationTestData = []struct {
 		failBeforePass:    true,
 		expectedCorrupted: false,
 		control: &ControlEvaluation{
-			Assessments: []*Assessment{
-				failingAssessmentPtr(),
-				passingAssessmentPtr(),
+			Assessments: []Assessment{
+				failingAssessment(),
+				passingAssessment(),
 			},
 		},
 	},
@@ -148,5 +148,4 @@ func TestAddAssesment(t *testing.T) {
 	if controlEvaluationTestData[0].control.Message != "expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), steps=len(0)" {
 		t.Errorf("Expected error message to be 'expected all Assessment fields to have a value, but got: requirementId=len(4), description=len=(4), applicability=len(0), steps=len(0)', but instead it was '%v'", controlEvaluationTestData[0].control.Message)
 	}
-
 }

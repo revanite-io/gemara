@@ -162,10 +162,6 @@ func failingAssessment() Assessment {
 		Applicability: testingApplicability,
 	}
 }
-func passingAssessmentPtr() *Assessment {
-	a := passingAssessment()
-	return &a
-}
 
 func passingAssessment() Assessment {
 	return Assessment{
@@ -175,14 +171,10 @@ func passingAssessment() Assessment {
 			passingAssessmentStep,
 		},
 		Applicability: testingApplicability,
-		Changes: map[string]*Change{
-			"pendingChange": pendingChangePtr(),
+		Changes: map[string]Change{
+			"pendingChange": pendingChange(),
 		},
 	}
-}
-func needsReviewAssessmentPtr() *Assessment {
-	a := needsReviewAssessment()
-	return &a
 }
 
 func needsReviewAssessment() Assessment {
@@ -196,10 +188,6 @@ func needsReviewAssessment() Assessment {
 		},
 		Applicability: testingApplicability,
 	}
-}
-func unknownAssessmentPtr() *Assessment {
-	a := unknownAssessment()
-	return &a
 }
 
 func unknownAssessment() Assessment {
@@ -219,8 +207,8 @@ func badRevertPassingAssessment() Assessment {
 	return Assessment{
 		RequirementId: "badRevertPassingAssessment()",
 		Description:   "bad revert passing assessment",
-		Changes: map[string]*Change{
-			"badRevertChange": badRevertChangePtr(),
+		Changes: map[string]Change{
+			"badRevertChange": badRevertChange(),
 		},
 		Steps: []AssessmentStep{
 			passingAssessmentStep,

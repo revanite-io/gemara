@@ -9,32 +9,6 @@ import (
 	"time"
 )
 
-// Assessment is a struct that contains the results of a single step within a ControlEvaluation.
-type Assessment struct {
-	// RequirementID is the unique identifier for the requirement being tested
-	RequirementId string `yaml:"requirement-id"`
-	// Applicability is a slice of identifier strings to determine when this test is applicable
-	Applicability []string `yaml:"applicability"`
-	// Description is a human-readable description of the test
-	Description string `yaml:"description"`
-	// Result is true if the test passed
-	Result Result `yaml:"result"`
-	// Message is the human-readable result of the test
-	Message string `yaml:"message"`
-	// Steps is a slice of steps that were executed during the test
-	Steps []AssessmentStep `yaml:"steps"`
-	// StepsExecuted is the number of steps that were executed during the test
-	StepsExecuted int `yaml:"steps-executed,omitempty"`
-	// RunDuration is the time it took to run the test
-	RunDuration string `yaml:"run-duration,omitempty"`
-	// Value is the object that was returned during the test
-	Value interface{} `yaml:"value,omitempty"`
-	// Changes is a slice of changes that were made during the test
-	Changes map[string]*Change `yaml:"changes,omitempty"`
-	// Recommendation is a string to aid users in remediation, such as the text from a layer 2 assessment requirement
-	Recommendation string `yaml:"recommendation,omitempty"`
-}
-
 // AssessmentStep is a function type that inspects the provided targetData and returns a Result with a message.
 // The message may be an error string or other descriptive text.
 type AssessmentStep func(payload interface{}, c map[string]*Change) (Result, string)

@@ -1,5 +1,7 @@
 package schemas
 
+@go(layer4)
+
 #EvaluationResults: {
 	"evaluation-set": [#ControlEvaluation, ...#ControlEvaluation] @go(EvaluationSet)
 	...
@@ -24,11 +26,11 @@ package schemas
 	"steps-executed"?: int    @go(StepsExecuted)
 	"run-duration"?:   string @go(RunDuration)
 	value?:            _
-	changes?: {[string]: #Change}
+	changes?: [string]: #Change @go(,optional=nillable)
 	recommendation?: string
 }
 
-#AssessmentStep: string
+#AssessmentStep: string @go(-)
 
 #Change: {
 	"target-name":    string @go(TargetName)
@@ -39,4 +41,4 @@ package schemas
 	error?:           string
 }
 
-#Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
+#Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown" @go(-)

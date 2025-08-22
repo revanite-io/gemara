@@ -10,28 +10,6 @@ type ApplyFunc func(interface{}) (interface{}, error)
 // Prepared function to revert the change after it has been applied
 type RevertFunc func(interface{}) error
 
-// Change is a struct that contains the data and functions associated with a single change to a target resource.
-type Change struct {
-	// TargetName is the name or ID of the resource or configuration that is to be changed
-	TargetName string `yaml:"target-name"`
-	// Description is a human-readable description of the change
-	Description string `yaml:"description"`
-	// applyFunc is the function that will be executed to make the change
-	applyFunc ApplyFunc
-	// revertFunc is the function that will be executed to undo the change
-	revertFunc RevertFunc
-	// TargetObject is supplemental data describing the object that was changed
-	TargetObject interface{} `yaml:"target-object,omitempty"`
-	// Applied is true if the change was successfully applied at least once
-	Applied bool `yaml:"applied,omitempty"`
-	// Reverted is true if the change was successfully reverted and not applied again
-	Reverted bool `yaml:"reverted,omitempty"`
-	// Error is used if any error occurred during the change
-	Error error `yaml:"error,omitempty"`
-	// Allowed may be disabled to prevent the change from being applied
-	Allowed bool `yaml:"allowed,omitempty"`
-}
-
 // Allow marks the change as allowed to be applied.
 func (c *Change) Allow() {
 	c.Allowed = true

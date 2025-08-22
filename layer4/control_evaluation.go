@@ -7,22 +7,6 @@ import (
 	"syscall"
 )
 
-// ControlEvaluation is a struct that contains all assessment results, organized by name.
-type ControlEvaluation struct {
-	// Name is the name of the control being evaluated
-	Name string `yaml:"name"`
-	// ControlID is the unique identifier for the control being evaluated
-	ControlID string `yaml:"control-id"`
-	// Result is the overall result of the control evaluation
-	Result Result `yaml:"result"`
-	// Message is the human-readable result of the final assessment to run in this evaluation
-	Message string `yaml:"message"`
-	// CorruptedState is true if the control evaluation was interrupted and changes were not reverted
-	CorruptedState bool `yaml:"corrupted-state"`
-	// Assessments is a map of pointers to Assessment objects to establish idempotency
-	Assessments []*Assessment `yaml:"assessments"`
-}
-
 // AddAssessment creates a new Assessment object and adds it to the ControlEvaluation.
 func (c *ControlEvaluation) AddAssessment(requirementId string, description string, applicability []string, steps []AssessmentStep) (assessment *Assessment) {
 	assessment, err := NewAssessment(requirementId, description, applicability, steps)
