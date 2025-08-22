@@ -19,7 +19,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.orgRequiresMFA
       steps-executed: 1
-      run-duration: 3.708µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000003708Z
       value: null
       changes: {}
   - name: ""
@@ -39,7 +40,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubBuiltIn
       steps-executed: 1
-      run-duration: 1.208µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000001208Z
       value: null
       changes: {}
   - name: ""
@@ -60,7 +62,8 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.branchProtectionRestrictsPushes
       steps-executed: 2
-      run-duration: 2.75µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000002750Z
       value: null
       changes: {}
     - requirement-id: OSPS-AC-03.02
@@ -74,7 +77,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.branchProtectionPreventsDeletion
       steps-executed: 1
-      run-duration: 1.167µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000001167Z
       value: null
       changes: {}
   - name: ""
@@ -93,7 +97,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/access_control.workflowDefaultReadPermissions
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -114,7 +118,8 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.cicdSanitizedInputParameters
       steps-executed: 2
-      run-duration: 1.71162125s
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:01.711621250Z
       value: null
       changes: {}
     - requirement-id: OSPS-BR-01.02
@@ -128,7 +133,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 1
-      run-duration: 708ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000708Z
       value: null
       changes: {}
   - name: ""
@@ -148,7 +154,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.releaseHasUniqueIdentifier
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -169,7 +175,8 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.ensureInsightsLinksUseHTTPS
       steps-executed: 2
-      run-duration: 3.417µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000003417Z
       value: null
       changes: {}
     - requirement-id: OSPS-BR-03.02
@@ -183,7 +190,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.distributionPointsUseHTTPS
       steps-executed: 1
-      run-duration: 584ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000584Z
       value: null
       changes: {}
   - name: ""
@@ -203,7 +211,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasMadeReleases
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.ensureLatestReleaseHasChangelog
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -222,7 +230,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -243,7 +251,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/build_release.insightsHasSlsaAttestation
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -265,7 +273,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasUserGuides
       steps-executed: 3
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -287,7 +295,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasIssuesOrDiscussionsEnabled
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.acceptsVulnReports
       steps-executed: 3
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -307,7 +315,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasSignatureVerificationGuide
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -325,7 +333,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasSupportDocs
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -343,7 +351,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasSupportDocs
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -365,7 +373,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/docs.hasDependencyManagementPolicy
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -387,7 +395,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.coreTeamIsListed
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.projectAdminsListed
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-GV-01.02
@@ -400,7 +408,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.hasRolesAndResponsibilities
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -420,7 +428,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasIssuesOrDiscussionsEnabled
       steps-executed: 1
-      run-duration: 292ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000292Z
       value: null
       changes: {}
   - name: ""
@@ -440,7 +449,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.hasContributionGuide
       steps-executed: 1
-      run-duration: 792ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000792Z
       value: null
       changes: {}
     - requirement-id: OSPS-GV-03.02
@@ -456,7 +466,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsActive
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/governance.hasContributionReviewPolicy
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -474,7 +484,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -493,7 +503,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubTermsOfService
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -514,7 +524,8 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.foundLicense
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.goodLicense
       steps-executed: 2
-      run-duration: 269.504834ms
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.269504834Z
       value: null
       changes: {}
   - name: ""
@@ -534,7 +545,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.foundLicense
       steps-executed: 1
-      run-duration: 875ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000875Z
       value: null
       changes: {}
     - requirement-id: OSPS-LE-03.02
@@ -548,7 +560,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/legal.releasesLicensed
       steps-executed: 1
-      run-duration: 375ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000375Z
       value: null
       changes: {}
   - name: ""
@@ -568,7 +581,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.repoIsPublic
       steps-executed: 1
-      run-duration: 958ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000958Z
       value: null
       changes: {}
     - requirement-id: OSPS-QA-01.02
@@ -582,7 +596,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.GithubBuiltIn
       steps-executed: 1
-      run-duration: 375ns
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000000375Z
       value: null
       changes: {}
   - name: ""
@@ -602,7 +617,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.verifyDependencyManagement
       steps-executed: 1
-      run-duration: 2.667µs
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.000002667Z
       value: null
       changes: {}
     - requirement-id: OSPS-QA-02.02
@@ -614,7 +630,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -634,7 +650,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.statusChecksAreRequiredByRulesets
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.statusChecksAreRequiredByBranchProtection
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -657,7 +673,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsActive
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.insightsListsRepositories
       steps-executed: 4
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -677,7 +693,8 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.noBinariesInRepo
       steps-executed: 1
-      run-duration: 729.000709ms
+      start: 2025-08-22T16:02:00.000000000Z
+      end: 2025-08-22T16:02:00.729000709Z
       value: null
       changes: {}
   - name: ""
@@ -697,7 +714,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.hasOneOrMoreStatusChecks
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-QA-06.02
@@ -709,7 +726,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.documentsTestExecution
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-QA-06.03
@@ -722,7 +739,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.documentsTestMaintenancePolicy
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -740,7 +757,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/quality.requiresNonAuthorApproval
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -759,7 +776,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -776,9 +793,9 @@ evaluation-set:
       result: Not Run
       message: ""
       steps:
-      - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
+        - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -797,7 +814,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-SA-03.02
@@ -809,7 +826,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -826,9 +843,9 @@ evaluation-set:
       result: Not Run
       message: ""
       steps:
-      - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
+        - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -847,7 +864,7 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.IsCodeRepo
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/vuln_management.hasSecContact
       steps-executed: 2
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -866,7 +883,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -885,7 +902,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-VM-04.02
@@ -897,7 +914,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -915,7 +932,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-VM-05.02
@@ -927,7 +944,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-VM-05.03
@@ -939,7 +956,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.NotImplemented
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
   - name: ""
@@ -957,7 +974,7 @@ evaluation-set:
       steps:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasDependencyManagementPolicy
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}
     - requirement-id: OSPS-VM-06.02
@@ -971,6 +988,6 @@ evaluation-set:
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/reusable_steps.HasSecurityInsightsFile
       - github.com/revanite-io/pvtr-github-repo/evaluation_plans/osps/vuln_management.sastToolDefined
       steps-executed: 0
-      run-duration: ""
+      start: 2025-08-22T16:02:00.000000000Z
       value: null
       changes: {}

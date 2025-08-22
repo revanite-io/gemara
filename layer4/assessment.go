@@ -25,8 +25,10 @@ type Assessment struct {
 	Steps []AssessmentStep `yaml:"steps"`
 	// StepsExecuted is the number of steps that were executed during the test
 	StepsExecuted int `yaml:"steps-executed,omitempty"`
-	// RunDuration is the time it took to run the test
-	RunDuration string `yaml:"run-duration,omitempty"`
+	// Start is the time when the assessment run started
+	Start string `yaml:"start"`
+	// End is the time when the assessment finished running
+	End string `yaml:"end,omitempty"`
 	// Value is the object that was returned during the test
 	Value interface{} `yaml:"value,omitempty"`
 	// Changes is a slice of changes that were made during the test
@@ -88,7 +90,7 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 		return a.Result
 	}
 
-	startTime := time.Now()
+	a.Start = time.Now().Format(time.RFC3339)
 	err := a.precheck()
 	if err != nil {
 		a.Result = Unknown
@@ -104,7 +106,7 @@ func (a *Assessment) Run(targetData interface{}, changesAllowed bool) Result {
 			return Failed
 		}
 	}
-	a.RunDuration = time.Since(startTime).String()
+	a.End = time.Now().Format(time.RFC3339)
 	return a.Result
 }
 

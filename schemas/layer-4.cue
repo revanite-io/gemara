@@ -1,5 +1,7 @@
 package schemas
 
+import "time"
+
 #EvaluationResults: {
 	"evaluation-set": [#ControlEvaluation, ...#ControlEvaluation] @go(EvaluationSet)
 	...
@@ -21,8 +23,9 @@ package schemas
 	result:      #Result
 	message:     string
 	steps: [...#AssessmentStep]
-	"steps-executed"?: int    @go(StepsExecuted)
-	"run-duration"?:   string @go(RunDuration)
+	"steps-executed"?: int @go(StepsExecuted)
+	"start":           #Datetime
+	"end"?:            #Datetime
 	value?:            _
 	changes?: {[string]: #Change}
 	recommendation?: string
@@ -40,3 +43,5 @@ package schemas
 }
 
 #Result: "Not Run" | "Passed" | "Failed" | "Needs Review" | "Not Applicable" | "Unknown"
+
+#Datetime: time.Format("2006-01-02T15:04:05Z07:00") @go(Datetime,format="date-time")
